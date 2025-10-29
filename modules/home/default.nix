@@ -28,6 +28,7 @@
     ./vim
     ./tmux
     ./tealdeer.nix
+    ./fcitx5
 
     # TODO
     ./gnome.nix # gnome apps
