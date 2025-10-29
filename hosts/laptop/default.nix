@@ -15,6 +15,20 @@
   services = {
     power-profiles-daemon.enable = true;
 
+    keyd = {
+      enable = true;
+      keyboards = {
+        default = {
+        ids = [ "*" ];
+        settings = {
+          main = {
+            capslock = "overload(control,esc)";
+          };
+        };
+      };
+    };
+    };
+
     upower = {
       enable = true;
       percentageLow = 20;

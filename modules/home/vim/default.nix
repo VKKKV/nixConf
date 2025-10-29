@@ -20,11 +20,271 @@
       vim-airline
       vim-airline-themes
     ];
-  };
-  home.file.".vimrc".source = ./config/.vimrc;
-  home.file."./.vim" = {
-    source = ./config/.vim;
-    recursive = true;
-  };
+    extraConfig = ''
+      syntax enable
+      set autoindent
+      set autoread
+      set autowrite
+      set breakindent
+      set cmdheight=2
+      set cursorcolumn
+      set cursorline
+      set encoding=utf-8
+      set expandtab
+      set fileformat=unix
+      set foldlevel=999
+      set foldlevelstart=999
+      set foldmethod=syntax
+      set hidden
+      set hlsearch
+      set ignorecase
+      set incsearch
+      set laststatus=2
+      set list
+      set listchars=tab:▸\ ,trail:·,extends:❯,precedes:❮,nbsp:%
+      set nobackup
+      set noswapfile
+      set nowritebackup
+      set number
+      set relativenumber
+      set scrolloff=4
+      set shiftwidth=4
+      set shortmess+=c
+      set showbreak=↪
+      set signcolumn=yes
+      set smartindent
+      set smarttab
+      set softtabstop=4
+      set splitbelow
+      set splitright
+      set tabstop=4
+      set termguicolors
+      set timeoutlen=400
+      set title
+      set updatetime=100
+      set wildmenu
+      set wrap
+      " set colorcolumn=80
+      " set textwidth=80
 
+      let mapleader=" "
+      nnoremap <Leader>tn :tabn<CR>
+      nnoremap <Leader>tp :tabp<CR>
+      nnoremap <Leader>h :bp<CR>
+      nnoremap <Leader>l :bn<CR>
+      nnoremap <Leader>x :bd<CR>
+      nnoremap <leader>s :split<CR>
+      nnoremap <leader>v :vsplit<CR>
+      nnoremap <silent> <C-Up>    :resize -2<CR>
+      nnoremap <silent> <C-Down>  :resize +2<CR>
+      nnoremap <silent> <C-Left>  :vertical resize -2<CR>
+      nnoremap <silent> <C-Right> :vertical resize +2<CR>
+      nnoremap <silent> <C-h> :wincmd h<CR>  
+      nnoremap <silent> <C-j> :wincmd j<CR> 
+      nnoremap <silent> <C-k> :wincmd k<CR>
+      nnoremap <silent> <C-l> :wincmd l<CR>
+
+      filetype plugin indent on
+      au Filetype * :setl fo-=o fo-=r
+
+      let g:instant_markdown_autostart = 0
+      let g:instant_markdown_autoscroll = 1
+      let g:instant_markdown_port = 13487
+      let g:instant_markdown_theme = 'dark'
+      nnoremap <Leader>p :InstantMarkdownPreview<CR>
+
+      " find file
+      nnoremap <Leader>ff :Files<CR>
+      " find line
+      nnoremap <Leader>fr :Rg<CR>
+
+      " g:typst_cmd: Specifies the location of the Typst executable. Default: 'typst'
+      let g:typst_pdf_viewer = 'zathura'
+      " g:typst_conceal: Enable concealment. Default: 0
+      " g:typst_conceal_math: Enable concealment for math symbols in math mode (i.e. replaces symbols with their actual unicode character). OBS: this can affect performance, see issue #64. Default: g:typst_conceal
+      " g:typst_conceal_emoji: Enable concealing emojis, e.g. #emoji.alien becomes 👽. Default: g:typst_conceal
+      " g:typst_auto_close_toc: Specifies whether TOC will be automatically closed after using it. Default: 0
+      " g:typst_auto_open_quickfix: Specifies whether the quickfix list should automatically open when there are errors from typst. Default: 1
+      " g:typst_embedded_languages: A list of languages that will be highlighted in code blocks. Typst is always highlighted. If language name is different from the syntax file name, you can use renaming, e.g. 'rs -> rust' (spaces around the arrow are mandatory). Default: []
+      " g:typst_folding: Enable folding for typst heading Default: 0
+      " g:typst_foldnested: Enable nested foldings Default: 1
+
+      nnoremap <Leader>n :NERDTreeToggle<CR>
+      let NERDTreeShowHidden=1
+      let NERDTreeQuitOnOpen=1
+      let NERDTreeAutoDeleteBuffer=1
+      let NERDTreeConfirmDelete='yes'
+      let NERDTreeConfirmRename='yes'
+
+      let g:tcomment_opleader1 = '<Space>c'
+
+
+      let g:airline_theme='gruvbox'
+      let g:airline_powerline_fonts = 1
+      let g:airline_section_z = "%3p%% %l:%c"
+      let g:airline#extensions#tabline#enabled = 1
+      let g:airline#extensions#tabline#formatter = 'unique_tail'
+      if !exists('g:airline_symbols')
+      let g:airline_symbols = {}
+      endif
+      let g:airline_symbols.colnr = ' ℅:'
+
+      # TODO
+      let g:coc_node_path='node'
+      let g:coc_global_extensions = [
+                  \'coc-marketplace',
+                  \'coc-dictionary',
+                  \'coc-ecdict',
+                  \'coc-biome',
+                  \'coc-eslint',
+                  \'coc-git',
+                  \'coc-go',
+                  \'coc-clangd',
+                  \'coc-highlight',
+                  \'coc-json',
+                  \'@yaegassy/coc-intelephense',
+                  \'coc-lists',
+                  \'coc-markdownlint',
+                  \'coc-word',
+                  \'coc-pairs',
+                  \'coc-sh',
+                  \'coc-snippets',
+                  \'coc-sumneko-lua',
+                  \'coc-tag',
+                  \'coc-tsserver',
+                  \'coc-typos',
+                  \'coc-xml',
+                  \'coc-css',
+                  \'coc-yaml',
+                  \'coc-pyright',
+                  \]
+
+
+      " coc conf
+      let g:coc_snippet_next = '<tab>'
+
+      nnoremap <silent> <Leader>d :CocDiagnostics<CR>
+      nnoremap <silent> <Leader>o :CocOutline<CR>
+
+      nmap <silent> gd <Plug>(coc-definition)
+      nmap <silent> gy <Plug>(coc-type-definition)
+      nmap <silent> gi <Plug>(coc-implementation)
+      nmap <silent> gr <Plug>(coc-references)
+
+      nmap <silent> [g <Plug>(coc-diagnostic-prev)
+      nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+      xmap <leader>a  <Plug>(coc-codeaction-selected)
+      nmap <leader>a  <Plug>(coc-codeaction-selected)
+      nmap <leader>ac  <Plug>(coc-codeaction-cursor)
+      nmap <leader>as  <Plug>(coc-codeaction-source)
+      nmap <leader>qf  <Plug>(coc-fix-current)
+
+      nmap <leader>rn <Plug>(coc-rename)
+      nmap <silent> <leader>re <Plug>(coc-codeaction-refactor)
+      xmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+      nmap <silent> <leader>r  <Plug>(coc-codeaction-refactor-selected)
+
+      nmap <leader>cl  <Plug>(coc-codelens-action)
+
+      " Map function and class text objects
+      " NOTE: Requires 'textDocument.documentSymbol' support from the language server
+      xmap if <Plug>(coc-funcobj-i)
+      omap if <Plug>(coc-funcobj-i)
+      xmap af <Plug>(coc-funcobj-a)
+      omap af <Plug>(coc-funcobj-a)
+      xmap ic <Plug>(coc-classobj-i)
+      omap ic <Plug>(coc-classobj-i)
+      xmap ac <Plug>(coc-classobj-a)
+      omap ac <Plug>(coc-classobj-a)
+
+      nmap gs <Plug>(coc-git-chunkinfo)
+      nmap gc <Plug>(coc-git-commit)
+
+      nnoremap <silent> K :call ShowDocumentation()<CR>
+      function! ShowDocumentation()
+      if CocAction('hasProvider', 'hover')
+      call CocActionAsync('doHover')
+      else
+      call feedkeys('K', 'in')
+      endif
+      endfunction
+
+      autocmd CursorHold * silent call CocActionAsync('highlight')
+
+      " format
+      xmap <leader>f  <Plug>(coc-format-selected)
+      nmap <leader>f  <Plug>(coc-format-selected)
+
+      augroup mygroup
+      autocmd!
+      " Setup formatexpr specified filetype(s)
+      autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+      augroup end
+
+      inoremap <silent><expr> <Tab>
+                        \ exists('b:_copilot.suggestions') ? copilot#Accept("\<CR>") :
+                        \ coc#pum#visible() ? coc#pum#next(1):
+                        \ CheckBackspace() ? "\<Tab>" :
+                        \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',' '])\<CR>" :
+                        \ NextCharIsPair() ? "\<Right>" :
+                        \ coc#refresh()
+                        inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+
+                        inoremap <silent><expr> <CR> coc#pum#visible() && coc#pum#info()['index'] != -1 ? coc#pum#confirm()
+                        \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+                        inoremap <silent><expr> <backspace> coc#pum#visible() ? "\<bs>\<c-r>=coc#start()\<CR>" : "\<bs>"
+
+                        if has('nvim-0.4.0') || has('patch-8.2.0750')
+                        nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+                        nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+                        inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+                        inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+                        vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+                        vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+                        endif
+
+                          " Use CTRL-S for selections ranges
+                          " Requires 'textDocument/selectionRange' support of language server
+                          nmap <silent> <C-s> <Plug>(coc-range-select)
+                          xmap <silent> <C-s> <Plug>(coc-range-select)
+
+                          function! CheckBackspace() abort
+                          let col = col('.') - 1
+                          return !col || getline('.')[col - 1]  =~# '\s'
+                          endfunction
+
+                          function! NextCharIsPair() abort
+                          let col = col('.') - 1
+                          let l:next_char = getline('.')[col]
+                          return l:next_char =~# ')\|]\|}\|>\|' '\|"\|`'
+                          endfunction
+
+                            " format current buffer
+                            command! -nargs=0 Format :call CocActionAsync('format')
+                            " fold current buffer
+                            command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+                            " organize imports of the current buffer
+                            command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
+
+                            set statusline^=%{coc#status()}%{get(b:,'coc_current_function',' ')}
+
+                              " Mappings for CoCList
+                              " Show all diagnostics
+                              nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+                              " Find symbol of current document
+                              nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+                              " Search workspace symbols
+                              nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+                              " Do default action for next item
+                              nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+                              " Do default action for previous item
+                              nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+
+                              autocmd FileType * Copilot disable
+                              nmap <silent> <leader>, :Copilot enable<CR>
+                              autocmd vimenter * ++nested colorscheme gruvbox
+                              set background=dark
+    '';
+  };
 }
