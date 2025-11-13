@@ -2,7 +2,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./../../modules/core
+    ./../../modules/core/default.nix
   ];
 
   environment.systemPackages = with pkgs; [

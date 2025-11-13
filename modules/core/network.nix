@@ -15,6 +15,7 @@ hosts = {
       "114.114.114.114"
       "119.29.29.29"
     ];
+
     firewall = {
       enable = false;
       allowedTCPPorts = [
@@ -23,6 +24,7 @@ hosts = {
         443
         25565
       ];
+
       allowedUDPPorts = [ 25565 ];
     };
   };
