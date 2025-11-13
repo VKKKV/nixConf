@@ -6,7 +6,7 @@ let
     image = [ "imv-dir.desktop" ];
     audio = [ "mpv.desktop" ];
     video = [ "mpv.desktop" ];
-    directory = [ "nemo.desktop" ];
+    directory = [ "thunar.desktop" ];
     office = [ "libreoffice.desktop" ];
     pdf = [ "org.gnome.Evince.desktop" ];
     terminal = [ "ghostty.desktop" ];
@@ -73,11 +73,7 @@ let
   associations =
     with lists;
     listToAttrs (
-      flatten (
-        mapAttrsToList (
-          key: map (type: attrsets.nameValuePair type defaultApps."${key}")
-        ) mimeMap
-      )
+      flatten (mapAttrsToList (key: map (type: attrsets.nameValuePair type defaultApps."${key}")) mimeMap)
     );
 in
 {
