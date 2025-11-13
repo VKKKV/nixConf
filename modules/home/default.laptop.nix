@@ -5,13 +5,12 @@
 
     # specific packages
     # ./hyprlandLaptop
-    ./niri
-    ./waybar # status bar
-    ./discord.nix # discord
-    ./gaming.nix # packages related to gaming
-    ./vscodium # vscode fork
-    ./thunar.nix
-    # ./alacritty # terminal
+    # ./niri
+    # ./waybar # status bar
+    # ./discord.nix # discord
+    # ./gaming.nix # packages related to gaming
+    # ./vscodium # vscode fork
+    # ./thunar.nix
     # ./vicinae/vicinae.nix # launcher
     # ./gnome.nix # gnome apps
     # ./kitty.nix # terminal
