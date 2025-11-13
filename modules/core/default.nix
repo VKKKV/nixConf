@@ -11,11 +11,11 @@
     ./program.nix
     ./security.nix
     ./services.nix
-    ./steam.nix
     ./system.nix
     ./wayland.nix
     ./virtualization.nix
     # ./flatpak.nix
+    # ./steam.nix
 
     # user modules
     ./user.nix

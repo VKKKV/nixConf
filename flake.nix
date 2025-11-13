@@ -50,14 +50,6 @@
     in
     {
       nixosConfigurations = {
-        kita = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/kita ];
-          specialArgs = {
-            host = "kita";
-            inherit self inputs username;
-          };
-        };
         desktop = nixpkgs.lib.nixosSystem {
           inherit system;
           modules = [ ./hosts/desktop ];
