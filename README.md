@@ -28,9 +28,19 @@ sudo nixos-rebuild switch --flake .#laptop --option substituters "https://mirror
 sudo nixos-install --root /mnt
 
 sudo nixos-install --root /mnt --flake .#laptop --option substituters "https://mirror.nju.edu.cn/nix-channels/store https://cache.nixos.org"
+
+# This hides completely the cursor.
+
+tput civis
+
+# To restore:
+
+tput cnorm
 ```
 
 ```nix
+networking.proxy.default = "http://192.168.0.106:7897/";
+
 nix.settings.substituters = [ "https://mirror.nju.edu.cn/nix-channels/store" ];
 
 home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
