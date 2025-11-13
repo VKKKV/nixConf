@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    # core modules
     ./nixpkgs.nix
     ./bootloader.nix
     ./hardware.nix
@@ -12,9 +13,11 @@
     ./services.nix
     ./steam.nix
     ./system.nix
-    ./flatpak.nix
-    ./user.nix
     ./wayland.nix
     ./virtualization.nix
+    # ./flatpak.nix
+
+    # user modules
+    ./user.nix
   ];
 }
