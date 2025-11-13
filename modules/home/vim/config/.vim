@@ -1,0 +1,1 @@
+/home/kita/.vim/
