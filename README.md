@@ -2,27 +2,37 @@ Under construction
 
 # memo
 
+``` shell
+lsblk -f
+
 nix-channel --add https://mirror.nju.edu.cn/nix-channels/nixos-25.05 nixos
 
 nix-channel --update
 
-nixos-install --option substituters "https://mirror.nju.edu.cn/nix-channels/store https://cache.nixos.org"
+nix-collect-garbage -d
 
-nixos-rebuild --option substituters "https://mirror.nju.edu.cn/nix-channels/store https://cache.nixos.org"
+# change --root when root partition mount point is not /mnt
 
-nix.settings.substituters = [ "https://mirror.nju.edu.cn/nix-channels/store" ];
+nixos-generate-config --root /mnt
 
-``` shell
 git clone git@github.com:VKKKV/nixConf.git --config "http.proxy=192.168.0.106:7897"
 
 sudo mv /etc/nixos /etc/nixos.bak
 
 sudo ln -s ~/nixConf /etc/nixos
 
+cp hardware-configuration.nix hosts/laptop/hardware-configuration.nix
+
 sudo nixos-rebuild switch --flake .#laptop --option substituters "https://mirror.nju.edu.cn/nix-channels/store https://cache.nixos.org"
+
+sudo nixos-install --root /mnt
+
+sudo nixos-install --root /mnt --flake .#laptop --option substituters "https://mirror.nju.edu.cn/nix-channels/store https://cache.nixos.org"
 ```
 
 ```nix
+nix.settings.substituters = [ "https://mirror.nju.edu.cn/nix-channels/store" ];
+
 home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
 
 home.file.".config/i3/scripts" = {
@@ -34,5 +44,11 @@ home.file.".config/i3/scripts" = {
 home.file.".xxx".text = ''
     xxx
 '';
+
+xdg.configFile."test" = {
+    source = ./config;
+    recursive = true;
+    executable = true;
+};
 ```
 
