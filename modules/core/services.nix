@@ -32,7 +32,7 @@
       ports = [ 22 ];
       settings = {
         PasswordAuthentication = true;
-        PermitRootLogin = "yes";
+        PermitRootLogin = "no";
         # AllowUsers = [ "arch" ];
       };
     };
