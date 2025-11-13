@@ -1,9 +1,15 @@
 { pkgs, host, ... }:
 {
   networking = {
+    # proxy.default = "http://192.168.0.106:7897/";
+
     hostName = "${host}";
     networkmanager.enable = true;
     # networkmanager.wifi.powersave = true;
+
+hosts = {
+  "20.205.243.166" = ["github.com" "raw.githubusercontent.com"];
+};
 
     nameservers = [
       "114.114.114.114"
