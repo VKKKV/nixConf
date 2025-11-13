@@ -1,3 +1,5 @@
+Under construction
+
 # memo
 
 nix-channel --add https://mirror.nju.edu.cn/nix-channels/nixos-25.05 nixos
