@@ -1,13 +1,5 @@
 { pkgs, username, ... }:
 {
-  imports = [
-    # Core modules
-    ./default/system.nix
-    ./default/network.nix
-    ./default/pipewire.nix
-    ./default/virtualization.nix
-  ];
-
   # Boot configuration
   boot = {
     loader = {
@@ -26,7 +18,6 @@
     ];
   };
 
-  # Program configuration
   programs = {
     dconf.enable = true;
     bash.enable = true;
@@ -92,7 +83,6 @@
     };
   };
 
-  # Hardware configuration (example)
   hardware = {
     graphics = {
       enable = true;

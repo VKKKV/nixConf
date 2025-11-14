@@ -15,21 +15,6 @@
   };
 
   home.packages = with pkgs; [
-    # Multimedia
-    audacity
-    gimp
-    obs-studio
-    pavucontrol
-    pwvucontrol
-    soundwireserver
-
-    # Office
-    onlyoffice
-
-    # System utilities
-    localsend
-    nix-search-tv
-
     # Development tools
     nodejs_24
     nixd
@@ -54,9 +39,6 @@
     # TUI applications
     calc
     cloc
-
-    # Monitoring/fetch tools
-    btop
     fastfetch
 
     # Fun/terminal toys
@@ -64,9 +46,6 @@
     figlet
     lolcat
     tty-clock
-
-    # Media players
-    mpv
 
     # System utilities
     ffmpeg
