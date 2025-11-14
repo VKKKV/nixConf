@@ -10,7 +10,7 @@
     nerd-fonts.jetbrains-mono
     nerd-fonts.fira-code
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     twemoji-color-font
   ];
 
