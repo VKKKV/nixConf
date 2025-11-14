@@ -13,7 +13,6 @@
     pwvucontrol
     slurp
     swww
-    thunar
     wayland
     wl-clip-persist
   ];
@@ -29,7 +28,7 @@
 
     xwayland = {
       enable = true;
-      # hidpi = true;
+      hidpi = true;
     };
     # enableNvidiaPatches = false;
     systemd.enable = true;
