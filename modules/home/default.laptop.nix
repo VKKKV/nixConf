@@ -4,13 +4,14 @@
     ./default.nix
 
     # specific packages
-    # ./hyprlandLaptop
+    ./hyprlandLaptop
     # ./niri
-    # ./waybar # status bar
-    # ./discord.nix # discord
+    ./waybar # status bar
+    ./discord.nix # discord
     # ./gaming.nix # packages related to gaming
-    # ./vscodium # vscode fork
-    # ./thunar.nix
+    ./vscodium # vscode fork
+    ./ghostty
+    ./browser.nix
     # ./vicinae/vicinae.nix # launcher
     # ./gnome.nix # gnome apps
     # ./kitty.nix # terminal
