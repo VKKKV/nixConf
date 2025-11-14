@@ -8,6 +8,7 @@
 {
   imports = [
     inputs.home-manager.nixosModules.home-manager
+    inputs.stylix.homeModules.stylix
   ];
   home-manager = {
     useUserPackages = true;
