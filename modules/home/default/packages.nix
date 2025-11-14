@@ -22,17 +22,13 @@
 
     # C/C++ tools
     gcc
-    gdb
-    gef
     cmake
     gnumake
 
     # Core utils replacements
-    zsh
     duf
     fd
     ripgrep
-    man-pages
 
     # TUI applications
     calc
@@ -41,13 +37,9 @@
 
     # System utilities
     ffmpeg
-    jq
     killall
     libnotify
-    mimeo
     openssl
-    pamixer
-    playerctl
     poweralertd
     udiskie
     unzip

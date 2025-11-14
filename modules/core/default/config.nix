@@ -1,23 +1,5 @@
 { pkgs, username, ... }:
 {
-  # Boot configuration
-  boot = {
-    loader = {
-      systemd-boot = {
-        enable = true;
-        configurationLimit = 10;
-      };
-      efi.canTouchEfiVariables = true;
-    };
-
-    kernelPackages = pkgs.linuxPackages_zen;
-    supportedFilesystems = [
-      "vfat"
-      "ext4"
-      "ntfs"
-    ];
-  };
-
   programs = {
     dconf.enable = true;
     bash.enable = true;
