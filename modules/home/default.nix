@@ -19,6 +19,7 @@
     ./vim
     ./tmux
     ./tealdeer.nix
+    ./zoxide.nix
 
     # specific packages
     # ./discord.nix # discord
