@@ -5,13 +5,14 @@
     enable = true;
     fcitx5.waylandFrontend = true;
     fcitx5.addons = with pkgs; [
-      fcitx5-gtk # alternatively
+      fcitx5-gtk
       fcitx5-mozc
+
+      # https://github.com/gaboolic/rime-shuangpin-fuzhuma
       fcitx5-rime
 
-      # kdePackages.fcitx5-qt
-      # fcitx5-nord # a color theme
-      # fcitx5-chinese-addons
+      # theme
+      fcitx5-mellow-themes
     ];
   };
 }
