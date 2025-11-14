@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 {
   home.packages = with pkgs; [
     # Multimedia
@@ -10,7 +10,7 @@
     soundwireserver
 
     # Office
-    onlyoffice
+#    onlyoffice-bin
 
     # System utilities
     localsend

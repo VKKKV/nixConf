@@ -9,6 +9,6 @@
     ./vscodium # vscode fork
     ./ghostty
     ./browser.nix
-    ./atuin
+#    ./thunar.nix
   ];
 }
