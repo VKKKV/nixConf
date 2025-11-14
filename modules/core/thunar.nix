@@ -1,5 +1,7 @@
 { pkgs, ... }:
 {
+  home.packages = with pkgs; [ thunar ];
+
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [
