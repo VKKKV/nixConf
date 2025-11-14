@@ -6,7 +6,6 @@
         ./core/default
         ./core/flatpak.nix
         ./core/wayland.nix
-        ./core/thunar.nix
         ./home.nix
       ]
     else
