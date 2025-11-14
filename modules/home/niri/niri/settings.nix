@@ -20,7 +20,7 @@ in
         terminal = 1.0;
       };
 
-      base16Scheme = ./color/oxocarbon-dark.yml;
+      base16Scheme = ./color/gruvbox-dark-hard.yml;
 
       targets = {
         starship.enable = true;
