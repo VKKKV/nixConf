@@ -8,4 +8,5 @@
     ./system.nix
 #    ./virtualization.nix
   ];
+  system.stateVersion = "25.11";
 }
