@@ -65,9 +65,9 @@
         layout = "us";
         options = "caps:escape";
       };
-      libinput.enable = true;
     };
 
+      libinput.enable = true;
     # Display Manager
      #displayManager = {
        #autoLogin = {
@@ -114,7 +114,7 @@
 
   # Hardware configuration (example)
   hardware = {
-    opengl = {
+    graphics = {
       enable = true;
     #  driSupport = true;
     };
