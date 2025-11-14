@@ -6,7 +6,6 @@
     ./network.nix
     ./pipewire.nix
     ./virtualization.nix
-    # ./wayland.nix
     # ./nixpkgs.nix
   ];
 
@@ -70,13 +69,13 @@
     };
 
     # Display Manager
-    displayManager = {
-      autoLogin = {
-        enable = true;
-        user = username;
-      };
+     #displayManager = {
+       #autoLogin = {
+         #enable = true;
+         #user = username;
+       #};
       # defaultSession = "xsession";
-    };
+    #};
 
     # Core services
     gvfs.enable = true; # Virtual filesystems
@@ -102,15 +101,6 @@
       enable = true;
       packages = [ pkgs.gcr ];
     };
-
-    # Systemd logind settings
-    logind = {
-      extraConfig = "RuntimeDirectorySize=2G";
-      settings.Login = {
-        HandlePowerKey = "ignore";
-        KillUserProcesses = false;
-      };
-    };
   };
 
   # Systemd shutdown timeout
@@ -126,7 +116,7 @@
   hardware = {
     opengl = {
       enable = true;
-      driSupport = true;
+    #  driSupport = true;
     };
   };
 }
