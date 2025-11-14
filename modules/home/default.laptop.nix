@@ -7,9 +7,9 @@
     ./mpv
     ./vscodium # vscode fork
     ./waybar # status bar
-    ./niri
     ./rofi
     ./zathura.nix
+    ./niri
     # ./hyprlandLaptop
     # ./thunar.nix
     # ./discord.nix # discord
