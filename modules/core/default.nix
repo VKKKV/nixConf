@@ -65,17 +65,27 @@
         layout = "us";
         options = "caps:escape";
       };
+
+      displayManager = {
+        lightdm = {
+          enable = true;
+          greeters.gtk.cursorTheme = {
+            package = pkgs.adwaita-icon-theme;
+            size = 10;
+          };
+        };
+      };
     };
 
-      libinput.enable = true;
+    libinput.enable = true;
     # Display Manager
-     #displayManager = {
-       #autoLogin = {
-         #enable = true;
-         #user = username;
-       #};
+    displayManager = {
+      autoLogin = {
+        enable = true;
+        user = username;
+      };
       # defaultSession = "xsession";
-    #};
+    };
 
     # Core services
     gvfs.enable = true; # Virtual filesystems
@@ -116,7 +126,7 @@
   hardware = {
     graphics = {
       enable = true;
-    #  driSupport = true;
+      #  driSupport = true;
     };
   };
 }
