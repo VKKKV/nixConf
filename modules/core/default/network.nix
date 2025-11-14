@@ -1,18 +1,17 @@
 { pkgs, host, ... }:
 {
   networking = {
-    # proxy.default = "http://192.168.0.106:7897/";
-
     hostName = "${host}";
     networkmanager.enable = true;
     # networkmanager.wifi.powersave = true;
+    # proxy.default = "http://192.168.0.106:7897/";
 
-    hosts = {
-      "20.205.243.166" = [
-        "github.com"
-        "raw.githubusercontent.com"
-      ];
-    };
+    # hosts = {
+    #   "20.205.243.166" = [
+    #     "github.com"
+    #     "raw.githubusercontent.com"
+    #   ];
+    # };
 
     nameservers = [
       "114.114.114.114"
@@ -27,7 +26,6 @@
         443
         25565
       ];
-
       allowedUDPPorts = [ 25565 ];
     };
   };
