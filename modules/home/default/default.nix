@@ -1,24 +1,24 @@
 { ... }:
 {
   imports = [
-    # common packages
-    ./packages.nix # other packages
+    ./atuin.nix
+    ./bash.nix
     ./bat.nix # better cat command
     ./btop.nix # resouces monitor
+    ./fish
+    ./fonts.nix
     ./fzf.nix # fuzzy finder
     ./git.nix # version control
     ./gtk.nix # gtk theme
     ./lazygit.nix
-    ./xdg-mimes.nix # xdg config
+    ./packages.nix # other packages
     ./ssh.nix # ssh config
-    ./fish
     ./starship
-    ./bash.nix
-    ./yazi
-    ./vim
-    ./tmux
     ./tealdeer.nix
+    ./tmux
+    ./vim
+    ./xdg-mimes.nix # xdg config
+    ./yazi
     ./zoxide.nix
-    ./atuin.nix
   ];
 }
