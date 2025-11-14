@@ -2,10 +2,10 @@
 {
   imports = [
     # home modules
-    ./packages.nix
+#    ./packages.nix
     ./hyprlandLaptop
     ./waybar # status bar
-    ./discord.nix # discord
+#    ./discord.nix # discord
     ./vscodium # vscode fork
     ./ghostty
     ./browser.nix

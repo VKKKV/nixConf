@@ -5,6 +5,6 @@
     ./network.nix
     ./pipewire.nix
     ./system.nix
-    ./virtualization.nix
+#    ./virtualization.nix
   ];
 }
