@@ -10,9 +10,9 @@
       ];
       substituters = [
         "https://mirror.nju.edu.cn/nix-channels/store"
-"https://mirrors.ustc.edu.cn/nix-channels/store"
-"https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-"https://mirrors.cernet.edu.cn/nix-channels/store"
+        "https://mirrors.ustc.edu.cn/nix-channels/store"
+        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+        "https://mirrors.cernet.edu.cn/nix-channels/store"
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
         "https://nix-gaming.cachix.org"
@@ -37,7 +37,7 @@
     vim
   ];
 
-  # xdg.enable = "true";
+  xdg.enable = "true";
   time.timeZone = "Asia/Tokyo";
   i18n.defaultLocale = "en_US.UTF-8";
   nixpkgs.config.allowUnfree = true;

@@ -15,8 +15,6 @@
       imports =
         if (host == "desktop") then
           [ ./../home/default.desktop.nix ]
-        else if (host == "kita") then
-          [ ./../home/default.kita.nix ]
         else if (host == "laptop") then
           [ ./../home/default.laptop.nix ]
         else
