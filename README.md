@@ -3,6 +3,8 @@ Under construction
 # memo
 
 ``` shell
+sudo systemctl reboot --firmware-setup
+
 # change --root when root partition mount point is not /mnt
 
 nix-collect-garbage -d
