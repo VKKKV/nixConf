@@ -19,7 +19,8 @@
         if (host == "laptop") then
           [
             ./home/default
-            ./home/default.laptop.nix
+            # TEST
+            # ./home/default.laptop.nix
           ]
         else
           [ ./home/default ];
