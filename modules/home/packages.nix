@@ -10,10 +10,10 @@
     soundwireserver
 
     # Office
-#    onlyoffice-bin
+    # onlyoffice-bin
 
     # System utilities
     localsend
-    nix-search-tv
+    # nix-search-tv
   ];
 }

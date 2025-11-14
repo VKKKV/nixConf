@@ -1,16 +1,18 @@
 { ... }:
 {
   imports = [
-    # home modules
-#    ./packages.nix
-    ./hyprlandLaptop
-    ./waybar # status bar
-#    ./discord.nix # discord
-    ./vscodium # vscode fork
-    ./ghostty
     ./browser.nix
-    ./mpv
     ./fcitx5
-    #    ./thunar.nix
+    ./ghostty
+    ./mpv
+    ./vscodium # vscode fork
+    ./waybar # status bar
+    ./niri
+    ./rofi
+    ./zathura.nix
+    # ./hyprlandLaptop
+    # ./thunar.nix
+    # ./discord.nix # discord
+    # ./packages.nix
   ];
 }
