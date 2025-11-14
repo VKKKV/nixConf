@@ -1,4 +1,8 @@
 if status is-interactive
+    set -U fish_greeting ""
+    set -gx EDITOR vim
+    set -gx PATH $PATH ./node_modules/.bin $HOME/.local/bin
+
     alias cp='cp -r'
     alias diff="diff --color=auto"
     alias dt='date "+%Y-%m-%d %H:%M:%S"'
