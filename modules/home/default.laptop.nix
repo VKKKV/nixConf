@@ -13,6 +13,5 @@
     # ./hyprlandLaptop
     # ./thunar.nix
     # ./discord.nix # discord
-    # ./packages.nix
   ];
 }
