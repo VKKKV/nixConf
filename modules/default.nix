@@ -5,7 +5,7 @@
       [
         ./core/default
         ./core/flatpak.nix
-        ./core/wayland.nix
+        ./core/xdg.nix
         ./home.nix
       ]
     else
