@@ -12,6 +12,12 @@
 
     # utils
     wl-clipboard
+    wl-clip-persist
+    grim
+    grimblast
+    localsend
+    pwvucontrol
+    cliphist
   ];
 
   # make stuff work on wayland

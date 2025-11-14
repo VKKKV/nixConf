@@ -21,6 +21,16 @@
     };
   };
 
+  services.avahi = {
+    enable = true;
+    nssmdns4 = true;
+    publish = {
+      enable = true;
+      domain = true;
+      userServices = true;
+    };
+  };
+
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
   ];

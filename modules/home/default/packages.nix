@@ -17,10 +17,8 @@
   home.packages = with pkgs; [
     # Development tools
     nodejs_24
+    nixfmt
     nixd
-    shfmt
-    treefmt
-    nixfmt-rfc-style
 
     # C/C++ tools
     gcc
@@ -41,12 +39,6 @@
     cloc
     fastfetch
 
-    # Fun/terminal toys
-    cowsay
-    figlet
-    lolcat
-    tty-clock
-
     # System utilities
     ffmpeg
     jq
@@ -61,7 +53,6 @@
     unzip
     p7zip
     wget
-    wl-clipboard
     xdg-utils
   ];
 }
