@@ -7,9 +7,12 @@
     networkmanager.enable = true;
     # networkmanager.wifi.powersave = true;
 
-hosts = {
-  "20.205.243.166" = ["github.com" "raw.githubusercontent.com"];
-};
+    hosts = {
+      "20.205.243.166" = [
+        "github.com"
+        "raw.githubusercontent.com"
+      ];
+    };
 
     nameservers = [
       "114.114.114.114"
