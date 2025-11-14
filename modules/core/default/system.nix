@@ -1,6 +1,5 @@
 { pkgs, ... }:
 {
-  # imports = [ inputs.nix-gaming.nixosModules.default ];
   nix = {
     settings = {
       auto-optimise-store = true;
@@ -9,10 +8,7 @@
         "flakes"
       ];
       substituters = [
-        "https://mirror.nju.edu.cn/nix-channels/store"
         "https://mirrors.ustc.edu.cn/nix-channels/store"
-        "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-        "https://mirrors.cernet.edu.cn/nix-channels/store"
         "https://cache.nixos.org/"
         "https://nix-community.cachix.org"
         "https://nix-gaming.cachix.org"

@@ -1,28 +1,23 @@
-{ pkgs, username, ... }:
+{ pkgs, ... }:
 {
   programs.git = {
     enable = true;
-
     settings = {
       user = {
         name = "vkkkv";
         email = "vkkkv@example.com";
       };
-
       init.defaultBranch = "main";
-      # merge.conflictstyle = "diff3";
       diff.colorMoved = "default";
-      # pull.ff = "only";
       color.ui = true;
-
-      # core.excludesFile = "/home/${username}/.config/git/.gitignore";
+      # merge.conflictstyle = "diff3";
+      # pull.ff = "only";
     };
   };
 
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
-
     options = {
       line-numbers = true;
       side-by-side = false;
@@ -31,7 +26,7 @@
     };
   };
 
-  home.packages = [ pkgs.gh ]; # pkgs.git-lfs
+  home.packages = [ pkgs.gh ];
 
   xdg.configFile."git/.gitignore".text = ''
     .vscode
