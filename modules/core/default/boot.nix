@@ -26,6 +26,12 @@
           "/etc/nixos/wallpapers/otherWallpaper/gruvbox/forest_pastel.png"
         ];
         maxGenerations = 10;
+        enableEditor = true;
+        extraConfig = ''
+          /Windows
+          protocol: efi
+          path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+        '';
       };
       # systemd-boot = {
       #   enable = true;
