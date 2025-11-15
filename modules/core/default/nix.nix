@@ -8,13 +8,17 @@
         "flakes"
       ];
       substituters = [
+        # 中国科学技术大学的镜像源
         "https://mirrors.ustc.edu.cn/nix-channels/store"
         "https://cache.nixos.org/"
+
         "https://nix-community.cachix.org"
         "https://nix-gaming.cachix.org"
         "https://hyprland.cachix.org"
         "https://ghostty.cachix.org"
         "https://vicinae.cachix.org"
+        "https://niri.cachix.org"
+        "https://chaotic-nyx.cachix.org/"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
@@ -26,43 +30,20 @@
     };
   };
 
-  environment.variables.EDITOR = "vim";
-  environment.systemPackages = with pkgs; [
-    wget
-    git
-    vim
-  ];
-
-  time = {
-    timeZone = lib.mkDefault "Asia/Tokyo";
-    hardwareClockInLocalTime = lib.mkDefault true;
-  };
-
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "es_US.UTF-8";
-      LC_IDENTIFICATION = "es_US.UTF-8";
-      LC_MEASUREMENT = "es_US.UTF-8";
-      LC_MONETUSY = "es_US.UTF-8";
-      LC_NAME = "es_US.UTF-8";
-      LC_NUMERIC = "es_US.UTF-8";
-      LC_PAPER = "es_US.UTF-8";
-      LC_TELEPHONE = "es_US.UTF-8";
-      LC_TIME = "es_US.UTF-8";
-    };
-  };
-
-  zramSwap = {
-    enable = true;
-    algorithm = "zstd";
-    memoryPercent = 25;
-  };
-
   nixpkgs = {
     config.allowUnfree = true;
     config.permittedInsecurePackages = [
       "electron-25.9.0"
     ];
+  };
+
+  programs.nh = {
+    enable = true;
+    # weekly cleanup
+    clean = {
+      enable = true;
+      extraArgs = "--keep-since 7d --keep 3";
+    };
+    flake = "/home/kita/nixos"; # sets NH_OS_FLAKE variable for you
   };
 }
