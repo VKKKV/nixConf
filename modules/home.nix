@@ -20,7 +20,7 @@
           [
             ./home/default
             # TEST
-            # ./home/default.laptop.nix
+            ./home/default.laptop.nix
           ]
         else
           [ ./home/default ];

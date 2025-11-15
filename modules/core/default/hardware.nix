@@ -32,6 +32,4 @@
   };
 
   services.fwupd.enable = true;
-  boot.extraModprobeConfig = ''options bluetooth disable_ertm=1 '';
-  systemd.user.services.telephony_client.enable = false;
 }
