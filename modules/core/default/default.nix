@@ -5,8 +5,7 @@
     ./config.nix
     ./network.nix
     ./pipewire.nix
-    ./system.nix
+    ./nix.nix
 #    ./virtualization.nix
   ];
-  system.stateVersion = "25.11";
 }
