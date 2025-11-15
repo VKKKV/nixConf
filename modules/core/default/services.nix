@@ -89,6 +89,11 @@
       };
     };
   };
+
+  printing = {
+    enable = true;
+    drivers = with pkgs; [ gutenprint hplip splix ];
+  };
 };
 hardware.alsa.enablePersistence = true;
 }
