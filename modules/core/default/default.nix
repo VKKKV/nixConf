@@ -6,6 +6,7 @@
     ./network.nix
     ./nix.nix
     ./services.nix
+    ./hardware.nix
 #    ./virtualization.nix
   ];
 }
