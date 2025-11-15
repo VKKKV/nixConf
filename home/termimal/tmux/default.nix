@@ -1,6 +1,12 @@
 { ... }:
 {
-  imports = [
-    ./tmux.nix
-  ];
+  programs.tmux = {
+    enable = true;
+  };
+
+  xdg.configFile."tmux" = {
+    source = ./config;
+    recursive = true;
+    # executable = true;
+  };
 }
