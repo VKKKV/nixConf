@@ -13,11 +13,6 @@
     };
   };
 
-  security = {
-    rtkit.enable = true;
-    sudo.enable = true;
-  };
-
   services = {
     xserver = {
       enable = true;

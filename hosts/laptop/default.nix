@@ -104,12 +104,5 @@
     # Load required kernel parameters
     kernelParams = [ "mem_sleep_default=deep" ];  
   };
-
-  # Optimize system parameters
-  boot.kernel.sysctl = {
-    "vm.swappiness" = 20;           # Reduce swap aggressiveness
-    "vm.dirty_writeback_centisecs" = 1500;  # Longer writeback intervals
-    "power.suspend_mode" = "deep";         # Better suspend state
-  };
 }
 
