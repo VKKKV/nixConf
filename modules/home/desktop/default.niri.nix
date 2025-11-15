@@ -11,5 +11,7 @@
     ./waybar # status bar
     ./zathura.nix
     ./discord.nix # discord
+    ./xdg-mimes.nix
+    ./gtk.nix
   ];
 }

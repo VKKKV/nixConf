@@ -8,7 +8,6 @@
     ./fish
     ./fzf.nix # fuzzy finder
     ./git.nix # version control
-    ./gtk.nix # gtk theme
     ./lazygit.nix
     ./packages.nix # other packages
     ./ssh.nix # ssh config
@@ -16,7 +15,6 @@
     ./tealdeer.nix
     ./tmux
     ./vim
-    ./xdg-mimes.nix # xdg config
     ./yazi
     ./zoxide.nix
   ];

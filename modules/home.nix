@@ -17,9 +17,7 @@
     users.${username} = {
       imports =
         if (host == "laptop") then
-          [
-            ./home
-          ]
+          [ ./home ]
         else
           [ ./home ];
       home.username = "${username}";
