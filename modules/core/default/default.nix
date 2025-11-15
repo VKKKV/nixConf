@@ -4,8 +4,8 @@
     ./boot.nix
     ./config.nix
     ./network.nix
-    ./pipewire.nix
     ./nix.nix
+    ./services.nix
 #    ./virtualization.nix
   ];
 }

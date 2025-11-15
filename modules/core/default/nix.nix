@@ -37,6 +37,7 @@
     ];
   };
 
+  # nix helper
   programs.nh = {
     enable = true;
     # weekly cleanup
