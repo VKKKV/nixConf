@@ -18,12 +18,10 @@
       imports =
         if (host == "laptop") then
           [
-            ./home/default
-            # TEST
-            ./home/default.laptop.nix
+            ./home
           ]
         else
-          [ ./home/default ];
+          [ ./home ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
       home.stateVersion = "25.11";

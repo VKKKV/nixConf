@@ -1,16 +1,15 @@
-{ ... }:
+{...}:
 {
   imports = [
+    ./niri
     ./browser.nix
     ./fcitx5
     ./ghostty
     ./mpv
+    ./rofi
     ./vscodium # vscode fork
     ./waybar # status bar
-    ./rofi
     ./zathura.nix
-    ./niri
-    # ./hyprlandLaptop
-    # ./discord.nix # discord
+    ./discord.nix # discord
   ];
 }
