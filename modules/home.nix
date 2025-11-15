@@ -38,6 +38,13 @@
     extraGroups = [
       "networkmanager"
       "wheel"
+      "adbusers"
+      "input"
+      "plugdev"
+      "video"
+      "kvm"
+      "vboxusers"
+      "libvirt"
     ];
     shell = pkgs.fish;
   };
