@@ -3,10 +3,13 @@
   nix = {
     settings = {
       auto-optimise-store = true;
+      builders-use-substitutes = true;
+      trusted-users = ["root" "@wheel"];
       experimental-features = [
         "nix-command"
         "flakes"
       ];
+
       substituters = [
         # 中国科学技术大学的镜像源
         "https://mirrors.ustc.edu.cn/nix-channels/store"
