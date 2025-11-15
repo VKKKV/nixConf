@@ -2,6 +2,7 @@
 {
   networking = {
     hostName = "${host}";
+
     networkmanager.enable = true;
 
     nameservers = [
@@ -21,6 +22,16 @@
     };
   };
 
+  environment.systemPackages = with pkgs; [
+    networkmanagerapplet
+  ];
+
+  programs.clash-verge = {
+    enable = true;
+    tunMode = true;
+    serviceMode = true;
+  };
+
   # network discovery
   services.avahi = {
     enable = true;
@@ -30,15 +41,5 @@
       domain = true;
       userServices = true;
     };
-  };
-
-  environment.systemPackages = with pkgs; [
-    networkmanagerapplet
-  ];
-
-  programs.clash-verge = {
-    enable = true;
-    tunMode = true;
-    serviceMode = true;
   };
 }
