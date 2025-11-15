@@ -4,9 +4,11 @@
     if (host == "laptop") then
       [
         ./core/default
-        ./core/flatpak.nix
-        ./core/xdg.nix
         ./home.nix
+
+        ./core/fonts.nix
+        # ./core/flatpak.nix
+        # ./core/xdg.nix
       ]
     else
       [
