@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 {
   nix = {
     settings = {
@@ -63,5 +63,6 @@
     config.allowUnfree = true;
     config.permittedInsecurePackages = [
       "electron-25.9.0"
-  ];
+    ];
+  };
 }
