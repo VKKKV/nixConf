@@ -13,7 +13,7 @@
       nerdtree
       tcomment_vim
       vim-surround
-#      vim-snippets
+      vim-snippets
       coc-nvim
       copilot-vim
       gruvbox
