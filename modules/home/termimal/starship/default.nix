@@ -1,6 +1,11 @@
 { ... }:
 {
-  programs.starship.enable = true;
+  programs.starship = {
+    enable = true;
+    enableBashIntegration = true;
+    enableZshIntegration = true;
+    enableFishIntegration = true;
+  };
 
   xdg.configFile."starship" = {
     source = ./config;
