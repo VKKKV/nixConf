@@ -1,32 +1,28 @@
 { pkgs, username, ...}:
 {
   services = {
-    xserver = {
-      enable = true;
-      xkb = {
-        layout = "us";
-        options = "caps:escape";
-      };
-
-      displayManager = {
-        lightdm = {
-          enable = true;
-          greeters.gtk.cursorTheme = {
-            package = pkgs.adwaita-icon-theme;
-            size = 10;
-          };
-        };
-      };
-    };
 
     libinput.enable = true;
 
+    # login manager
+    greetd = let
+      session = {
+        command = "${pkgs.niri}/bin/niri-session";
+        user = username;
+      };
+    in {
+      enable = true;
+      settings = {
+        terminal.vt = 1;
+        default_session = session;
+        initial_session = session;
+      };
+    };
     displayManager = {
       autoLogin = {
         enable = true;
         user = username;
       };
-      # defaultSession = "xsession";
     };
 
     gvfs.enable = true; # Virtual filesystems
@@ -46,16 +42,28 @@
 
     dbus.implementation = "broker";
 
+    psd = {
+      enable = true;
+      resyncTimer = "21m";
+    };
+
+    # improve preformance
+    irqbalance.enable = true;
+    ananicy = {
+      enable = true;
+      package = pkgs.ananicy-cpp;
+    };
+
     # audio
     pulseaudio.enable = false;
-
     pipewire = {
       enable = true;
-      alsa.enable = true;
-      alsa.support32Bit = true;
+      alsa = { 
+        enable = true;
+        support32Bit = true;
+    };
       pulse.enable = true;
       jack.enable = true;
-
     # low latency
     extraConfig = {
       pipewire."92-low-latency" = {
@@ -91,7 +99,27 @@
     enable = true;
     drivers = with pkgs; [ gutenprint hplip splix ];
   };
-};
 
-hardware.alsa.enablePersistence = true;
+    # xserver = {
+    #   enable = true;
+    #   xkb = {
+    #     layout = "us";
+    #     options = "caps:escape";
+    #   };
+    #
+      # displayManager = {
+      #   lightdm = {
+      #     enable = true;
+      #     greeters.gtk.cursorTheme = {
+      #       package = pkgs.adwaita-icon-theme;
+      #       size = 10;
+      #     };
+      #   };
+      # };
+    # };
+};
+    # unlock GPG keyring on login
+    security.pam.services.greetd.enableGnomeKeyring = true;
+
+  hardware.alsa.enablePersistence = true;
 }
