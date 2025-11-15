@@ -44,10 +44,7 @@
       gnome-keyring.enable = true;
     };
 
-    dbus = {
-      enable = true;
-      packages = [ pkgs.gcr ];
-    };
+    dbus.implementation = "broker";
 
     # audio
     pulseaudio.enable = false;
@@ -95,5 +92,6 @@
     drivers = with pkgs; [ gutenprint hplip splix ];
   };
 };
+
 hardware.alsa.enablePersistence = true;
 }
