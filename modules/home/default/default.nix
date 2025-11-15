@@ -6,7 +6,6 @@
     ./bat.nix # better cat command
     ./btop.nix # resouces monitor
     ./fish
-    ./fonts.nix
     ./fzf.nix # fuzzy finder
     ./git.nix # version control
     ./gtk.nix # gtk theme
