@@ -8,7 +8,6 @@
     # nixpkgs.url = "git+https://mirrors.nju.edu.cn/git/nixpkgs.git?ref=nixos-unstable&shallow=1";
     # nixpkgs.url = "git+https://mirrors.tuna.tsinghua.edu.cn/git/nixpkgs.git?ref=nixos-25.05&shallow=1";
     # nixpkgs.url = "https://mirrors.ustc.edu.cn/nix-channels/nixos-25.05/nixexprs.tar.xz";
-    nur.url = "github:nix-community/NUR";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -27,8 +26,6 @@
       flake = false;
     };
 
-    vicinae.url = "github:vicinaehq/vicinae";
-
     zen-browser = {
       url = "github:0xc000022070/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -43,6 +40,10 @@
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    vicinae.url = "github:vicinaehq/vicinae";
+    nur.url = "github:nix-community/NUR";
+
   };
 
   outputs =
