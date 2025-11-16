@@ -1,34 +1,12 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
 let
   pointer = config.home.pointerCursor;
 in
 {
-  imports = [
-    inputs.stylix.homeModules.stylix
-  ];
-    stylix = {
-      enable = true;
-      autoEnable = false;
-      polarity = "dark";
-      opacity = {
-        popups = 1.0;
-        terminal = 1.0;
-      };
-
-      base16Scheme = ./color/gruvbox-dark-hard.yml;
-
-      targets = {
-        starship.enable = true;
-        vesktop.enable = true;
-        yazi.enable = true;
-      };
-    };
-
   programs.niri = with config.lib.stylix.colors; {
     enable = true;
     package = pkgs.niri;

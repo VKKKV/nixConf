@@ -2,7 +2,13 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./../../modules
+
+    ../../system/default
+    ../../system/fonts.nix
+    ../../system/xdg.nix
+    ../../system/thunar.nix
+
+    ../../home.nix
   ];
 
   # Disabled conflicting power management daemon
@@ -12,7 +18,7 @@
     acpi
     brightnessctl
     powertop
-    cpupower-gui  # Included for visualization but TLP handles actual configuration
+    cpupower-gui # Included for visualization but TLP handles actual configuration
   ];
 
   services = {
@@ -52,7 +58,7 @@
         CPU_MIN_PERF_ON_AC = 0;
         CPU_MAX_PERF_ON_AC = 100;
         CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 50;  # Increased from 20 for better responsiveness
+        CPU_MAX_PERF_ON_BAT = 50; # Increased from 20 for better responsiveness
 
         START_CHARGE_THRESH_BAT0 = 40;
         STOP_CHARGE_THRESH_BAT0 = 80;
@@ -68,8 +74,8 @@
       };
     };
 
-    thermald.enable = true;      # Intel thermal management
-    acpid.enable = true;         # Handle ACPI events
+    thermald.enable = true; # Intel thermal management
+    acpid.enable = true; # Handle ACPI events
   };
 
   hardware = {
@@ -86,13 +92,13 @@
   # Configure power management
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = "performance";  # Overridden by TLP when switching modes
-    powertop.enable = true;          # Apply power saving tweaks at boot
+    cpuFreqGovernor = "performance"; # Overridden by TLP when switching modes
+    powertop.enable = true; # Apply power saving tweaks at boot
   };
 
   # Configure lid switch behavior
   services.logind.settings.Login = {
-    HandleLidSwitch= "suspend";
+    HandleLidSwitch = "suspend";
     HandleLidSwitchExternalPower = "ignore";
   };
 
@@ -102,7 +108,6 @@
       acpi_call
     ];
     # Load required kernel parameters
-    kernelParams = [ "mem_sleep_default=deep" ];  
+    kernelParams = [ "mem_sleep_default=deep" ];
   };
 }
-
