@@ -7,7 +7,7 @@ let
   pointer = config.home.pointerCursor;
 in
 {
-  programs.niri = with config.lib.stylix.colors; {
+  programs.niri = {
     enable = true;
     package = pkgs.niri;
     settings = {
@@ -107,8 +107,9 @@ in
         border = {
           enable = true;
           width = 2;
-          active.color = "#${base0B}";
-          inactive.color = "#${base0F}";
+          # TODO
+          # active.color = "";
+          # inactive.color = "";
         };
         shadow = {
           enable = false;
