@@ -1,5 +1,11 @@
 Under construction
 
+copy start 👅👅👅
+
+https://github.com/linuxmobile/kaku
+
+https://github.com/Frost-Phoenix/nixos-config
+
 # memo
 
 ``` shell
