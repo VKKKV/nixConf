@@ -71,23 +71,8 @@ autocmd Filetype markdown setlocal textwidth=80
 autocmd Filetype * :setlocal fo-=o fo-=r
 autocmd BufWritePre * :%s/\s\+$//e
 
-" vim plug
-call plug#begin()
-Plug 'preservim/vim-indent-guides'
-let g:indent_guides_enable_on_vim_startup = 1
+" plug config
 
-" ctrl-n ctrl-down ctrl-up
-Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-
-Plug 'instant-markdown/vim-instant-markdown', {'for': 'markdown', 'do': 'npm install'}
-let g:instant_markdown_autostart = 0
-let g:instant_markdown_autoscroll = 1
-let g:instant_markdown_port = 13487
-let g:instant_markdown_theme = 'dark'
-nnoremap <Leader>i :InstantMarkdownPreview<CR>
-
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
 nnoremap <Leader>ff :Files!<CR>
 nnoremap <Leader>fr :Rg!<CR>
 nnoremap <Leader>fh :History!<CR>
@@ -95,10 +80,8 @@ nnoremap <Leader>fb :Buffers!<CR>
 nnoremap <Leader>/ :Lines!<CR>
 nnoremap <Leader>fh :History!<CR>
 
-Plug 'kaarmu/typst.vim'
 let g:typst_pdf_viewer = 'zathura'
 
-Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 nnoremap <Leader>e :NERDTreeToggle<CR>
 let NERDTreeShowHidden=1
 let NERDTreeQuitOnOpen=1
@@ -106,17 +89,6 @@ let NERDTreeAutoDeleteBuffer=1
 let NERDTreeConfirmDelete='yes'
 let NERDTreeConfirmRename='yes'
 
-Plug 'tomtom/tcomment_vim'
-Plug 'tpope/vim-surround'
-Plug 'honza/vim-snippets'
-
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-Plug 'yaegassy/coc-volar', { 'do': 'yarn install --frozen-lockfile' }
-Plug 'yaegassy/coc-volar-tools', { 'do': 'yarn install --frozen-lockfile' }
-
-Plug 'morhetz/gruvbox'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
 let g:airline_theme='gruvbox'
 let g:airline_powerline_fonts = 1
 let g:airline_section_z = "%3p%% %l:%c"
@@ -127,11 +99,6 @@ if !exists('g:airline_symbols')
 endif
 let g:airline_symbols.colnr = ' ℅:'
 
-" Plug 'Exafunction/windsurf.vim'
-" let g:codeium_no_map_tab = 1
-" inoremap <silent><expr> <C-a> codeium#Accept()
-
-Plug 'github/copilot.vim'
 autocmd FileType *.md Copilot disable
 let g:copilot_no_tab_map = v:true
 imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
@@ -139,10 +106,7 @@ imap <silent> <C-r> <Plug>(copilot-suggest)
 nmap <silent> <leader>, :Copilot enable<CR>
 nmap <silent> <leader>. :Copilot enable<CR>
 
-Plug 'tpope/vim-fugitive'
-
-call plug#end()
-
+" coc config
 let g:coc_node_path='/usr/bin/node'
 let g:coc_global_extensions = [
                   \'coc-marketplace',
