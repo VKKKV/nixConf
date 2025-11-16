@@ -19,6 +19,7 @@
     nodejs_24
     nixfmt
     nixd
+    nil
 
     # C/C++ tools
     gcc
