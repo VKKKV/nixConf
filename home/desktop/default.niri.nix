@@ -2,7 +2,7 @@
 {
   imports = [
     ./niri
-    ./stylix
+
     ./browser.nix
     ./fcitx5
     ./ghostty
