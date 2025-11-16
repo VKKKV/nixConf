@@ -1,7 +1,7 @@
-{...}:
+{ ... }:
 {
   imports = [
-    ./termimal
+    ./terminal
     ./desktop/default.niri.nix
   ];
 }
