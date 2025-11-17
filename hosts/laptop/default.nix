@@ -1,4 +1,8 @@
-{ pkgs, config, ... }:
+{
+  pkgs,
+  config,
+  ...
+}:
 {
   imports = [
     ./hardware-configuration.nix
@@ -7,6 +11,7 @@
     ../../system/fonts.nix
     ../../system/xdg.nix
     ../../system/thunar.nix
+    ../../system/stylix
 
     ../../home.nix
   ];

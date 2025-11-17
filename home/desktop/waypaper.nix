@@ -5,11 +5,11 @@
   xdg.configFile."waypaper/config.ini".text = ''
     [Settings]
     language = en
-    folder = ~/Pictures/wallpapers/others
+    folder = ~/Pictures/Wallpapers/
     monitors = All
-    wallpaper = ~/Pictures/wallpapers/others/nixos.png
+    wallpaper = ~/Pictures/wallpapers/ani.png
     backend = swww
-    fill = fill
+    fill = crop
     sort = name
     color = #ffffff
     subfolders = False
