@@ -7,7 +7,7 @@ let
   pointer = config.home.pointerCursor;
 in
 {
-  programs.niri = {
+  programs.niri = with config.lib.stylix.colors; {
     enable = true;
     package = pkgs.niri;
     settings = {
@@ -18,38 +18,18 @@ in
         MOZ_ENABLE_WAYLAND = "1";
         NIXOS_OZONE_WL = "1";
         QT_QPA_PLATFORM = "wayland;xcb";
+        QT_QPA_PLATFORMTHEME = "qt6ct";
         QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
         SDL_VIDEODRIVER = "wayland";
+        WLR_RENDERER = "vulkan";
+        XDG_CURRENT_DESKTOP = "niri";
+        XDG_SESSION_TYPE = "wayland";
+        XMODIFIERS = "@im=fcitx";
+        # LC_MESSAGES "zh_CN.UTF-8"
       };
-      spawn-at-startup = [
-        {
-          command = [
-            "wl-paste"
-            "--watch"
-            "cliphist"
-            "store"
-          ];
-        }
-        {
-          command = [
-            "wl-paste"
-            "--type text"
-            "--watch"
-            "cliphist"
-            "store"
-          ];
-        }
-        {
-          command = [
-            "qs"
-            "-c"
-            "dms"
-          ];
-        }
-      ];
-      input = {
-        keyboard.xkb.layout = "latam";
 
+      input = {
+        keyboard.xkb.layout = "us";
         touchpad = {
           click-method = "button-areas";
           dwt = true;
@@ -60,6 +40,7 @@ in
           tap-button-map = "left-right-middle";
           middle-emulation = true;
           accel-profile = "adaptive";
+          # accel-profile = "flat";
         };
         focus-follows-mouse = {
           enable = true;
@@ -68,28 +49,40 @@ in
         warp-mouse-to-focus.enable = true;
         workspace-auto-back-and-forth = true;
       };
-      screenshot-path = "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png";
+
       outputs = {
         "eDP-1" = {
           scale = 1.0;
+          mode = {
+            width = 3200;
+            height = 2000;
+            refresh = 90.000;
+          };
           position = {
             x = 0;
             y = 0;
           };
         };
-        "HDMI-A-1" = {
-          mode = {
-            width = 1920;
-            height = 1080;
-            refresh = null;
-          };
-          scale = 1.0;
-          position = {
-            x = 0;
-            y = -1080;
-          };
-        };
       };
+
+      spawn-at-startup = [
+        { command = [ "wl-paste --watch cliphist store" ]; }
+        { command = [ "wl-paste --type text --watch cliphist store" ]; }
+        # { command = [ "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" ]; }
+        { command = [ "fcitx5 -d" ]; }
+        { command = [ "mako" ]; }
+        { command = [ "niriswitcher" ]; }
+        { command = [ "swww-daemon" ]; }
+        { command = [ "waybar" ]; }
+        { command = [ "clipse --listen" ]; }
+        {
+          command = [
+            "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri & /usr/lib/xdg-desktop-portal-gnome &"
+          ];
+        }
+      ];
+
+      screenshot-path = "~/Pictures/Screenshots/Screenshot-from-%Y-%m-%d-%H-%M-%S.png";
 
       overview = {
         workspace-shadow.enable = false;
@@ -102,35 +95,58 @@ in
         size = 20;
         theme = "${pointer.name}";
       };
+
       layout = {
-        focus-ring.enable = false;
-        border = {
+        focus-ring = {
           enable = true;
-          width = 2;
-          # TODO
-          # active.color = "";
-          # inactive.color = "";
+          width = 3;
+          active.color = "#${base0B}";
         };
-        shadow = {
+
+        border = {
           enable = false;
+          width = 2;
+          active.color = "#${base0B}";
+          inactive.color = "#${base0F}";
         };
+
         preset-column-widths = [
-          { proportion = 0.25; }
+          { proportion = 0.33333; }
           { proportion = 0.5; }
-          { proportion = 0.75; }
-          { proportion = 1.0; }
+          { proportion = 0.66667; }
+
+          # { proportion = 0.25; }
+          # { proportion = 0.5; }
+          # { proportion = 0.75; }
+          # { proportion = 1.0; }
         ];
         default-column-width = {
           proportion = 0.5;
         };
 
-        gaps = 6;
+        # gaps = 6;
+        gaps = 12;
+
+        shadow = {
+          enable = true;
+          draw-behind-window = true;
+          softness = 20;
+          spread = 3;
+          offset = {
+            x = -4;
+            y = -4;
+          };
+          color = "rgba(0, 0, 0, 0.7)";
+        };
+
         struts = {
           left = 0;
           right = 0;
           top = 0;
           bottom = 0;
         };
+
+        center-focused-column = "on-overflow";
 
         tab-indicator = {
           hide-when-single-tab = true;

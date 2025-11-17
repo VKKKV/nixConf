@@ -8,16 +8,20 @@
   home.packages = with pkgs; [
     # screenshot
     grim
+    grimblast
     slurp
 
     # utils
+    mako
+    fuzzel
     wl-clipboard
     wl-clip-persist
-    grim
-    grimblast
     localsend
     pwvucontrol
     cliphist
+    swayidle
+    swaylock
+    waybar
   ];
 
   # make stuff work on wayland

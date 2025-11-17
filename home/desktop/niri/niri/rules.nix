@@ -27,27 +27,12 @@ let
           is-window-cast-target = true;
         }
       ];
-      focus-ring = {
-        active.color = "#f38ba8";
-        inactive.color = "#7d0d2d";
-      };
-      border = {
-        inactive.color = "#7d0d2d";
-      };
-      shadow = {
-        color = "#7d0d2d70";
-      };
-      tab-indicator = {
-        active.color = "#f38ba8";
-        inactive.color = "#7d0d2d";
-      };
     }
     {
-      matches = [ { app-id = "org.telegram.desktop"; } ];
-      block-out-from = "screencast";
-    }
-    {
-      matches = [ { app-id = "app.drey.PaperPlane"; } ];
+      matches = [
+        { app-id = "org.telegram.desktop"; }
+        { app-id = "app.drey.PaperPlane"; }
+      ];
       block-out-from = "screencast";
     }
     {
@@ -71,6 +56,10 @@ let
     {
       matches = [
         {
+          app-id = "zen";
+          title = "Picture-in-Picture";
+        }
+        {
           app-id = "firefox";
           title = "Picture-in-Picture";
         }
@@ -90,10 +79,8 @@ let
     }
     {
       matches = [
-        {
-          app-id = "zen";
-          title = "Picture-in-Picture";
-        }
+        { title = "Picture in picture"; }
+        { title = "Discord Popout"; }
       ];
       open-floating = true;
       default-floating-position = {
@@ -101,138 +88,93 @@ let
         y = 32;
         relative-to = "bottom-right";
       };
-      default-column-width = {
-        fixed = 480;
-      };
-      default-window-height = {
-        fixed = 270;
-      };
     }
+
     {
-      matches = [ { title = "Picture in picture"; } ];
-      open-floating = true;
-      default-floating-position = {
-        x = 32;
-        y = 32;
-        relative-to = "bottom-right";
-      };
-    }
-    {
-      matches = [ { title = "Discord Popout"; } ];
-      open-floating = true;
-      default-floating-position = {
-        x = 32;
-        y = 32;
-        relative-to = "bottom-right";
-      };
-    }
-    {
-      matches = [ { app-id = "pavucontrol"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "pavucontrol-qt"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "com.saivert.pwvucontrol"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "io.github.fsobolev.Cavalier"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "dialog"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "popup"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "task_dialog"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "gcr-prompter"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "file-roller"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "org.gnome.FileRoller"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "nm-connection-editor"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { app-id = "blueman-manager"; } ];
+      matches = [
+        { app-id = "pavucontrol"; }
+        { app-id = "pavucontrol-qt"; }
+        { app-id = "com.saivert.pwvucontrol"; }
+        { app-id = "io.github.fsobolev.Cavalier"; }
+        { app-id = "dialog"; }
+        { app-id = "popup"; }
+        { app-id = "task_dialog"; }
+        { app-id = "gcr-prompter"; }
+        { app-id = "file-roller"; }
+        { app-id = "org.gnome.FileRoller"; }
+        { app-id = "nm-connection-editor"; }
+        { app-id = "blueman-manager"; }
+        { app-id = "xdg-desktop-portal-gtk"; }
+        { app-id = "org.kde.polkit-kde-authentication-agent-1"; }
+        { app-id = "pinentry"; }
+        { title = "Progress"; }
+        { title = "File Operations"; }
+        { title = "Copying"; }
+        { title = "Moving"; }
+        { title = "Properties"; }
+        { title = "Downloads"; }
+        { title = "file progress"; }
+        { title = "Confirm"; }
+        { title = "Authentication Required"; }
+        { title = "Notice"; }
+        { title = "Warning"; }
+        { title = "Error"; }
+        { app-id = "nm-connection-editor"; }
+        { app-id = "flameshot"; }
+        { app-id = "com.github.hluk.copyq"; }
+        { app-id = "be.alexandervanhee.gradia"; }
+        { app-id = "waypaper"; }
+        { app-id = "clipse-gui"; }
+        { title = "图片查看器"; }
+        { title = "群聊的聊天记录"; }
+        { title = "画中画"; }
+        { title = "重命名"; }
+        {
+          app-id = "steam";
+          title = "Friends List";
+        }
+        {
+          app-id = "blueberry.py";
+          title = "蓝牙";
+        }
+        {
+          app-id = "org.pulseaudio.pavucontrol";
+          title = "音量控制";
+        }
+        {
+          app-id = "org.gnome.clocks";
+          title = "时钟";
+        }
+        {
+          app-id = "fcitx";
+          title = "Fcitx5 输入窗口";
+        }
+        { app-id = "org.gnome.FileRoller"; }
+        {
+          app-id = "thunar";
+          title = "文件操作进度";
+        }
+      ];
       open-floating = true;
     }
+
     {
-      matches = [ { app-id = "xdg-desktop-portal-gtk"; } ];
-      open-floating = true;
+      matches = [ { app-id = "^org\\.wezfurlong\\.wezterm$"; } ];
+      default-column-width = { };
     }
+
     {
-      matches = [ { app-id = "org.kde.polkit-kde-authentication-agent-1"; } ];
-      open-floating = true;
+      matches = [
+        { app-id = "fcitx"; }
+        { app-id = "wechat"; }
+      ];
+      open-focused = false;
     }
+
     {
-      matches = [ { app-id = "pinentry"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Progress"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "File Operations"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Copying"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Moving"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Properties"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Downloads"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "file progress"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Confirm"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Authentication Required"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Notice"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Warning"; } ];
-      open-floating = true;
-    }
-    {
-      matches = [ { title = "Error"; } ];
-      open-floating = true;
+      clip-to-geometry = true;
+      opacity = 0.99;
+      draw-border-with-background = false;
     }
   ];
 in
