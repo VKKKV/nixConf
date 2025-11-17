@@ -1,6 +1,11 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [ waypaper ];
+  # backend
+  services.swww.enable = true;
+
+  home.packages = with pkgs; [
+    waypaper
+  ];
 
   xdg.configFile."waypaper/config.ini".text = ''
     [Settings]
