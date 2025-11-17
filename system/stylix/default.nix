@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.stylix.niosModules.stylix
+    inputs.stylix.nixosModules.stylix
   ];
   stylix = {
     enable = true;
@@ -11,7 +11,7 @@
       popups = 1.0;
       terminal = 1.0;
     };
-    base16Scheme = ./color/gruvbox-dark.json;
+    base16Scheme = ./color/gruvbox-dark.yml;
     # image = ../../../gruvbox/forest_bridge.jpg;
 
     # image = pkgs.fetchurl {
