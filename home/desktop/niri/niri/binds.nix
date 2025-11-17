@@ -24,12 +24,14 @@
       };
 
       "Mod+T".action = spawn "${pkgs.ghostty}/bin/ghostty";
-      "Mod+F".action = spawn "${pkgs.zen-browser}/bin/zen";
-      "Mod+E".action = spawn "${pkgs.thunar}/bin/thunar";
-      # "Mod+E".action = spawn "/bin/thunar";
       "Mod+Space".action = spawn "${pkgs.fuzzel}/bin/fuzzel";
 
-      "Mod+Enter".action = maximize-column;
+      # "Mod+E".action = spawn "${pkgs.thunar}/bin/thunar";
+      # "Mod+F".action = spawn "${pkgs.zen-browser}/bin/zen";
+      "Mod+F".action = spawn "zen";
+      "Mod+E".action = spawn "thunar";
+
+      "Mod+Return".action = maximize-column;
       "Mod+Q".action = close-window;
       "Mod+S".action = switch-preset-column-width;
 
