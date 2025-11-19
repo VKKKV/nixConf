@@ -7,11 +7,12 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../system/default
+    ../../system
     ../../system/fonts.nix
     ../../system/xdg.nix
     ../../system/thunar.nix
     ../../system/stylix
+    ../../system/qmk.nix
 
     ../../home.nix
   ];
@@ -63,7 +64,7 @@
         CPU_MIN_PERF_ON_AC = 0;
         CPU_MAX_PERF_ON_AC = 100;
         CPU_MIN_PERF_ON_BAT = 0;
-        CPU_MAX_PERF_ON_BAT = 50; # Increased from 20 for better responsiveness
+        CPU_MAX_PERF_ON_BAT = 50;
 
         START_CHARGE_THRESH_BAT0 = 40;
         STOP_CHARGE_THRESH_BAT0 = 80;
