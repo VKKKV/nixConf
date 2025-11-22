@@ -1,7 +1,6 @@
 { ... }:
 {
-  programs.waybar.settings = 
-    [{
+  programs.waybar.settings = {
       layer = "top";
       position = "bottom";
       height = 40;
@@ -104,7 +103,7 @@
         tooltip-format-wifi = "{essid} ({signalStrength}%)\n{ifname} : {ipaddr}";
         tooltip-format-ethernet = "{ifname} : {ipaddr} | Click to Open GUI";
         tooltip-format-disconnected = "Disconnected | Click to open GUI";
-        on-click = "kitty -e nmtui";
+        on-click = "nm-applet";
         on-click-right = "nm-connection-editor";
       };
       
@@ -362,7 +361,7 @@
         };
         exec-if = "which waybar-module-pacman-updates";
         exec = "waybar-module-pacman-updates --no-zero-output";
-        on-click = "kitty -e yay";
+        on-click = "ghostty -e yay";
       };
       
       "privacy" = {
@@ -401,5 +400,5 @@
       "dwl/window" = {
         format = "[{layout}]{title}";
       };
-    }];
+    };
 }
