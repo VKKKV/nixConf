@@ -1,9 +1,10 @@
 { ... }:
 {
-  programs.waybar.settings = {
+  programs.waybar.settings.mainBar = {
     layer = "top";
     position = "bottom";
     height = 28;
+    fixed-center = true;
     reload_style_on_change = true;
 
     modules-left = [
@@ -98,6 +99,10 @@
       drawer = {
         transition-left-to-right = false;
       };
+      modules = [
+        "network"
+        "bluetooth"
+      ];
     };
 
     "network" = {
@@ -149,6 +154,10 @@
       drawer = {
         transition-left-to-right = false;
       };
+      modules = [
+        "network"
+        "bluetooth"
+      ];
     };
 
     "custom/screenshot" = {
@@ -173,6 +182,10 @@
       drawer = {
         transition-left-to-right = false;
       };
+      modules = [
+        "pulseaudio"
+        "pulseaudio/slider"
+      ];
     };
 
     "pulseaudio" = {
@@ -228,6 +241,12 @@
       drawer = {
         transition-left-to-right = false;
       };
+      modules = [
+        "custom/wlogout"
+        "custom/reboot"
+        "custom/logout"
+        "custom/lockscreen"
+      ];
     };
 
     "custom/wlogout" = {
@@ -281,6 +300,14 @@
       drawer = {
         transition-left-to-right = false;
       };
+      modules = [
+        "custom/ddcutil-day"
+        "backlight/slider"
+        "backlight"
+        "custom/separator#1"
+        "custom/ddcutil-sleep"
+        "custom/ddcutil-night"
+      ];
     };
 
     "custom/ddcutil-day" = {
@@ -381,6 +408,13 @@
       "icon-spacing" = 10;
       "icon-size" = 18;
       "transition-duration" = 250;
+      modules = [
+        {
+          type = "screenshare";
+          tooltip = true;
+          "tooltip-icon-size" = 24;
+        }
+      ];
     };
 
     "cffi/niri-taskbar" = {

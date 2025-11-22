@@ -71,7 +71,7 @@
     "dgop": {
       "inputs": {
         "nixpkgs": [
-          "dms-cli",
+          "dms",
           "nixpkgs"
         ]
       },
@@ -89,7 +89,7 @@
         "type": "github"
       }
     },
-    "dms-cli": {
+    "dms": {
       "inputs": {
         "dgop": "dgop",
         "nixpkgs": [
@@ -570,7 +570,7 @@
     },
     "root": {
       "inputs": {
-        "dms-cli": "dms-cli",
+        "dms": "dms",
         "home-manager": "home-manager",
         "maple-mono": "maple-mono",
         "niri": "niri",
