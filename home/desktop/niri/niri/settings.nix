@@ -78,6 +78,13 @@ in
         { command = [ "wl-paste --watch cliphist store" ]; }
         {
           command = [
+            "qs"
+            "-c"
+            "dms"
+          ];
+        }
+        {
+          command = [
             "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri & /usr/lib/xdg-desktop-portal-gnome &"
           ];
         }

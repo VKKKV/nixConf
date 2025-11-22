@@ -17,14 +17,155 @@
     {
       "Mod+T".action = terminal;
       "Mod+F".action = browser;
-      "Mod+E".action = filemanager;
       "Mod+Space".action = launcher;
-      "Super+Alt+L".action = lockScreen;
+      "Mod+L".action = lockScreen;
 
       "XF86AudioPlay".action = playerctl "play-pause";
       "XF86AudioStop".action = playerctl "pause";
       "XF86AudioPrev".action = playerctl "previous";
       "XF86AudioNext".action = playerctl "next";
+
+      "XF86AudioMute" = {
+        allow-when-locked = true;
+        action.spawn = [
+          "qs"
+          "-c"
+          "dms"
+          "ipc"
+          "call"
+          "audio"
+          "mute"
+        ];
+      };
+      "XF86AudioMicMute" = {
+        allow-when-locked = true;
+        action.spawn = [
+          "qs"
+          "-c"
+          "dms"
+          "ipc"
+          "call"
+          "audio"
+          "micmute"
+        ];
+      };
+
+      "XF86AudioRaiseVolume" = {
+        allow-when-locked = true;
+        action.spawn = [
+          "qs"
+          "-c"
+          "dms"
+          "ipc"
+          "call"
+          "audio"
+          "increment"
+          "5"
+        ];
+      };
+      "XF86AudioLowerVolume" = {
+        allow-when-locked = true;
+        action.spawn = [
+          "qs"
+          "-c"
+          "dms"
+          "ipc"
+          "call"
+          "audio"
+          "decrement"
+          "5"
+        ];
+      };
+
+      "XF86MonBrightnessUp" = {
+        allow-when-locked = true;
+        action.spawn = [
+          "qs"
+          "-c"
+          "dms"
+          "ipc"
+          "call"
+          "brightness"
+          "increment"
+          "5"
+          ""
+        ];
+      };
+
+      "XF86MonBrightnessDown" = {
+        allow-when-locked = true;
+        action.spawn = [
+          "qs"
+          "-c"
+          "dms"
+          "ipc"
+          "call"
+          "brightness"
+          "decrement"
+          "5"
+          ""
+        ];
+      };
+
+      "Ctrl+Alt+L".action = spawn [
+        "qs"
+        "-c"
+        "dms"
+        "ipc"
+        "call"
+        "lock"
+        "lock"
+      ];
+
+      "Mod+V".action = spawn [
+        "qs"
+        "-c"
+        "dms"
+        "ipc"
+        "call"
+        "clipboard"
+        "toggle"
+      ];
+
+      "Mod+U".action = spawn [
+        "qs"
+        "-c"
+        "dms"
+        "ipc"
+        "call"
+        "settings"
+        "toggle"
+      ];
+
+      "Mod+M".action = spawn [
+        "qs"
+        "-c"
+        "dms"
+        "ipc"
+        "call"
+        "processlist"
+        "toggle"
+      ];
+
+      "Alt+Space".action = spawn [
+        "qs"
+        "-c"
+        "dms"
+        "ipc"
+        "call"
+        "spotlight"
+        "toggle"
+      ];
+
+      "Mod+D".action = spawn [
+        "qs"
+        "-c"
+        "dms"
+        "ipc"
+        "call"
+        "spotlight"
+        "toggle"
+      ];
 
       "Print".action.screenshot-screen = {
         write-to-disk = true;
@@ -54,8 +195,6 @@
       "Mod+Shift+Minus".action = set-window-height "-10%";
       "Mod+Shift+Plus".action = set-window-height "+10%";
 
-      "Mod+H".action = focus-column-left;
-      "Mod+L".action = focus-column-right;
       "Mod+J".action = focus-window-or-workspace-down;
       "Mod+K".action = focus-window-or-workspace-up;
       "Mod+Left".action = focus-column-left;

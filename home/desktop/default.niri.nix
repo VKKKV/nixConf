@@ -13,5 +13,7 @@
     ./zathura.nix
     ./discord.nix # discord
     ./xdg-mimes.nix
+    ./swaylock.nix
+    ./swayidle.nix
   ];
 }
