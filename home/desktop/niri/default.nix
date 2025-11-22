@@ -70,7 +70,6 @@
         # Default settings for normal notifications
         border-radius = 8;
         border-size = 2;
-        border-color = "#8aadf4"; # Normal border color (blue)
         default-timeout = 8000;
         height = 100;
         icons = true;
