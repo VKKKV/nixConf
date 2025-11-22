@@ -4,6 +4,7 @@
   imports = [
     ./niri
     ./waybarShorin
+    ./quickshell.nix
   ];
 
   home.packages = with pkgs; [
@@ -42,11 +43,8 @@
         };
         actions = true;
         anchor = "top-right";
-        background-color = "#000000";
-        border-color = "#FFFFFF";
         border-radius = 8;
         default-timeout = 8000;
-        font = "monospace 10";
         height = 100;
         icons = true;
         ignore-timeout = false;
