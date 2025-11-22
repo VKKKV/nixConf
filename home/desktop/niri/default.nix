@@ -3,7 +3,7 @@
 {
   imports = [
     ./niri
-    ./waybarShorin
+    ./waybarShorin/waybar.nix
     ./quickshell.nix
   ];
 
@@ -40,12 +40,10 @@
     mako = {
       enable = true;
       settings = {
-        "actionable=true" = {
-          anchor = "top-left";
-        };
-        actions = true;
-        anchor = "top-right";
+        # Default settings for normal notifications
         border-radius = 8;
+        border-size = 2;
+        border-color = "#8aadf4"; # Normal border color (blue)
         default-timeout = 8000;
         height = 100;
         icons = true;
@@ -54,11 +52,23 @@
         margin = 10;
         markup = true;
         width = 300;
+
+        # Settings for actionable notifications
+        "actionable=true" = {
+          anchor = "top-left";
+        };
+        actions = true;
+        anchor = "top-right";
+
+        # Settings for urgent notifications
+        "urgency=high" = {
+          border-color = "#ed8796"; # Urgent border color (red)
+          default-timeout = 0; # Don't timeout urgent notifications
+        };
       };
     };
     swww = {
       enable = true;
     };
   };
-
 }
