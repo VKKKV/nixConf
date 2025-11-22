@@ -10,10 +10,8 @@
     ./mpv
     ./rofi
     ./vscodium # vscode fork
-    ./waybarShorin
     ./zathura.nix
     ./discord.nix # discord
     ./xdg-mimes.nix
-    ./gtk.nix
   ];
 }
