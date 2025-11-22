@@ -1,6 +1,6 @@
 { ... }:
 {
-  programs.waybar.style = with colors; ''
+  programs.waybar.style = ''
     * {
         border: none;
         border-radius: 5px;
