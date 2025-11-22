@@ -8,7 +8,6 @@
     settings = {
       clock = true;
       daemonize = true;
-      # timestr="%H:%M";
       datestr = "";
       screenshots = true;
       ignore-empty-password = true;
@@ -20,8 +19,6 @@
       effect-blur = "7x5";
       effect-vignette = "0.75:0.75";
       effect-pixelate = 5;
-
-      font = "Maple Mono";
     };
   };
 }
