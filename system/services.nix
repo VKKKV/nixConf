@@ -99,24 +99,6 @@
     enable = true;
     drivers = with pkgs; [ gutenprint hplip splix ];
   };
-
-    # xserver = {
-    #   enable = true;
-    #   xkb = {
-    #     layout = "us";
-    #     options = "caps:escape";
-    #   };
-    #
-      # displayManager = {
-      #   lightdm = {
-      #     enable = true;
-      #     greeters.gtk.cursorTheme = {
-      #       package = pkgs.adwaita-icon-theme;
-      #       size = 10;
-      #     };
-      #   };
-      # };
-    # };
 };
     # unlock GPG keyring on login
     security.pam.services.greetd.enableGnomeKeyring = true;

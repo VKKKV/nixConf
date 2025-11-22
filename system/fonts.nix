@@ -38,16 +38,20 @@
         lcdfilter = "default";
         rgba = "rgb";
       };
-      defaultFonts = let
-        addAll = builtins.mapAttrs (_: v: ["Symbols Nerd Font"] ++ v ++ ["Noto Color Emoji"]);
-      in
+      defaultFonts =
+        let
+          addAll = builtins.mapAttrs (_: v: [ "Symbols Nerd Font" ] ++ v ++ [ "Noto Color Emoji" ]);
+        in
         addAll {
-          serif = ["Noto Serif"];
-          sansSerif = ["Adwaita Sans"];
-          monospace = ["MapleMono NF CN"];
-          emoji = ["Noto Color Emoji"];
+          serif = [ "Noto Serif" ];
+          sansSerif = [ "Adwaita Sans" ];
+          monospace = [
+            "MapleMono NF CN"
+            "GeistMono Nerd Font"
+          ];
+          emoji = [ "Noto Color Emoji" ];
         };
-      };
+    };
 
     # causes more issues than it solves
     enableDefaultPackages = false;
@@ -56,5 +60,8 @@
       enable = true;
       decompressFonts = true;
     };
+
+    # Improve font rendering performance
+    fontconfig.cache32Bit = true;
   };
 }

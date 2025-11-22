@@ -1,4 +1,4 @@
-{ pkgs, ...}:
+{ pkgs, ... }:
 {
   hardware = {
     graphics = {
@@ -18,16 +18,23 @@
     bluetooth = {
       enable = true;
       package = pkgs.bluez5-experimental;
+      powerOnBoot = false;
       settings = {
         # make Xbox Series X controller work
         General = {
           Experimental = true;
           FastConnectable = true;
-          powerOnBoot = false;
           JustWorksRepairing = "always";
           Privacy = "device";
         };
       };
+    };
+
+    # Enable hardware acceleration
+    opengl = {
+      enable = true;
+      driSupport = true;
+      driSupport32Bit = true;
     };
   };
 

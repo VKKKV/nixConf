@@ -68,8 +68,9 @@ in
       };
 
       spawn-at-startup = [
-        # { command = [ "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" ]; }
-        { command = [ "clipse --listen" ]; }
+        { command = [ "wl-paste --watch cliphist store" ]; }
+        { command = [ "wl-paste --type text --watch cliphist store" ]; }
+        { command = [ "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" ]; }
         { command = [ "fcitx5 -d" ]; }
         { command = [ "mako" ]; }
         { command = [ "swww-daemon" ]; }
