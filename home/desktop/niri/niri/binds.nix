@@ -11,8 +11,7 @@
       playerctl = spawn "${pkgs.playerctl}/bin/playerctl";
       terminal = spawn "${pkgs.ghostty}/bin/ghostty";
       launcher = spawn "${pkgs.fuzzel}/bin/fuzzel";
-      browser = spawn "${pkgs.zen}/bin/zen";
-      filemanager = spawn "${pkgs.thunar}/bin/thunar";
+      browser = spawn "${inputs.zen-browser.packages.${pkgs.system}.default}bin/zen";
       lockScreen = spawn "${pkgs.swaylock}/bin/swaylock";
     in
     {
@@ -38,7 +37,6 @@
       "Mod+Return".action = maximize-column;
       "Mod+Q".action = close-window;
       "Mod+S".action = switch-preset-column-width;
-
       "Mod+W".action = toggle-window-floating;
 
       "Mod+1".action = set-column-width "25%";

@@ -25,7 +25,6 @@ in
         XDG_CURRENT_DESKTOP = "niri";
         XDG_SESSION_TYPE = "wayland";
         XMODIFIERS = "@im=fcitx";
-        # LC_MESSAGES "zh_CN.UTF-8"
       };
 
       input = {
@@ -69,15 +68,14 @@ in
       };
 
       spawn-at-startup = [
-        { command = [ "wl-paste --watch cliphist store" ]; }
-        { command = [ "wl-paste --type text --watch cliphist store" ]; }
         # { command = [ "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" ]; }
+        { command = [ "clipse --listen" ]; }
         { command = [ "fcitx5 -d" ]; }
         { command = [ "mako" ]; }
-        { command = [ "niriswitcher" ]; }
         { command = [ "swww-daemon" ]; }
         { command = [ "waybar" ]; }
-        { command = [ "clipse --listen" ]; }
+        { command = [ "wl-paste --type text --watch cliphist store" ]; }
+        { command = [ "wl-paste --watch cliphist store" ]; }
         {
           command = [
             "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri & /usr/lib/xdg-desktop-portal-gnome &"
