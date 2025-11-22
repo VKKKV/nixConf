@@ -3,7 +3,7 @@
 {
   imports = [
     ./niri
-    ./waybarShorin/waybar.nix
+    ./waybarShorin
     ./quickshell.nix
   ];
 

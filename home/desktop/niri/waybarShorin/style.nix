@@ -1,7 +1,7 @@
 { ... }:
 let
   custom = {
-    font = "Maple Mono";
+    font = "JetBrainsMono NFP";
     font_size = "18px";
     font_weight = "bold";
     text_color = "#FBF1C7";
@@ -423,4 +423,3 @@ in
     }
   '';
 }
-
