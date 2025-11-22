@@ -10,7 +10,7 @@
     ./mpv
     ./rofi
     ./vscodium # vscode fork
-    ./waybar # status bar
+    ./waybarGruvbox
     ./zathura.nix
     ./discord.nix # discord
     ./xdg-mimes.nix

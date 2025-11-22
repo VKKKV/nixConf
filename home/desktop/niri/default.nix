@@ -14,6 +14,7 @@
     # utils
     mako
     fuzzel
+    ghostty
     wl-clipboard
     wl-clip-persist
     localsend

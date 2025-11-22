@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
@@ -8,8 +9,19 @@
     with config.lib.niri.actions;
     let
       playerctl = spawn "${pkgs.playerctl}/bin/playerctl";
+      terminal = spawn "${pkgs.ghostty}/bin/ghostty";
+      launcher = spawn "${pkgs.fuzzel}/bin/fuzzel";
+      browser = spawn "${pkgs.zen}/bin/zen";
+      filemanager = spawn "${pkgs.thunar}/bin/thunar";
+      lockScreen = spawn "${pkgs.swaylock}/bin/swaylock";
     in
     {
+      "Mod+T".action = terminal;
+      "Mod+F".action = browser;
+      "Mod+E".action = filemanager;
+      "Mod+Space".action = launcher;
+      "Super+Alt+L".action = lockScreen;
+
       "XF86AudioPlay".action = playerctl "play-pause";
       "XF86AudioStop".action = playerctl "pause";
       "XF86AudioPrev".action = playerctl "previous";
@@ -22,14 +34,6 @@
       "Mod+Shift+S".action.screenshot = {
         show-pointer = false;
       };
-
-      "Mod+T".action = spawn "${pkgs.ghostty}/bin/ghostty";
-      "Mod+Space".action = spawn "${pkgs.fuzzel}/bin/fuzzel";
-
-      # "Mod+E".action = spawn "${pkgs.thunar}/bin/thunar";
-      # "Mod+F".action = spawn "${pkgs.zen-browser}/bin/zen";
-      "Mod+F".action = spawn "zen";
-      "Mod+E".action = spawn "thunar";
 
       "Mod+Return".action = maximize-column;
       "Mod+Q".action = close-window;
