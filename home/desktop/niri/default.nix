@@ -3,7 +3,6 @@
 {
   imports = [
     ./niri
-    ./waybarShorin/waybar.nix
   ];
 
   home.packages = with pkgs; [

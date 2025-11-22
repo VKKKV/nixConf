@@ -37,7 +37,7 @@ in
 
       outputs = {
         "eDP-1" = {
-          scale = 2;
+          scale = 1.75;
           mode = {
             width = 3200;
             height = 2000;
