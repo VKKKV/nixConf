@@ -1,6 +1,9 @@
 { pkgs, lib, ... }:
 {
   nix = {
+    # Enable both the daemon and auto-optimization for better performance
+    daemonIOSchedClass = "idle";
+    daemonIOSchedPriority = 7;
     settings = {
       auto-optimise-store = true;
       builders-use-substitutes = true;
@@ -11,6 +14,8 @@
       experimental-features = [
         "nix-command"
         "flakes"
+        "auto-allocate-uids"
+        "ca-derivations"
       ];
 
       substituters = [
@@ -31,6 +36,8 @@
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
         "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
+        "niri.cachix.org-1:Wv0F12uQS1m7Y38h/UbW/ptFHe4dI7oD0O4kXwQK18U="
+        "chaotic-nyx.cachix.org-1:HknUhsg5I773MWCjN+GO+mpFMVrJuFvvhd7L8F1vlI8="
       ];
     };
   };
@@ -54,3 +61,4 @@
     flake = "/home/kita/nixos"; # sets NH_OS_FLAKE variable for you
   };
 }
+
