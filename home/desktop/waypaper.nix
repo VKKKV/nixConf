@@ -16,7 +16,6 @@
     backend = swww
     fill = crop
     sort = name
-    color = #ffffff
     subfolders = False
     show_hidden = False
     show_gifs_only = False
