@@ -6,6 +6,8 @@ https://github.com/linuxmobile/kaku
 
 https://github.com/Frost-Phoenix/nixos-config
 
+stylix! awesome!
+
 # memo
 
 ``` shell
