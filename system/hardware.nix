@@ -3,6 +3,7 @@
   hardware = {
     graphics = {
       enable = true;
+      enable32Bit = true;
       extraPackages = with pkgs; [
         libva
         libva-vdpau-driver
@@ -28,13 +29,6 @@
           Privacy = "device";
         };
       };
-    };
-
-    # Enable hardware acceleration
-    opengl = {
-      enable = true;
-      driSupport = true;
-      driSupport32Bit = true;
     };
   };
 
