@@ -63,6 +63,9 @@
   };
 
   services = {
+    swww = {
+      enable = true;
+    };
     mako = {
       enable = true;
       settings = {
@@ -87,13 +90,9 @@
 
         # Settings for urgent notifications
         "urgency=high" = {
-          border-color = "#ed8796"; # Urgent border color (red)
           default-timeout = 0; # Don't timeout urgent notifications
         };
       };
-    };
-    swww = {
-      enable = true;
     };
   };
 }
