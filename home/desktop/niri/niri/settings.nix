@@ -39,12 +39,14 @@ in
           tap = true;
           tap-button-map = "left-right-middle";
           middle-emulation = true;
-          accel-profile = "adaptive";
-          # accel-profile = "flat";
+          accel-profile = "flat";
         };
         focus-follows-mouse = {
           enable = true;
           max-scroll-amount = "90%";
+        };
+        mouse = {
+          accel-profile = "flat";
         };
         warp-mouse-to-focus.enable = true;
         workspace-auto-back-and-forth = true;
@@ -52,7 +54,7 @@ in
 
       outputs = {
         "eDP-1" = {
-          scale = 1.0;
+          scale = 1.5;
           mode = {
             width = 3200;
             height = 2000;
@@ -62,6 +64,7 @@ in
             x = 0;
             y = 0;
           };
+          focus-at-startup = true;
         };
       };
 
