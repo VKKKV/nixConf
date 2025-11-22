@@ -2,74 +2,220 @@
 {
   programs.vscode.profiles.default = {
     userSettings = {
-      "update.mode" = "none";
-      "extensions.autoUpdate" = false; # This stuff fixes vscode freaking out when theres an update
-      "window.titleBarStyle" = "custom"; # needed otherwise vscode crashes, see https://github.com/NixOS/nixpkgs/issues/246509
-
-      "window.menuBarVisibility" = "toggle";
-      "editor.fontFamily" = "'Maple Mono', 'SymbolsNerdFont', 'monospace', monospace";
-      "terminal.integrated.fontFamily" = "'Maple Mono', 'SymbolsNerdFont'";
-      "editor.fontSize" = 18;
-      "workbench.colorTheme" = "Gruvbox Dark Hard";
-      "workbench.iconTheme" = "gruvbox-material-icon-theme";
-      "material-icon-theme.folders.theme" = "classic";
-      "vsicons.dontShowNewVersionMessage" = true;
-      "explorer.confirmDragAndDrop" = false;
-      "editor.fontLigatures" = true;
-      "editor.minimap.enabled" = false;
-      "workbench.startupEditor" = "none";
-
+      "nix.formatterPath" = "nixfmt";
+      "editor.lineNumbers" = "relative";
+      "editor.fontVariations" = true;
+      "editor.renderWhitespace" = "all";
+      "editor.rulers" = [ 80 ];
+      "editor.wordWrapColumn" = 80;
       "editor.formatOnSave" = true;
-      "editor.formatOnType" = true;
-      "editor.formatOnPaste" = true;
-      "editor.inlayHints.enabled" = "off";
+      "editor.cursorBlinking" = "solid";
+      "files.encoding" = "utf8";
+      "files.autoSave" = "afterDelay";
+      "diffEditor.ignoreTrimWhitespace" = true;
 
-      "workbench.layoutControl.type" = "menu";
-      "workbench.editor.limit.enabled" = true;
-      "workbench.editor.limit.value" = 10;
-      "workbench.editor.limit.perEditorGroup" = true;
-      "workbench.editor.showTabs" = "none";
-      "files.autoSave" = "onWindowChange";
-      "files.insertFinalNewline" = true;
-      "explorer.openEditors.visible" = 0;
-      "breadcrumbs.enabled" = false;
-      "editor.renderControlCharacters" = false;
-      "workbench.activityBar.location" = "hidden";
-      "workbench.statusBar.visible" = false;
-      "editor.scrollbar.verticalScrollbarSize" = 2;
-      "editor.scrollbar.horizontalScrollbarSize" = 2;
-      "editor.scrollbar.vertical" = "hidden";
-      "editor.scrollbar.horizontal" = "hidden";
-      "workbench.layoutControl.enabled" = false;
+      #----- Privacy & Security -----
+      "telemetry.telemetryLevel" = "off";
+      "update.mode" = "none";
+      "git.enableSmartCommit" = false;
+      "github.gitAuthentication" = false;
+      "workbench.settings.enableNaturalLanguageSearch" = false;
+      "workbench.enableExperiments" = false;
 
-      "editor.mouseWheelZoom" = true;
+      #----- Extension Management -----
+      "extensions.autoCheckUpdates" = false;
+      "extensions.autoUpdate" = false;
+      "extensions.ignoreRecommendations" = true;
 
-      # C/C++
-      "clangd.arguments" = [
-        "--clang-tidy"
-        "--inlay-hints=false"
+      #----- File Explorer -----
+      "workbench.secondarySideBar.defaultVisibility" = "hidden";
+      "explorer.confirmDelete" = false;
+      "explorer.confirmDragAndDrop" = false;
+      "workbench.tree.indent" = 12;
+
+      #----- Git Settings -----
+      "git.confirmSync" = false;
+      "git.ignoreRebaseWarning" = true;
+      "gitlens.ai.model" = "gitkraken";
+      "gitlens.ai.vscode.model" = "copilot:gpt-4.1";
+      "gitlens.ai.gitkraken.model" = "gemini:gemini-2.0-flash";
+      "gitlens.views.scm.grouped.views" = {
+        commits = true;
+        branches = true;
+        remotes = true;
+        stashes = true;
+        tags = true;
+        worktrees = true;
+        contributors = true;
+        fileHistory = false;
+        repositories = true;
+        searchAndCompare = false;
+        launchpad = true;
+      };
+
+      #----- Vim Configuration -----
+      "vim.leader" = " ";
+      "vim.easymotion" = true;
+      "vim.surround" = true;
+      "vim.useSystemClipboard" = true;
+      "vim.incsearch" = true;
+      "vim.hlsearch" = true;
+      "vim.ignorecase" = true;
+      "vim.normalModeKeyBindings" = [
+        # Buffer management
+        {
+          before = [
+            "<Leader>"
+            "q"
+          ];
+          commands = [ ":q!" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "p"
+          ];
+          commands = [ ":bprevious" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "n"
+          ];
+          commands = [ ":bnext" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "x"
+          ];
+          commands = [ ":bd" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "f"
+          ];
+          commands = [ "editor.action.formatDocument" ];
+        }
+
+        # Tab management
+        {
+          before = [
+            "<Leader>"
+            "t"
+            "n"
+          ];
+          commands = [ "workbench.action.nextEditor" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "t"
+            "p"
+          ];
+          commands = [ "workbench.action.previousEditor" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "t"
+            "c"
+          ];
+          commands = [ "workbench.action.newEditor" ];
+        }
+
+        # Window management
+        {
+          before = [
+            "<Leader>"
+            "v"
+          ];
+          commands = [ "workbench.action.splitEditorRight" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "s"
+          ];
+          commands = [ "workbench.action.splitEditorDown" ];
+        }
+
+        # Window navigation
+        {
+          before = [
+            "<Leader>"
+            "h"
+          ];
+          commands = [ "workbench.action.navigateLeft" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "j"
+          ];
+          commands = [ "workbench.action.navigateDown" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "k"
+          ];
+          commands = [ "workbench.action.navigateUp" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "l"
+          ];
+          commands = [ "workbench.action.navigateRight" ];
+        }
+        {
+          before = [
+            "<Leader>"
+            "e"
+          ];
+          commands = [ "workbench.files.action.focusFilesExplorer" ];
+        }
       ];
 
-      # Zig
-      # "zig.initialSetupDone" = true;
-      "zig.checkForUpdate" = false;
-      "zig.zls.path" = "zls";
-      "zig.path" = "zig";
-      "zig.revealOutputChannelOnFormattingError" = false;
-      "zig.zls.enableInlayHints" = false;
-      "zig.zls.enableArgumentPlaceholders" = false;
-      "zig.zls.enableBuildOnSave" = true;
-      "zig.zls.buildOnSaveArgs" = [ ];
+      "vim.handleKeys" = {
+        "<C-a>" = false; # Preserve select all
+        "<C-f>" = false; # Preserve find
+        "<C-d>" = false;
+        "<C-b>" = false; # Preserve scroll up
+        "<C-c>" = false; # Preserve copy
+      };
 
-      "nix.serverPath" = "nixd";
-      "nix.enableLanguageServer" = true;
-      # "nix.serverSettings" = {
-      #   "nixd" = {
-      #     "formatting" = {
-      #       "command" = [ "nixfmt" ];
-      #     };
-      #   };
-      # };
+      # Status bar colors
+      "vim.statusBarColors.normal" = [
+        "#1d2021"
+        "#a89984"
+      ];
+      "vim.statusBarColors.insert" = [
+        "#1d2021"
+        "#689d6a"
+      ];
+      "vim.statusBarColors.visual" = [
+        "#1d2021"
+        "#b16286"
+      ];
+      "vim.statusBarColors.visualline" = [
+        "#1d2021"
+        "#b16286"
+      ];
+      "vim.statusBarColors.visualblock" = [
+        "#1d2021"
+        "#d79921"
+      ];
+      "vim.statusBarColors.replace" = [
+        "#1d2021"
+        "#d65d0e"
+      ];
+
+      #----- Extensions -----
+      "tabnine.experimentalAutoImports" = true;
+
     };
   };
 }

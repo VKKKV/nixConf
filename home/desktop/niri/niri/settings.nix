@@ -11,22 +11,6 @@ in
     enable = true;
     package = pkgs.niri;
     settings = {
-      environment = {
-        CLUTTER_BACKEND = "wayland";
-        DISPLAY = null;
-        GDK_BACKEND = "wayland,x11";
-        MOZ_ENABLE_WAYLAND = "1";
-        NIXOS_OZONE_WL = "1";
-        QT_QPA_PLATFORM = "wayland;xcb";
-        QT_QPA_PLATFORMTHEME = "qt6ct";
-        QT_WAYLAND_DISABLE_WINDOWDECORATION = "1";
-        SDL_VIDEODRIVER = "wayland";
-        WLR_RENDERER = "vulkan";
-        XDG_CURRENT_DESKTOP = "niri";
-        XDG_SESSION_TYPE = "wayland";
-        XMODIFIERS = "@im=fcitx";
-      };
-
       input = {
         keyboard.xkb.layout = "us";
         touchpad = {
@@ -103,6 +87,7 @@ in
       cursor = {
         size = 20;
         theme = "${pointer.name}";
+        hide-after-inactive-ms = 10000;
       };
 
       layout = {
@@ -123,11 +108,6 @@ in
           { proportion = 0.33333; }
           { proportion = 0.5; }
           { proportion = 0.66667; }
-
-          # { proportion = 0.25; }
-          # { proportion = 0.5; }
-          # { proportion = 0.75; }
-          # { proportion = 1.0; }
         ];
         default-column-width = {
           proportion = 0.5;
