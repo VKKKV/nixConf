@@ -15,15 +15,11 @@
 
     # utils
     fuzzel
-    ghostty
     wl-clipboard
     wl-clip-persist
     localsend
     pwvucontrol
     cliphist
-    swayidle
-    swaylock
-    waybar
   ];
 
   home.sessionVariables = {
