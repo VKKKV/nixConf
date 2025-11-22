@@ -21,7 +21,7 @@ in
       ddcutil
       elogind
       glib
-      inputs.dms-cli.packages.${pkgs.system}.default
+      inputs.dms.packages.${pkgs.system}.default
       kdePackages.qt6ct
       kdePackages.qtmultimedia
       khal

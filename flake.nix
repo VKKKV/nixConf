@@ -4,7 +4,7 @@
   inputs = {
     # Using a mirror for faster downloads
     nixpkgs.url = "git+https://mirrors.nju.edu.cn/git/nixpkgs.git?ref=nixos-unstable&shallow=1";
-    
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,7 +42,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    dms-cli = {
+    dms = {
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
@@ -84,3 +84,4 @@
       };
     };
 }
+

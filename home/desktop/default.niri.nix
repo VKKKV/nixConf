@@ -3,6 +3,7 @@
   imports = [
     ./niri
 
+    ./waybarShorin
     ./waypaper.nix
     ./browser.nix
     ./fcitx5
