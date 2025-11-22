@@ -9,7 +9,6 @@
         fcitx5-gtk
         fcitx5-mozc
         fcitx5-rime
-        fcitx5-material-color
       ];
       settings = {
         addons = {
@@ -33,16 +32,6 @@
           classicui = {
             globalSection = {
               WheelForPaging = "True";
-              # Font
-              Font = "Microsoft Sans Serif 17";
-              # Menu Font
-              MenuFont = "Microsoft Sans Serif 16";
-              # Tray Font
-              TrayFont = "Microsoft Sans Serif 16";
-              # Theme
-              Theme = "macOS-light";
-              # Dark Theme
-              DarkTheme = "macOS-dark";
             };
           };
         };
@@ -122,11 +111,5 @@
         };
       };
     };
-  };
-
-  xdg.dataFile."fcitx5/themes" = {
-    source = ./themes;
-    recursive = true;
-    executable = true;
   };
 }
