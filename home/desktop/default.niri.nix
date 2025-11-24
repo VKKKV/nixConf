@@ -3,18 +3,19 @@
   imports = [
     ./niri
 
-    ./waybarShorin
-    ./waypaper.nix
     ./browser.nix
+    ./discord.nix # discord
     ./fcitx5
+    ./gaming.nix
     ./ghostty
     ./mpv
     ./rofi
-    ./vscodium # vscode fork
-    ./zathura.nix
-    ./discord.nix # discord
-    ./xdg-mimes.nix
-    ./swaylock.nix
     ./swayidle.nix
+    ./swaylock.nix
+    ./vscodium # vscode fork
+    ./waybarShorin
+    ./waypaper.nix
+    ./xdg-mimes.nix
+    ./zathura.nix
   ];
 }
