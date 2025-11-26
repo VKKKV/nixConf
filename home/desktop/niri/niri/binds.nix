@@ -12,6 +12,7 @@
       terminal = spawn "${pkgs.ghostty}/bin/ghostty";
       launcher = spawn "${pkgs.fuzzel}/bin/fuzzel";
       browser = spawn "${inputs.zen-browser.packages.${pkgs.system}.default}bin/zen";
+      fileBrowser = spawn "${inputs.thunar.packages.${pkgs.system}.default}bin/thunar";
       lockScreen = spawn "${pkgs.swaylock}/bin/swaylock";
     in
     {
@@ -19,6 +20,7 @@
       "Mod+F".action = browser;
       "Mod+Space".action = launcher;
       "Mod+L".action = lockScreen;
+      "Mod+E".action = fileBrowser;
 
       "XF86AudioPlay".action = playerctl "play-pause";
       "XF86AudioStop".action = playerctl "pause";
