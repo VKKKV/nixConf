@@ -112,4 +112,10 @@
       };
     };
   };
+
+  xdg.dataFile."fcitx5/rime" = {
+    source = ./config;
+    recursive = true;
+    executable = true;
+  };
 }

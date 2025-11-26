@@ -13,8 +13,6 @@
     };
 
     nix-index-database.comma.enable = true;
-
-    nix-ld.enable = true;
   };
 
   home.packages = with pkgs; [
@@ -59,4 +57,3 @@
     # yq          # YAML processing
   ];
 }
-

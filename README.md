@@ -103,5 +103,11 @@ xdg.configFile."test" = {
     recursive = true;
     executable = true;
 };
+
+xdg.dataFile."test" = {
+    source = ./config;
+    recursive = true;
+    executable = true;
+};
 ```
 

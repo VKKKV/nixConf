@@ -1,4 +1,8 @@
-{ pkgs, username, lib, ... }:
+{
+  pkgs,
+  lib,
+  ...
+}:
 {
   system.stateVersion = "25.11";
 
@@ -20,6 +24,7 @@
       enableSSHSupport = true;
       pinentryPackage = pkgs.pinentry-gtk2;
     };
+    nix-ld.enable = true;
   };
 
   zramSwap = {

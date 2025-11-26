@@ -12,7 +12,7 @@
       terminal = spawn "${pkgs.ghostty}/bin/ghostty";
       launcher = spawn "${pkgs.fuzzel}/bin/fuzzel";
       browser = spawn "${inputs.zen-browser.packages.${pkgs.system}.default}bin/zen";
-      fileBrowser = spawn "${inputs.thunar.packages.${pkgs.system}.default}bin/thunar";
+      fileBrowser = spawn "${pkgs.xfce.thunar}bin/thunar";
       lockScreen = spawn "${pkgs.swaylock}/bin/swaylock";
     in
     {

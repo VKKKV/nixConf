@@ -15,8 +15,6 @@
     ../../system/qmk.nix
 
     ../../home.nix
-
-    ../../pkgs
   ];
 
   # Disabled conflicting power management daemon
@@ -27,6 +25,7 @@
     brightnessctl
     powertop
     cpupower-gui # Included for visualization but TLP handles actual configuration
+    (pkgs.callPackage ../../pkgs/rime-shuangpin-fuzhuma { })
   ];
 
   services = {
