@@ -15,6 +15,8 @@
     ../../system/qmk.nix
 
     ../../home.nix
+
+    ../../pkgs
   ];
 
   # Disabled conflicting power management daemon
