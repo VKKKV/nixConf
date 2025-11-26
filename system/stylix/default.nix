@@ -48,6 +48,7 @@
 
     targets = {
       nixvim.enable = false;
+      limine.enable = false;
     };
   };
 }
