@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./terminal
+    ./common
     ./desktop
   ];
 }

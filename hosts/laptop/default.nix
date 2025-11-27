@@ -7,19 +7,11 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../../system
-    ../../system/fonts.nix
-    ../../system/xdg.nix
-    ../../system/thunar.nix
-    ../../system/stylix
-    ../../system/qmk.nix
-    ../../system/game.nix
-    ../../system/overlays.nix
+    ../../system/common
 
     ../../home.nix
   ];
 
-  # Disabled conflicting power management daemon
   services.power-profiles-daemon.enable = false;
 
   environment.systemPackages = with pkgs; [
@@ -50,7 +42,6 @@
       criticalPowerAction = "PowerOff";
     };
 
-    # Tuned TLP settings
     tlp = {
       enable = true;
       settings = {
@@ -97,25 +88,37 @@
     };
   };
 
-  # Configure power management
   powerManagement = {
     enable = true;
     cpuFreqGovernor = "performance"; # Overridden by TLP when switching modes
     powertop.enable = true; # Apply power saving tweaks at boot
   };
 
-  # Configure lid switch behavior
   services.logind.settings.Login = {
     HandleLidSwitch = "suspend";
     HandleLidSwitchExternalPower = "ignore";
   };
 
   boot = {
-    kernelModules = [ "acpi_call" ];
+    loader = {
+      limine = {
+        extraConfig = ''
+          /Windows
+          protocol: efi
+          path: boot():/EFI/Microsoft/Boot/bootmgfw.efi
+        '';
+      };
+    };
+    kernelModules = [
+      "acpi_call"
+      "kvm-intel"
+    ];
+
+    extraModprobeConfig = "options kvm_intel nested=1";
+
+    kernelParams = [ "mem_sleep_default=deep" ];
     extraModulePackages = with config.boot.kernelPackages; [
       acpi_call
     ];
-    # Load required kernel parameters
-    kernelParams = [ "mem_sleep_default=deep" ];
   };
 }

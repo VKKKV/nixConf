@@ -15,7 +15,7 @@
     useGlobalPkgs = true;
     extraSpecialArgs = { inherit inputs username host; };
     users.${username} = {
-      imports = if (host == "laptop") then [ ./home ] else [ ./home ];
+      imports = [ ./home ];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
       home.stateVersion = "25.11";
@@ -28,15 +28,18 @@
     isNormalUser = true;
     description = "${username}";
     extraGroups = [
-      "networkmanager"
-      "wheel"
-      "adbusers"
+      "users"
+      "adbusers" # android debugging
       "input"
-      "plugdev"
-      "video"
       "kvm"
-      "vboxusers"
       "libvirt"
+      "networkmanager"
+      "plugdev"
+      "podman"
+      "vboxusers"
+      "video"
+      "wheel"
+      "wireshark"
     ];
     shell = pkgs.fish;
   };
