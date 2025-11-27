@@ -28,7 +28,6 @@
     brightnessctl
     powertop
     cpupower-gui
-    (pkgs.callPackage ../../pkgs/rime-shuangpin-fuzhuma { })
   ];
 
   services = {

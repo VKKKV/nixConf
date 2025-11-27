@@ -44,11 +44,6 @@ stdenvNoCC.mkDerivation rec {
 
     rm -rf \
       .github \
-      md \
-      bingji \
-      readmeimg \
-      program \
-      LICENSE \
       squirrel.yaml \
       *.trime.yaml
 

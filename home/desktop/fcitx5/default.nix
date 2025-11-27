@@ -1,9 +1,5 @@
 { pkgs, ... }:
 {
-  home.packages = with pkgs; [
-    rime-shuangpin-fuzhuma
-  ];
-
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
@@ -113,10 +109,10 @@
     };
   };
 
-  xdg.dataFile."fcitx5/rime" = {
-    source = ./config;
-    recursive = true;
-  };
+  # xdg.dataFile."fcitx5/rime" = {
+  #   source = ./config;
+  #   recursive = true;
+  # };
 
   xdg.dataFile."fcitx5/theme" = {
     source = ./theme;
