@@ -14,10 +14,9 @@
     ../../system/stylix
     ../../system/qmk.nix
     ../../system/game.nix
+    ../../system/overlays.nix
 
     ../../home.nix
-
-    ../../overlays
   ];
 
   # Disabled conflicting power management daemon

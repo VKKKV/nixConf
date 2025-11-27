@@ -14,7 +14,7 @@ stdenvNoCC.mkDerivation rec {
     owner = "VKKKV";
     repo = "rime-shuangpin-fuzhuma";
     tag = "${version}";
-    hash = "sha256-Dz+jAa46iU4/gXVpDTzQRzzQfl97knGGON7Kmq4v/3M=";
+    sha256 = "sha256-1139fJBfqe3KFdDZhiS34CAevXeqPdcYaMqb3drXZSY=";
   };
 
   nativeBuildInputs = [

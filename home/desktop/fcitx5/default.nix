@@ -7,27 +7,24 @@
       waylandFrontend = true;
       addons = with pkgs; [
         fcitx5-gtk
-        kdePackages.fcitx5-qt
         fcitx5-mozc
+        qt6Packages.fcitx5-configtool
         fcitx5-rime
       ];
+
       settings = {
         addons = {
-          mozc = {
-            globalSection = {
-              InitialMode = "Hiragana";
-              InputState = "Follow Global Configuration";
-              Vertical = "True";
-              ExpandMode = "On Focus";
-              PreeditCursorPositionAtBeginning = "False";
-              ExpandKey = "Control+Alt+H";
-            };
-          };
           classicui = {
             globalSection = {
+              TrayOutlineColor = "#ffffff";
+              TrayTextColor = "#000000";
               Theme = "macOS-dark";
               DarkTheme = "macOS-dark";
               WheelForPaging = "True";
+              UseDarkTheme = "True";
+              Font = "Maple Mono NF CN 17";
+              MenuFont = "Maple Mono NF CN 16";
+              TrayFont = "Maple Mono NF CN 16";
             };
           };
         };
@@ -55,9 +52,6 @@
             ShowFirstInputMethodInformation = true;
             DefaultPageSize = 7;
             OverrideXkbOption = false;
-            CustomXkbOption = "";
-            EnabledAddons = "";
-            DisabledAddons = "";
             PreloadInputMethod = true;
             AllowInputMethodForPassword = false;
             ShowPreeditForPassword = false;
@@ -66,56 +60,24 @@
 
           Hotkey = {
             EnumerateWithTriggerKeys = true;
-            EnumerateForwardKeys = "";
-            EnumerateBackwardKeys = "";
             EnumerateSkipFirst = false;
             ModifierOnlyKeyTimeout = 250;
           };
-          "Hotkey/TriggerKeys" = {
-            "0" = "Shift+Super+Shift_L";
-          };
-          "Hotkey/ActivateKeys" = {
-            "0" = "Hangul_Hanja";
-          };
-          "Hotkey/DeactivateKeys" = {
-            "0" = "Hangul_Romaja";
-          };
-          "Hotkey/AltTriggerKeys" = {
-            "0" = "Shift_L";
-          };
           "Hotkey/EnumerateGroupForwardKeys" = {
             "0" = "Super+space";
-          };
-          "Hotkey/EnumerateGroupBackwardKeys" = {
-            "0" = "Shift+Super+space";
-          };
-          "Hotkey/PrevPage" = {
-            "0" = "Up";
-          };
-          "Hotkey/NextPage" = {
-            "0" = "Down";
-          };
-          "Hotkey/PrevCandidate" = {
-            "0" = "Shift+Tab";
-          };
-          "Hotkey/NextCandidate" = {
-            "0" = "Tab";
-          };
-          "Hotkey/TogglePreedit" = {
-            "0" = "Control+Alt+P";
           };
         };
       };
     };
   };
 
-  # xdg.dataFile."fcitx5/rime" = {
-  #   source = ./config;
-  #   recursive = true;
-  # };
+  xdg.dataFile."fcitx5/rime" = {
+    source = ./config;
+    recursive = true;
+  };
 
-  xdg.dataFile."fcitx5/theme" = {
-    source = ./theme;
+  xdg.dataFile."fcitx5/themes" = {
+    source = ./themes;
     recursive = true;
   };
 
