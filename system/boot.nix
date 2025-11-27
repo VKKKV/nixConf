@@ -24,7 +24,7 @@
         enable = true;
         efiSupport = true;
         style.wallpapers = [
-          "/etc/nixos/gruvbox/forest_pastel.png"
+          "/etc/nixos/wallpapers/forest_pastel.png"
         ];
         maxGenerations = 10;
         enableEditor = true;
