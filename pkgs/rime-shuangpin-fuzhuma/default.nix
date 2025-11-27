@@ -1,19 +1,20 @@
 {
+  stdenvNoCC,
   fetchFromGitHub,
-  stdenv,
+  gitUpdater,
   librime,
   rime-data,
 }:
 
-stdenv.mkDerivation {
-  pname = "rime-shuangpin-fuzhuma";
+stdenvNoCC.mkDerivation rec {
+  pname = "rime-shuangping-fuzhuma";
   version = "1.0.3";
 
   src = fetchFromGitHub {
     owner = "gaboolic";
-    repo = "rime-shuangpin-fuzhuma";
-    tag = "1.0.3";
-    sha256 = "sha256-Dz+jAa46iU4/gXVpDTzQRzzQfl97knGGON7Kmq4v/3M=";
+    repo = "rime-shuangping-fuzhuma";
+    rev = "v${version}";
+    hash = "sha256-Dz+jAa46iU4/gXVpDTzQRzzQfl97knGGON7Kmq4v/3M=";
   };
 
   nativeBuildInputs = [
@@ -41,13 +42,26 @@ stdenv.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    dst=$out/share/rime-data
-    mkdir -p $dst
+    rm -rf \
+      .github \
+      md \
+      bingji \
+      readmeimg \
+      program \
+      LICENSE \
+      squirrel.yaml \
+      *.trime.yaml
 
-    rm -r .github md bingji readmeimg program LICENSE squirrel.yaml *.trime.yaml
+    mkdir -p "$out/share/rime-data"
 
-    cp -pr -t $dst *
+    cp -r * "$out/share/rime-data"
 
     runHook postInstall
   '';
+
+  passthru = {
+    updateScript = gitUpdater {
+      rev-prefix = "v";
+    };
+  };
 }

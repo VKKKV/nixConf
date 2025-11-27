@@ -13,6 +13,7 @@
     ../../system/thunar.nix
     ../../system/stylix
     ../../system/qmk.nix
+    ../../system/game.nix
 
     ../../home.nix
 
@@ -26,7 +27,7 @@
     acpi
     brightnessctl
     powertop
-    cpupower-gui # Included for visualization but TLP handles actual configuration
+    cpupower-gui
     (pkgs.callPackage ../../pkgs/rime-shuangpin-fuzhuma { })
   ];
 

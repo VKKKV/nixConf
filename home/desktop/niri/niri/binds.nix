@@ -11,7 +11,7 @@
       playerctl = spawn "${pkgs.playerctl}/bin/playerctl";
       terminal = spawn "${pkgs.ghostty}/bin/ghostty";
       launcher = spawn "${pkgs.fuzzel}/bin/fuzzel";
-      browser = spawn "${inputs.zen-browser.packages.${pkgs.system}.default}bin/zen";
+      browser = spawn "${inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default}bin/zen";
       fileBrowser = spawn "${pkgs.xfce.thunar}bin/thunar";
       lockScreen = spawn "${pkgs.swaylock}/bin/swaylock";
     in
