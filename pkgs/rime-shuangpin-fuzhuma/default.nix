@@ -8,10 +8,10 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "rime-shuangpin-fuzhuma";
-  version = "1.0.3";
+  version = "1.0.0";
 
   src = fetchFromGitHub {
-    owner = "gaboolic";
+    owner = "VKKKV";
     repo = "rime-shuangpin-fuzhuma";
     tag = "${version}";
     hash = "sha256-Dz+jAa46iU4/gXVpDTzQRzzQfl97knGGON7Kmq4v/3M=";
