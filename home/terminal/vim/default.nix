@@ -127,7 +127,7 @@
       imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
       imap <silent> <C-r> <Plug>(copilot-suggest)
       nmap <silent> <leader>, :Copilot enable<CR>
-      nmap <silent> <leader>. :Copilot enable<CR>
+      nmap <silent> <leader>. :Copilot disable<CR>
 
       " coc config
       let g:coc_node_path='${pkgs.nodejs}/bin/node'
@@ -255,4 +255,3 @@
     executable = true;
   };
 }
-
