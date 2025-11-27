@@ -5,10 +5,14 @@
     enableBashIntegration = true;
     enableFishIntegration = true;
     enableZshIntegration = true;
-    
+
     settings = {
       mgr = {
-        ratio = [ 1 3 4 ];
+        ratio = [
+          1
+          3
+          4
+        ];
         sort_by = "alphabetical";
         sort_sensitive = false;
         sort_reverse = false;
@@ -21,7 +25,7 @@
         scrolloff = 5;
         title_format = "Yazi: {cwd}";
       };
-      
+
       preview = {
         tab_size = 2;
         max_width = 600;
@@ -31,33 +35,60 @@
         image_quality = 75;
         sixel_fraction = 15;
         ueberzug_scale = 1;
-        ueberzug_offset = [ 0 0 0 0 ];
+        ueberzug_offset = [
+          0
+          0
+          0
+          0
+        ];
       };
-      
+
       opener = {
         play = [
-          { run = "mpv \"$@\""; orphan = true; for = "unix"; }
+          {
+            run = "mpv \"$@\"";
+            orphan = true;
+            for = "unix";
+          }
         ];
         edit = [
-          { run = "vim \"$@\""; block = true; for = "unix"; }
+          {
+            run = "vim \"$@\"";
+            block = true;
+            for = "unix";
+          }
         ];
       };
-      
+
       open = {
         rules = [
-          { mime = "text/*"; use = "edit"; }
-          { mime = "*"; use = "edit"; }
+          {
+            mime = "text/*";
+            use = "edit";
+          }
+          {
+            mime = "*";
+            use = "edit";
+          }
         ];
       };
     };
-    
+
     keymap = {
       manager.prepend_keymap = [
-        { on = "z"; run = "plugin zoxide"; desc = "Jump to a directory via zoxide"; }
-        { on = "Z"; run = "plugin fzf"; desc = "Jump to a file/directory via fzf"; }
+        {
+          on = "z";
+          run = "plugin zoxide";
+          desc = "Jump to a directory via zoxide";
+        }
+        {
+          on = "Z";
+          run = "plugin fzf";
+          desc = "Jump to a file/directory via fzf";
+        }
       ];
     };
-    
+
     theme = {
       flavor.use = "kanagawa";
     };

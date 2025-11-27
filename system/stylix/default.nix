@@ -1,8 +1,43 @@
 { inputs, pkgs, ... }:
 {
+
+  programs.dconf.enable = true;
+
+  environment.systemPackages = with pkgs; [
+    dconf # 存储应用程序的设置
+    glib # for gsettings to work
+
+    # Qt
+    libsForQt5.qt5ct
+    libsForQt5.qtstyleplugin-kvantum # kvantum
+    kdePackages.qt6ct
+    kdePackages.qtstyleplugin-kvantum # kvantum
+    kdePackages.qtwayland
+    gsettings-qt # 访问和修改应用程序设置的工具
+
+    # GTK
+    nwg-look # GTK主题管理工具
+    gsettings-desktop-schemas
+    xsettingsd # gtk 守护进程
+    gtk-engine-murrine # GTK+ 2.x 的一个 主题引擎
+
+    # theme
+    adwaita-icon-theme
+    material-symbols
+    adw-gtk3
+    morewaita-icon-theme
+  ];
+
+  qt = {
+    enable = true;
+    style = "kvantum"; # 使用 kvantum 作为 qt 样式
+    platformTheme = "qt5ct";
+  };
+
   imports = [
     inputs.stylix.nixosModules.stylix
   ];
+
   stylix = {
     enable = true;
     autoEnable = true;
@@ -14,12 +49,6 @@
     };
 
     base16Scheme = ./color/gruvbox-dark.yml;
-
-    # image = ../../../gruvbox/forest_bridge.jpg;
-    # image = pkgs.fetchurl {
-    # url = "https://www.pixelstalk.net/wp-content/uploads/2016/05/Epic-Anime-Awesome-Wallpapers.jpg";
-    # hash = "sha256-enQo3wqhgf0FEPHj2coOCvo7DuZv+x5rL/WIo4qPI50=";
-    # };
 
     cursor = {
       name = "Bibata-Modern-Ice";
@@ -44,11 +73,19 @@
         name = "Noto Font Emoji";
         package = pkgs.noto-fonts-color-emoji;
       };
+
+      sizes = {
+        applications = 14;
+        desktop = 14;
+        popups = 14;
+        terminal = 14;
+      };
     };
 
     targets = {
       nixvim.enable = false;
       limine.enable = false;
+      fcitx5.enable = false;
     };
   };
 }

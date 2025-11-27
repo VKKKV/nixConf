@@ -11,7 +11,9 @@
     };
 
     nix-gaming.url = "github:fufexan/nix-gaming";
+
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
+
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -48,7 +50,10 @@
     };
 
     vicinae.url = "github:vicinaehq/vicinae";
+
     nur.url = "github:nix-community/NUR";
+
+    nix-minecraft.url = "github:Infinidoge/nix-minecraft";
   };
 
   outputs =
@@ -84,4 +89,3 @@
       };
     };
 }
-

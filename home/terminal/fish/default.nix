@@ -19,7 +19,7 @@
 
     shellAliases = {
       # File operations
-     cp = "cp -r";
+      cp = "cp -r";
 
       # System utilities
       diff = "diff --color=auto";

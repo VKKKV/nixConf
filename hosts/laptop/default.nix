@@ -15,6 +15,8 @@
     ../../system/qmk.nix
 
     ../../home.nix
+
+    ../../overlays
   ];
 
   # Disabled conflicting power management daemon

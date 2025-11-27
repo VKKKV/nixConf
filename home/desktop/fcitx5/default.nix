@@ -1,5 +1,9 @@
 { pkgs, ... }:
 {
+    home.packages = with pkgs; [
+    rime-shuangpin-fuzhuma
+    ];
+
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
@@ -7,6 +11,7 @@
       waylandFrontend = true;
       addons = with pkgs; [
         fcitx5-gtk
+        kdePackages.fcitx5-qt
         fcitx5-mozc
         fcitx5-rime
       ];
@@ -14,24 +19,19 @@
         addons = {
           mozc = {
             globalSection = {
-              # Initial Mode
               InitialMode = "Hiragana";
-              # Shared Input State
               InputState = "Follow Global Configuration";
-              # Vertical candidate list
               Vertical = "True";
-              # Expand Usage (Requires vertical candidate list)
               ExpandMode = "On Focus";
-              # Fix embedded preedit cursor at the beginning of the preedit
               PreeditCursorPositionAtBeginning = "False";
-              # Hotkey to expand usage
               ExpandKey = "Control+Alt+H";
             };
           };
-
           classicui = {
             globalSection = {
-              WheelForPaging = "True";
+                Theme = "macOS-dark";
+                DarkTheme = "macOS-dark";
+                WheelForPaging = "True";
             };
           };
         };
@@ -116,6 +116,11 @@
   xdg.dataFile."fcitx5/rime" = {
     source = ./config;
     recursive = true;
-    executable = true;
   };
+
+  xdg.dataFile."fcitx5/theme" = {
+    source = ./theme;
+    recursive = true;
+  };
+
 }
