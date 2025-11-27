@@ -1,8 +1,8 @@
 { pkgs, ... }:
 {
-    home.packages = with pkgs; [
+  home.packages = with pkgs; [
     rime-shuangpin-fuzhuma
-    ];
+  ];
 
   i18n.inputMethod = {
     type = "fcitx5";
@@ -29,9 +29,9 @@
           };
           classicui = {
             globalSection = {
-                Theme = "macOS-dark";
-                DarkTheme = "macOS-dark";
-                WheelForPaging = "True";
+              Theme = "macOS-dark";
+              DarkTheme = "macOS-dark";
+              WheelForPaging = "True";
             };
           };
         };

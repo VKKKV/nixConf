@@ -7,13 +7,13 @@
 }:
 
 stdenvNoCC.mkDerivation rec {
-  pname = "rime-shuangping-fuzhuma";
+  pname = "rime-shuangpin-fuzhuma";
   version = "1.0.3";
 
   src = fetchFromGitHub {
     owner = "gaboolic";
-    repo = "rime-shuangping-fuzhuma";
-    rev = "v${version}";
+    repo = "rime-shuangpin-fuzhuma";
+    tag = "${version}";
     hash = "sha256-Dz+jAa46iU4/gXVpDTzQRzzQfl97knGGON7Kmq4v/3M=";
   };
 
@@ -59,9 +59,5 @@ stdenvNoCC.mkDerivation rec {
     runHook postInstall
   '';
 
-  passthru = {
-    updateScript = gitUpdater {
-      rev-prefix = "v";
-    };
-  };
+  passthru.updateScript = gitUpdater { };
 }

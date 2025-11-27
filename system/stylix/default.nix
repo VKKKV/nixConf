@@ -1,6 +1,5 @@
 { inputs, pkgs, ... }:
 {
-
   programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -27,12 +26,6 @@
     adw-gtk3
     morewaita-icon-theme
   ];
-
-  qt = {
-    enable = true;
-    style = "kvantum"; # 使用 kvantum 作为 qt 样式
-    platformTheme = "qt5ct";
-  };
 
   imports = [
     inputs.stylix.nixosModules.stylix
@@ -85,7 +78,12 @@
     targets = {
       nixvim.enable = false;
       limine.enable = false;
-      fcitx5.enable = false;
     };
   };
+
+  home-manager.sharedModules = [
+    {
+      stylix.targets.fcitx5.enable = false;
+    }
+  ];
 }
