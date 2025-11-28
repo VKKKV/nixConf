@@ -16,12 +16,9 @@
         addons = {
           classicui = {
             globalSection = {
-              TrayOutlineColor = "#ffffff";
-              TrayTextColor = "#000000";
-              Theme = "macOS-dark";
+              Theme = "macOS-light";
               DarkTheme = "macOS-dark";
               WheelForPaging = "True";
-              UseDarkTheme = "True";
               Font = "Maple Mono NF CN 17";
               MenuFont = "Maple Mono NF CN 16";
               TrayFont = "Maple Mono NF CN 16";
