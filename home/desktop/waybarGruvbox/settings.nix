@@ -1,7 +1,7 @@
 { host, ... }:
 let
   custom = {
-    font = "Maple Mono";
+    font = "JetBrainsMono NFP";
     font_size = "18px";
     font_weight = "bold";
     text_color = "#FBF1C7";
@@ -31,9 +31,11 @@ in
     modules-left = [
       "custom/launcher"
       "hyprland/workspaces"
+    ];
+    modules-center = [
+      "clock"
       "tray"
     ];
-    modules-center = [ "clock" ];
     modules-right = [
       "cpu"
       "memory"

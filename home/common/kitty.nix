@@ -4,8 +4,7 @@
     enable = true;
 
     # themeFile = "gruvbox-dark-hard";
-
-    font.size = 14;
+    # font.size = 14;
 
     settings = {
       confirm_os_window_close = 0;

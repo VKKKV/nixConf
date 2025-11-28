@@ -110,8 +110,9 @@
       "net.ipv4.tcp_low_latency" = 1;
       "net.ipv4.tcp_adv_win_scale" = 1;
 
-      # Reduce TIME_WAIT sockets
+      # control by nix-gaming
       # "net.ipv4.tcp_fin_timeout" = 15;
+
       "net.ipv4.tcp_tw_reuse" = 1;
       "net.ipv4.tcp_max_syn_backlog" = 8192; # Increase SYN backlog
     };

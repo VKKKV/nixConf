@@ -4,25 +4,21 @@
     # touchpad support
     libinput.enable = true;
 
-    greetd =
-      let
-        session = {
-          command = "${pkgs.niri}/bin/niri-session";
+    greetd = {
+      enable = true;
+      settings = {
+        terminal.vt = 1;
+        default_session = {
           user = username;
-        };
-      in
-      {
-        enable = true;
-        settings = {
-          terminal.vt = 1;
-          default_session = session;
-          initial_session = session;
+          command = "${pkgs.niri}/bin/niri-session";
+          # command = "${pkgs.hyprland}/bin/hyprland-session";
         };
       };
+    };
 
     displayManager = {
       autoLogin = {
-        enable = true;
+        # enable = true;
         user = username;
       };
     };

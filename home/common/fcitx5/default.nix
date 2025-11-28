@@ -18,8 +18,7 @@
             globalSection = {
               Theme = "macOS-light";
               DarkTheme = "macOS-dark";
-              WheelForPaging = "True";
-              Font = "Maple Mono NF CN 17";
+              Font = "Maple Mono NF CN 16";
               MenuFont = "Maple Mono NF CN 16";
               TrayFont = "Maple Mono NF CN 16";
             };
@@ -37,31 +36,35 @@
           "Groups/0/Items/1".Name = "rime";
           "Groups/0/Items/2".Name = "mozc";
         };
-        globalOptions = {
-          Behavior = {
-            ActiveByDefault = false;
-            resetStateWhenFocusIn = "No";
-            ShareInputState = "No";
-            PreeditEnabledByDefault = true;
-            ShowInputMethodInformation = true;
-            showInputMethodInformationWhenFocusIn = false;
-            CompactInputMethodInformation = true;
-            ShowFirstInputMethodInformation = true;
-            DefaultPageSize = 7;
-            OverrideXkbOption = false;
-            PreloadInputMethod = true;
-            AllowInputMethodForPassword = false;
-            ShowPreeditForPassword = false;
-            AutoSavePeriod = 30;
-          };
 
-          Hotkey = {
-            EnumerateWithTriggerKeys = true;
-            EnumerateSkipFirst = false;
-            ModifierOnlyKeyTimeout = 250;
-          };
+        globalOptions = {
+          # Behavior = {
+          #   ActiveByDefault = false;
+          #   resetStateWhenFocusIn = "No";
+          #   ShareInputState = "No";
+          #   PreeditEnabledByDefault = true;
+          #   ShowInputMethodInformation = true;
+          #   showInputMethodInformationWhenFocusIn = false;
+          #   CompactInputMethodInformation = true;
+          #   ShowFirstInputMethodInformation = true;
+          #   DefaultPageSize = 7;
+          #   OverrideXkbOption = false;
+          #   PreloadInputMethod = true;
+          #   AllowInputMethodForPassword = false;
+          #   ShowPreeditForPassword = false;
+          #   AutoSavePeriod = 30;
+          # };
+
+          # Hotkey = {
+          #   EnumerateWithTriggerKeys = true;
+          #   EnumerateSkipFirst = false;
+          #   ModifierOnlyKeyTimeout = 250;
+          # };
           "Hotkey/EnumerateGroupForwardKeys" = {
             "0" = "Super+space";
+          };
+          "Hotkey/TriggerKeys" = {
+            "0" = "Super+Shift_L";
           };
         };
       };

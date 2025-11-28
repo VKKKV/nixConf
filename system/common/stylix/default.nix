@@ -49,22 +49,23 @@
       size = 24;
     };
 
-    fonts = {
+    fonts = with pkgs; {
+
       serif = {
-        name = "Crimson Pro Font";
-        package = pkgs.crimson-pro;
+        name = "Source Han Serif SC"; # 思源宋体
+        package = source-han-serif;
       };
       sansSerif = {
-        name = "Barlow Font";
-        package = pkgs.barlow;
+        name = "Source Han Sans SC"; # 思源黑体
+        package = source-han-sans;
       };
       monospace = {
         name = "MapleMono NF CN";
-        package = pkgs.maple-mono.NF-CN-unhinted;
+        package = maple-mono.NF-CN-unhinted;
       };
       emoji = {
         name = "Noto Font Emoji";
-        package = pkgs.noto-fonts-color-emoji;
+        package = noto-fonts-color-emoji;
       };
 
       sizes = {
