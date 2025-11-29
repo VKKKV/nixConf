@@ -9,7 +9,6 @@
     ./hardware.nix
     ./network.nix
     ./nix.nix
-    # ./overlays.nix
     ./qmk.nix
     ./security.nix
     ./services.nix

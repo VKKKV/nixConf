@@ -1,14 +1,25 @@
-args:
-# execute and import all overlay files in the current directory with the given args
-builtins.map (f: (import (./. + "/${f}") args)) # execute and import the overlay file
+{
+  self,
+  ...
+}:
+let
 
-  (
-    builtins.filter # find all overlay files in the current directory
+in
+{
+  flake.overlays = {
 
-      (
-        f:
-        f != "default.nix" # ignore default.nix
-        && f != "README.md" # ignore README.md
-      )
-      (builtins.attrNames (builtins.readDir ./.))
-  )
+    my-rime-data = (
+      final: prev: {
+        rime-data = prev.rime-shuangpin-fuzhuma;
+      }
+    );
+
+    default =
+      let
+        overlays = [
+          self.overlays.my-rime-data
+        ];
+      in
+      (final: prev: prev.lib.composeManyExtensions overlays self prev);
+  };
+}

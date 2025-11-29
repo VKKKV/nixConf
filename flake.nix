@@ -62,10 +62,14 @@
       pkgs = import nixpkgs {
         inherit system;
         config.allowUnfree = true;
+        overlays = [
+          self.overlays.default
+        ];
       };
       lib = nixpkgs.lib;
     in
     {
+      import = [ ./overlays ];
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
           inherit system;
