@@ -2,7 +2,6 @@
   stdenvNoCC,
   inputs,
 }:
-
 stdenvNoCC.mkDerivation {
   pname = "rime-shuangpin-fuzhuma";
 

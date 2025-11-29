@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   nix = {
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
 

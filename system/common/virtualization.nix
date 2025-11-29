@@ -1,7 +1,10 @@
-{ pkgs, username, ... }:
 {
+  pkgs,
+  username,
+  ...
+}: {
   # Add user to libvirtd group
-  users.users.${username}.extraGroups = [ "libvirtd" ];
+  users.users.${username}.extraGroups = ["libvirtd"];
 
   # Enable nested virtualization, required by security containers and nested vm.
   # This should be set per host in /hosts, not here.
@@ -54,7 +57,7 @@
       autoPrune = {
         enable = true;
         dates = "weekly";
-        flags = [ "--all" ];
+        flags = ["--all"];
       };
     };
 

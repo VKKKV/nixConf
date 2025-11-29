@@ -1,12 +1,11 @@
-{ ... }:
-{
+{...}: {
   programs.vscode.profiles.default = {
     userSettings = {
       "nix.formatterPath" = "nixfmt";
       "editor.lineNumbers" = "relative";
       "editor.fontVariations" = true;
       "editor.renderWhitespace" = "all";
-      "editor.rulers" = [ 80 ];
+      "editor.rulers" = [80];
       "editor.wordWrapColumn" = 80;
       "editor.formatOnSave" = true;
       "editor.cursorBlinking" = "solid";
@@ -68,35 +67,35 @@
             "<Leader>"
             "q"
           ];
-          commands = [ ":q!" ];
+          commands = [":q!"];
         }
         {
           before = [
             "<Leader>"
             "p"
           ];
-          commands = [ ":bprevious" ];
+          commands = [":bprevious"];
         }
         {
           before = [
             "<Leader>"
             "n"
           ];
-          commands = [ ":bnext" ];
+          commands = [":bnext"];
         }
         {
           before = [
             "<Leader>"
             "x"
           ];
-          commands = [ ":bd" ];
+          commands = [":bd"];
         }
         {
           before = [
             "<Leader>"
             "f"
           ];
-          commands = [ "editor.action.formatDocument" ];
+          commands = ["editor.action.formatDocument"];
         }
 
         # Tab management
@@ -106,7 +105,7 @@
             "t"
             "n"
           ];
-          commands = [ "workbench.action.nextEditor" ];
+          commands = ["workbench.action.nextEditor"];
         }
         {
           before = [
@@ -114,7 +113,7 @@
             "t"
             "p"
           ];
-          commands = [ "workbench.action.previousEditor" ];
+          commands = ["workbench.action.previousEditor"];
         }
         {
           before = [
@@ -122,7 +121,7 @@
             "t"
             "c"
           ];
-          commands = [ "workbench.action.newEditor" ];
+          commands = ["workbench.action.newEditor"];
         }
 
         # Window management
@@ -131,14 +130,14 @@
             "<Leader>"
             "v"
           ];
-          commands = [ "workbench.action.splitEditorRight" ];
+          commands = ["workbench.action.splitEditorRight"];
         }
         {
           before = [
             "<Leader>"
             "s"
           ];
-          commands = [ "workbench.action.splitEditorDown" ];
+          commands = ["workbench.action.splitEditorDown"];
         }
 
         # Window navigation
@@ -147,35 +146,35 @@
             "<Leader>"
             "h"
           ];
-          commands = [ "workbench.action.navigateLeft" ];
+          commands = ["workbench.action.navigateLeft"];
         }
         {
           before = [
             "<Leader>"
             "j"
           ];
-          commands = [ "workbench.action.navigateDown" ];
+          commands = ["workbench.action.navigateDown"];
         }
         {
           before = [
             "<Leader>"
             "k"
           ];
-          commands = [ "workbench.action.navigateUp" ];
+          commands = ["workbench.action.navigateUp"];
         }
         {
           before = [
             "<Leader>"
             "l"
           ];
-          commands = [ "workbench.action.navigateRight" ];
+          commands = ["workbench.action.navigateRight"];
         }
         {
           before = [
             "<Leader>"
             "e"
           ];
-          commands = [ "workbench.files.action.focusFilesExplorer" ];
+          commands = ["workbench.files.action.focusFilesExplorer"];
         }
       ];
 
@@ -215,7 +214,6 @@
 
       #----- Extensions -----
       "tabnine.experimentalAutoImports" = true;
-
     };
   };
 }

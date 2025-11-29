@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
     # kernelPackages = pkgs.linuxPackages_xanmod_latest;
@@ -117,7 +116,7 @@
       "net.ipv4.tcp_max_syn_backlog" = 8192; # Increase SYN backlog
     };
 
-    kernelModules = [ "tcp_bbr" ];
+    kernelModules = ["tcp_bbr"];
 
     # Enable initrds for better boot performance
     initrd = {

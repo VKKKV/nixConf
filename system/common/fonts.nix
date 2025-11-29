@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   fonts = {
     packages = with pkgs; [
       material-design-icons
@@ -80,7 +79,7 @@
           # 西文
           "JetBrainsMono Nerd Font"
         ];
-        emoji = [ "Noto Color Emoji" ];
+        emoji = ["Noto Color Emoji"];
       };
     };
 

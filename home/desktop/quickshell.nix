@@ -2,14 +2,11 @@
   pkgs,
   inputs,
   ...
-}:
-let
+}: let
   quickshell = inputs.quickshell.packages.${pkgs.system}.default;
-in
-{
-  imports = [ inputs.dms.homeModules.dankMaterialShell.default ];
-  home.packages =
-    with pkgs;
+in {
+  imports = [inputs.dms.homeModules.dankMaterialShell.default];
+  home.packages = with pkgs;
     [
       quickshell
     ]

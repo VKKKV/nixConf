@@ -2,8 +2,7 @@
   pkgs,
   inputs,
   ...
-}:
-{
+}: {
   system.stateVersion = "25.11";
 
   environment = {
@@ -16,7 +15,7 @@
     systemPackages = with pkgs; [
       alejandra
 
-      (ripgrep.override { withPCRE2 = true; })
+      (ripgrep.override {withPCRE2 = true;})
       aria2 # A lightweight multi-protocol & multi-source command-line download utility
       bash
       bpfmon # BPF based visual packet rate monitor
@@ -116,16 +115,16 @@
         let
           base = pkgs.appimageTools.defaultFhsEnvArgs;
         in
-        pkgs.buildFHSEnv (
-          base
-          // {
-            name = "fhs";
-            targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [ pkgs.pkg-config ];
-            profile = "export FHS=1";
-            runScript = "bash";
-            extraOutputsToInstall = [ "dev" ];
-          }
-        )
+          pkgs.buildFHSEnv (
+            base
+            // {
+              name = "fhs";
+              targetPkgs = pkgs: (base.targetPkgs pkgs) ++ [pkgs.pkg-config];
+              profile = "export FHS=1";
+              runScript = "bash";
+              extraOutputsToInstall = ["dev"];
+            }
+          )
       )
     ];
   };

@@ -1,5 +1,8 @@
-{ inputs, pkgs, ... }:
 {
+  inputs,
+  pkgs,
+  ...
+}: {
   imports = [
     inputs.stylix.nixosModules.stylix
   ];
@@ -55,7 +58,6 @@
     };
 
     fonts = with pkgs; {
-
       serif = {
         name = "Source Han Serif SC"; # 思源宋体
         package = source-han-serif;

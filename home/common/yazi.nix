@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs.yazi = {
     enable = true;
     enableBashIntegration = true;
@@ -16,7 +15,7 @@
         sort_reverse = false;
         sort_dir_first = true;
         sort_translit = false;
-        mouse_events = [ ];
+        mouse_events = [];
         linemode = "size";
         show_hidden = false;
         show_symlink = true;
@@ -73,7 +72,7 @@
     };
 
     keymap = {
-      manager.prepend_keymap = [
+      mgr.prepend_keymap = [
         {
           on = "z";
           run = "plugin zoxide";

@@ -3,8 +3,7 @@
   inputs,
   ...
 }:
-with inputs;
-{
+with inputs; {
   imports = [
     nix-gaming.nixosModules.pipewireLowLatency
     nix-gaming.nixosModules.platformOptimizations
@@ -19,7 +18,7 @@ with inputs;
       extest.enable = true;
       # remotePlay.openFirewall = true;
       # dedicatedServer.openFirewall = false;
-      extraCompatPackages = [ pkgs.proton-ge-bin ];
+      extraCompatPackages = [pkgs.proton-ge-bin];
       fontPackages = [
         pkgs.wqy_zenhei # Need by steam for Chinese
       ];

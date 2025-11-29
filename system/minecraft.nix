@@ -1,11 +1,9 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.minecraft-servers = {
     enable = false;
     eula = true;
     openFirewall = true;
     servers = {
-
       fabric = {
         enable = false;
         package = pkgs.fabricServers.fabric-1_21_1.override {

@@ -3,8 +3,7 @@
   pkgs,
   host,
   ...
-}:
-{
+}: {
   networking = {
     hostName = "${host}";
 
@@ -40,7 +39,7 @@
         63082
         63083
       ];
-      allowedUDPPorts = [ ];
+      allowedUDPPorts = [];
     };
   };
 
@@ -48,26 +47,25 @@
     networkmanagerapplet
     flclash
     clashtui
+    clash-nyanpasu
   ];
 
-  programs.clash-verge = {
-    enable = true;
-    autoStart = false;
-    package = pkgs.clash-nyanpasu;
-    tunMode = true;
-    serviceMode = true;
-  };
+  # programs.clash-verge = {
+  #   enable = true;
+  #   autoStart = true;
+  #   package = pkgs.clash-nyanpasu;
+  #   # package = pkgs.clash-verge-rev;
+  #   tunMode = true;
+  #   serviceMode = true;
+  # };
 
   services = {
-    sing-box = {
-    };
-
-    mihomo = {
-      enable = true;
-      tunMode = true;
-      webui = pkgs.metacubexd;
-      configFile = "/home/${username}/.local/share/io.github.clash-verge-rev.clash-verge-rev/clash-verge.yaml";
-    };
+    # mihomo = {
+    #   enable = true;
+    #   tunMode = true;
+    #   webui = pkgs.metacubexd;
+    #   configFile = "/home/${username}/.local/share/io.github.clash-verge-rev.clash-verge-rev/clash-verge.yaml";
+    # };
 
     avahi = {
       enable = true;

@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   hardware = {
     graphics = {
       enable = true;
@@ -19,9 +18,8 @@
     bluetooth = {
       enable = true;
       package = pkgs.bluez5-experimental;
-      powerOnBoot = false;
+      powerOnBoot = true;
       settings = {
-        # make Xbox Series X controller work
         General = {
           Experimental = true;
           FastConnectable = true;

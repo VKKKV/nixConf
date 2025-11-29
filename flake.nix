@@ -1,93 +1,76 @@
 {
   description = "Retard NixOS flake";
 
-  outputs =
-    {
-      self,
-      nixpkgs,
-      ...
-    }@inputs:
-    let
-      username = "kita";
-      system = "x86_64-linux";
+  outputs = {
+    self,
+    nixpkgs,
+    ...
+  } @ inputs: let
+    username = "kita";
+    system = "x86_64-linux";
 
-      overlays = [
-        # (final: prev: {
-        #   rime-shuangpin-fuzhuma = prev.callPackage ./pkgs/rime-shuangpin-fuzhuma/default.nix { };
-        #   rime-data = final.rime-shuangpin-fuzhuma;
-        # })
-
-        # (
-        #   final: prev:
-        #   withSystem prev.stdenv.hostPlatform.system (
-        #     { config, ... }:
-        #     {
-        #       local = config.packages;
-        #     }
-        #   )
-        # )
-
-      ];
-    in
-    {
-      nixosConfigurations = {
-        desktop = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            host = "desktop";
-            inherit self inputs username;
-          };
-          modules = [
-            ./hosts/desktop
-          ];
+    overlays = [
+      # (final: prev: {
+      #   rime-shuangpin-fuzhuma = prev.callPackage ./pkgs/rime-shuangpin-fuzhuma/default.nix {};
+      # })
+    ];
+  in {
+    nixosConfigurations = {
+      desktop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          host = "desktop";
+          inherit self inputs username;
         };
+        modules = [
+          ./hosts/desktop
+        ];
+      };
 
-        laptop = nixpkgs.lib.nixosSystem {
-          inherit system;
-          specialArgs = {
-            host = "laptop";
-            inherit self inputs username;
-          };
-          modules = [
-            ./hosts/laptop
-            {
-              nixpkgs.config = {
-                allowUnfree = true;
-                allowBroken = true;
-              };
-              nixpkgs.overlays = overlays;
-            }
-          ];
+      laptop = nixpkgs.lib.nixosSystem {
+        inherit system;
+        specialArgs = {
+          host = "laptop";
+          inherit self inputs username;
         };
+        modules = [
+          ./hosts/laptop
+          {
+            nixpkgs.config = {
+              allowUnfree = true;
+              allowBroken = true;
+            };
+            nixpkgs.overlays = overlays;
+          }
+        ];
       };
     };
+  };
 
   nixConfig = {
-    # allow-import-from-derivation = true;
+    allow-import-from-derivation = true;
     substituters = [
       "https://mirrors.cernet.edu.cn/nix-channels/store?priority=0"
       "https://cache.nixos.org/"
     ];
     extra-substituters = [
-      "https://nix-community.cachix.org"
-      "https://nix-gaming.cachix.org"
-      "https://hyprland.cachix.org"
-      "https://ghostty.cachix.org"
-      "https://vicinae.cachix.org"
-      "https://niri.cachix.org"
+      "https://mirror.sjtu.edu.cn/nix-channels/store"
+      "https://mirrors.cernet.edu.cn/nix-channels/store"
+      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
+      "https://mirrors.ustc.edu.cn/nix-channels/store"
       "https://chaotic-nyx.cachix.org/"
       "https://ezkea.cachix.org"
+      "https://ghostty.cachix.org"
+      "https://hyprland.cachix.org"
+      "https://niri.cachix.org"
+      "https://nix-community.cachix.org"
+      "https://nix-gaming.cachix.org"
+      "https://vicinae.cachix.org"
     ];
 
     trusted-substituters = [
-      "https://mirrors.ustc.edu.cn/nix-channels/store"
-      "https://mirrors.cernet.edu.cn/nix-channels/store"
-      "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-      "https://mirror.sjtu.edu.cn/nix-channels/store"
-      "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
-      "https://niri.cachix.org"
     ];
+
     trusted-public-keys = [
       "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
       "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
@@ -133,7 +116,6 @@
     stylix = {
       url = "github:danth/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
     quickshell = {
       url = "git+https://git.outfoxxed.me/quickshell/quickshell";

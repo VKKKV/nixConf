@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./fcitx5
     ./mpv
@@ -26,5 +25,4 @@
     ./zathura.nix
     ./zoxide.nix
   ];
-
 }

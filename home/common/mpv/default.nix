@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   programs.mpv = {
     enable = true;
   };
@@ -8,5 +7,4 @@
     recursive = true;
     executable = true;
   };
-
 }

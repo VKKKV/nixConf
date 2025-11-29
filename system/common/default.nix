@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ./stylix
     ./boot.nix

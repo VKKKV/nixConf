@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   security = {
     # security with polkit
     polkit.enable = true;
@@ -22,5 +21,4 @@
   programs.seahorse.enable = true;
 
   security.pam.services.greetd.enableGnomeKeyring = true;
-
 }

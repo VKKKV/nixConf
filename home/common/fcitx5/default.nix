@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   stylix.targets.fcitx5.enable = false;
 
   i18n.inputMethod = {
@@ -67,5 +66,4 @@
     source = ./themes;
     recursive = true;
   };
-
 }

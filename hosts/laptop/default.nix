@@ -2,8 +2,7 @@
   pkgs,
   config,
   ...
-}:
-{
+}: {
   imports = [
     ./hardware-configuration.nix
 
@@ -26,7 +25,7 @@
       enable = true;
       keyboards = {
         default = {
-          ids = [ "*" ];
+          ids = ["*"];
           settings = {
             main.capslock = "overload(control,esc)";
           };
@@ -116,7 +115,7 @@
 
     extraModprobeConfig = "options kvm_intel nested=1";
 
-    kernelParams = [ "mem_sleep_default=deep" ];
+    kernelParams = ["mem_sleep_default=deep"];
     extraModulePackages = with config.boot.kernelPackages; [
       acpi_call
     ];

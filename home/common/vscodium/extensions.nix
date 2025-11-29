@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-let
+{pkgs, ...}: let
   jonathanharty-gruvbox-material-icon-theme = pkgs.vscode-utils.buildVscodeMarketplaceExtension {
     mktplcRef = {
       name = "gruvbox-material-icon-theme";
@@ -8,8 +7,7 @@ let
       hash = "sha256-86UWUuWKT6adx4hw4OJw3cSZxWZKLH4uLTO+Ssg75gY=";
     };
   };
-in
-{
+in {
   programs.vscode = {
     enable = true;
     profiles.default = {

@@ -2,11 +2,9 @@
   config,
   pkgs,
   ...
-}:
-let
+}: let
   pointer = config.home.pointerCursor;
-in
-{
+in {
   programs.niri = with config.lib.stylix.colors; {
     enable = true;
     package = pkgs.niri;
@@ -52,15 +50,15 @@ in
       };
 
       spawn-at-startup = [
-        { command = [ "wl-paste --watch cliphist store" ]; }
-        { command = [ "wl-paste --type text --watch cliphist store" ]; }
-        { command = [ "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1" ]; }
-        { command = [ "fcitx5 -d" ]; }
-        { command = [ "mako" ]; }
-        { command = [ "swww-daemon" ]; }
-        { command = [ "waybar" ]; }
-        { command = [ "wl-paste --type text --watch cliphist store" ]; }
-        { command = [ "wl-paste --watch cliphist store" ]; }
+        {command = ["/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"];}
+        {command = ["fcitx5 -d"];}
+        {command = ["mako"];}
+        {command = ["swww-daemon"];}
+        {command = ["waybar"];}
+        {command = ["wl-paste --type text --watch cliphist store"];}
+        {command = ["wl-paste --type text --watch cliphist store"];}
+        {command = ["wl-paste --watch cliphist store"];}
+        {command = ["wl-paste --watch cliphist store"];}
         {
           command = [
             "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri & /usr/lib/xdg-desktop-portal-gnome &"
@@ -98,9 +96,9 @@ in
         };
 
         preset-column-widths = [
-          { proportion = 0.33333; }
-          { proportion = 0.5; }
-          { proportion = 0.66667; }
+          {proportion = 0.33333;}
+          {proportion = 0.5;}
+          {proportion = 0.66667;}
         ];
         default-column-width = {
           proportion = 0.5;

@@ -1,6 +1,5 @@
-{ inputs, ... }:
-{
-  imports = [ inputs.vicinae.homeManagerModules.default ];
+{inputs, ...}: {
+  imports = [inputs.vicinae.homeManagerModules.default];
 
   services.vicinae = {
     enable = true;

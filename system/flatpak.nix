@@ -1,6 +1,5 @@
-{ inputs, ... }:
-{
-  imports = [ inputs.nix-flatpak.nixosModules.nix-flatpak ];
+{inputs, ...}: {
+  imports = [inputs.nix-flatpak.nixosModules.nix-flatpak];
   xdg.portal.enable = true;
 
   services.flatpak = {

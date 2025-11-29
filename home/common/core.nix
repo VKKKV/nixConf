@@ -1,5 +1,8 @@
-{ pkgs, osConfig, ... }:
 {
+  pkgs,
+  osConfig,
+  ...
+}: {
   home.packages = with pkgs; [
     mitmproxy # http/https proxy tool
     wireshark # network analyzer
@@ -76,7 +79,6 @@
     # remote desktop(rdp connect)
     remmina
     freerdp # required by remmina
-
   ];
 
   programs = {
@@ -117,7 +119,7 @@
       enable = true;
       defaultWinePackage = pkgs.proton-ge-bin;
       steamPackage = osConfig.programs.steam.package;
-      protonPackages = [ pkgs.proton-ge-bin ];
+      protonPackages = [pkgs.proton-ge-bin];
       winePackages = with pkgs; [
         wineWow64Packages.full
         wineWowPackages.stagingFull
@@ -139,5 +141,4 @@
     udiskie.enable = true;
     # syncthing.enable = true;
   };
-
 }
