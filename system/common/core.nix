@@ -14,7 +14,7 @@
     ];
 
     systemPackages = with pkgs; [
-      alejandra.defaultPackage.${system}
+      alejandra
 
       (ripgrep.override { withPCRE2 = true; })
       aria2 # A lightweight multi-protocol & multi-source command-line download utility
@@ -70,6 +70,7 @@
       lsof # list open files
       ltrace # library call monitoring
       mtr # A network diagnostic tool(traceroute)
+      moonlight-qt # moonlight client, for streaming games/desktop from a PC
       ncdu # analyzer your disk usage Interactively, via TUI(replacement of `du`)
       nil
       nixd

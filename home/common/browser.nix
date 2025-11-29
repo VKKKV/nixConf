@@ -1,4 +1,10 @@
-{ inputs, pkgs, ... }:
+{
+  config,
+  username,
+  inputs,
+  pkgs,
+  ...
+}:
 {
   imports = [ inputs.zen-browser.homeModules.beta ];
 
@@ -58,13 +64,11 @@
         };
 
         Handlers.schemes.vscode = {
-          # 处理 vscode:// 链接
           action = "useSystemDefault"; # 自动使用系统默认应用（VS Code）
           ask = false; # 不再询问
         };
 
         Handlers.schemes.element = {
-          # 处理 element:// 链接
           action = "useSystemDefault"; # 自动使用系统默认应用（Element 矩阵客户端）
           ask = false;
         };
@@ -85,16 +89,27 @@
         };
       };
 
-    profiles.default = {
+    profiles."${username}}" = {
       id = 0;
-      name = "default";
       isDefault = true;
+      name = "${username}";
+
+      search = {
+        force = true;
+        default = "google";
+        order = [
+          "google"
+          "bing"
+          "ddg"
+          "Baidu"
+        ];
+      };
 
       extensions.packages = with inputs.firefox-addons.packages.${pkgs.stdenv.hostPlatform.system}; [
         ublock-origin
         unofficial-saladict-popup-dictionary
-        immersive-translate
-        tampermonkey
+        # immersive-translate
+        # tampermonkey
         bilisponsorblock
         bitwarden
         canvasblocker

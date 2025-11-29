@@ -1,4 +1,9 @@
-{ pkgs, host, ... }:
+{
+  username,
+  pkgs,
+  host,
+  ...
+}:
 {
   networking = {
     hostName = "${host}";
@@ -34,12 +39,6 @@
         63081
         63082
         63083
-        63084
-        63085
-        63086
-        63087
-        63088
-        63089
       ];
       allowedUDPPorts = [ ];
     };
@@ -47,17 +46,29 @@
 
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
-    moonlight-qt # moonlight client, for streaming games/desktop from a PC
+    flclash
+    clashtui
   ];
 
   programs.clash-verge = {
     enable = true;
-    autoStart = true;
+    autoStart = false;
+    package = pkgs.clash-nyanpasu;
     tunMode = true;
     serviceMode = true;
   };
 
   services = {
+    sing-box = {
+    };
+
+    mihomo = {
+      enable = true;
+      tunMode = true;
+      webui = pkgs.metacubexd;
+      configFile = "/home/${username}/.local/share/io.github.clash-verge-rev.clash-verge-rev/clash-verge.yaml";
+    };
+
     avahi = {
       enable = true;
       nssmdns4 = true;

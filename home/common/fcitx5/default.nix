@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  # stylix.targets.fcitx5.enable = false;
+  stylix.targets.fcitx5.enable = false;
 
   i18n.inputMethod = {
     type = "fcitx5";
@@ -10,9 +10,15 @@
 
       addons = with pkgs; [
         fcitx5-gtk
-        fcitx5-mozc
         qt6Packages.fcitx5-configtool
-        fcitx5-rime
+
+        fcitx5-mozc
+        (fcitx5-rime.override {
+          rimeDataPkgs = [
+            # pkgs.local.rime-shuangpin-fuzhuma
+            pkgs.rime-data
+          ];
+        })
       ];
 
       settings = {

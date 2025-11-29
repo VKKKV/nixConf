@@ -18,7 +18,7 @@
 
     displayManager = {
       autoLogin = {
-        # enable = true;
+        enable = true;
         user = username;
       };
     };
