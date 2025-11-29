@@ -1,6 +1,9 @@
 { inputs, pkgs, ... }:
-with inputs;
 {
+  imports = [
+    inputs.stylix.nixosModules.stylix
+  ];
+
   programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
@@ -28,7 +31,7 @@ with inputs;
     morewaita-icon-theme
   ];
 
-  stylix.nixosModules.stylix = {
+  stylix = {
     enable = true;
     autoEnable = true;
     polarity = "dark";
@@ -76,13 +79,7 @@ with inputs;
     targets = {
       nixvim.enable = false;
       limine.enable = false;
-    };
-  };
-
-  stylix.homeModules.stylix = {
-    targets = {
       fcitx5.enable = false;
-      zen-browser.profileNames = [ "default" ];
     };
   };
 }

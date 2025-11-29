@@ -72,7 +72,9 @@
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/desktop ];
+          modules = [
+            ./hosts/desktop
+          ];
           specialArgs = {
             host = "desktop";
             inherit self inputs username;
@@ -80,7 +82,9 @@
         };
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/laptop ];
+          modules = [
+            ./hosts/laptop
+          ];
           specialArgs = {
             host = "laptop";
             inherit self inputs username;
