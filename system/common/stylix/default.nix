@@ -34,6 +34,11 @@
   stylix = {
     enable = true;
     autoEnable = true;
+
+    targets = {
+      limine.enable = false;
+    };
+
     polarity = "dark";
 
     opacity = {
@@ -74,12 +79,6 @@
         popups = 14;
         terminal = 14;
       };
-    };
-
-    targets = {
-      nixvim.enable = false;
-      limine.enable = false;
-      fcitx5.enable = false;
     };
   };
 }

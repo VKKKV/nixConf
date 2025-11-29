@@ -1,10 +1,13 @@
 { pkgs, ... }:
 {
+  stylix.targets.fcitx5.enable = false;
+
   i18n.inputMethod = {
     type = "fcitx5";
     enable = true;
     fcitx5 = {
       waylandFrontend = true;
+
       addons = with pkgs; [
         fcitx5-gtk
         fcitx5-mozc
@@ -38,28 +41,6 @@
         };
 
         globalOptions = {
-          # Behavior = {
-          #   ActiveByDefault = false;
-          #   resetStateWhenFocusIn = "No";
-          #   ShareInputState = "No";
-          #   PreeditEnabledByDefault = true;
-          #   ShowInputMethodInformation = true;
-          #   showInputMethodInformationWhenFocusIn = false;
-          #   CompactInputMethodInformation = true;
-          #   ShowFirstInputMethodInformation = true;
-          #   DefaultPageSize = 7;
-          #   OverrideXkbOption = false;
-          #   PreloadInputMethod = true;
-          #   AllowInputMethodForPassword = false;
-          #   ShowPreeditForPassword = false;
-          #   AutoSavePeriod = 30;
-          # };
-
-          # Hotkey = {
-          #   EnumerateWithTriggerKeys = true;
-          #   EnumerateSkipFirst = false;
-          #   ModifierOnlyKeyTimeout = 250;
-          # };
           "Hotkey/EnumerateGroupForwardKeys" = {
             "0" = "Super+space";
           };
