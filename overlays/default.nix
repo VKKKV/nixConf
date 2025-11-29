@@ -1,25 +1,24 @@
+# This file defines overlays
+{ inputs, ... }:
 {
-  self,
-  ...
-}:
-let
+  # This one brings our custom packages from the 'pkgs' directory
+  additions = final: _prev: import ../pkgs { pkgs = final; };
 
-in
-{
-  flake.overlays = {
+  # This one contains whatever you want to overlay
+  # You can change versions, add patches, set compilation flags, anything really.
+  # https://nixos.wiki/wiki/Overlays
+  modifications = final: prev: {
+    # example = prev.example.overrideAttrs (oldAttrs: rec {
+    # ...
+    # });
+  };
 
-    my-rime-data = (
-      final: prev: {
-        rime-data = prev.rime-shuangpin-fuzhuma;
-      }
-    );
-
-    default =
-      let
-        overlays = [
-          self.overlays.my-rime-data
-        ];
-      in
-      (final: prev: prev.lib.composeManyExtensions overlays self prev);
+  # When applied, the unstable nixpkgs set (declared in the flake inputs) will
+  # be accessible through 'pkgs.unstable'
+  unstable-packages = final: _prev: {
+    unstable = import inputs.nixpkgs-unstable {
+      system = final.system;
+      config.allowUnfree = true;
+    };
   };
 }

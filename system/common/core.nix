@@ -14,6 +14,8 @@
     ];
 
     systemPackages = with pkgs; [
+      alejandra.defaultPackage.${system}
+
       (ripgrep.override { withPCRE2 = true; })
       aria2 # A lightweight multi-protocol & multi-source command-line download utility
       bash

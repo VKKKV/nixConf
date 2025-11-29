@@ -1,6 +1,4 @@
-{
-  pkgs ? import <nixpkgs> { },
-}:
+{ pkgs }:
 {
   rime-shuangpin-fuzhuma = pkgs.callPackage ./rime-shuangpin-fuzhuma { };
 }

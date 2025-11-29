@@ -1,6 +1,6 @@
 { pkgs, ... }:
 {
-  stylix.targets.fcitx5.enable = false;
+  # stylix.targets.fcitx5.enable = false;
 
   i18n.inputMethod = {
     type = "fcitx5";

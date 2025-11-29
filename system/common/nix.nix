@@ -1,7 +1,13 @@
-{ pkgs, lib, ... }:
+{ lib, ... }:
 {
-  nix = {
+  nixpkgs = {
+    config = lib.mkForce {
+      allowBroken = true;
+      allowUnfree = true;
+    };
+  };
 
+  nix = {
     channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
 
     daemonIOSchedClass = "idle";
@@ -55,13 +61,5 @@
         "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
       ];
     };
-  };
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    config.permittedInsecurePackages = [
-      # "electron-25.9.0"
-      "electron-36.9.5"
-    ];
   };
 }

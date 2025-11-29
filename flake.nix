@@ -51,6 +51,10 @@
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    alejandra = {
+      url = "github:kamadorueda/alejandra/4.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -58,33 +62,36 @@
     let
       username = "kita";
       system = "x86_64-linux";
-      pkgs = import nixpkgs {
-        inherit system;
-        config.allowUnfree = true;
-        overlays = [
-          self.overlays.default
-        ];
-      };
-      lib = nixpkgs.lib;
+      overlays = [
+        (final: prev: {
+          rime-data = prev.rime-shuangpin-fuzhuma;
+        })
+
+      ];
     in
     {
-      import = [ ./overlays ];
       nixosConfigurations = {
         desktop = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/desktop ];
           specialArgs = {
             host = "desktop";
             inherit self inputs username;
           };
+          modules = [
+            ./hosts/desktop
+          ];
         };
+
         laptop = nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./hosts/laptop ];
           specialArgs = {
             host = "laptop";
             inherit self inputs username;
           };
+          modules = [
+            ./hosts/laptop
+            { nixpkgs.overlays = overlays; }
+          ];
         };
       };
     };
