@@ -1,4 +1,5 @@
 { inputs, pkgs, ... }:
+with inputs;
 {
   programs.dconf.enable = true;
 
@@ -27,11 +28,7 @@
     morewaita-icon-theme
   ];
 
-  imports = [
-    inputs.stylix.nixosModules.stylix
-  ];
-
-  stylix = {
+  stylix.nixosModules.stylix = {
     enable = true;
     autoEnable = true;
     polarity = "dark";
@@ -82,9 +79,10 @@
     };
   };
 
-  home-manager.sharedModules = [
-    {
-      stylix.targets.fcitx5.enable = false;
-    }
-  ];
+  stylix.homeModules.stylix = {
+    targets = {
+      fcitx5.enable = false;
+      zen-browser.profileNames = [ "default" ];
+    };
+  };
 }

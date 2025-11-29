@@ -6,7 +6,10 @@
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-25.11";
     nix-gaming.url = "github:fufexan/nix-gaming";
     # anime game
-    aagl.url = "github:ezKEa/aagl-gtk-on-nix/release-25.11";
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix/release-25.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=latest";
     vicinae.url = "github:vicinaehq/vicinae";
     nur.url = "github:nix-community/NUR";
@@ -44,10 +47,6 @@
       url = "github:AvengeMedia/DankMaterialShell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # haumea = {
-    #   url = "github:nix-community/haumea/v0.2.2";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
