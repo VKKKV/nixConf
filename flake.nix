@@ -16,9 +16,12 @@
     };
 
     overlays = [
-      # (final: prev: {
-      #   rime-shuangpin-fuzhuma = prev.callPackage ./pkgs/rime-shuangpin-fuzhuma/default.nix {};
-      # })
+      (final: prev:
+          (import ./pkgs {
+          inherit inputs;
+          inherit nixpkgs;
+        })
+      )
     ];
   in {
     nixosConfigurations = {
