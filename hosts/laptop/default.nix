@@ -5,9 +5,7 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-
     ../../system/common
-
     ../../home.nix
   ];
 

@@ -8,8 +8,8 @@
   imports = [inputs.zen-browser.homeModules.beta];
 
   stylix.targets.zen-browser = {
-    enable = false;
-    profileNames = ["default"];
+    enable = true;
+    profileNames = ["${username}"];
   };
 
   programs.zen-browser = {
