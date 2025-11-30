@@ -9,16 +9,17 @@
 
       addons = with pkgs; [
         fcitx5-gtk
-        qt6Packages.fcitx5-configtool
 
-        fcitx5-mozc
-
+        # rm -r ~/.local/share/fcitx5/rime
+        # delete rime-data and reboot to switch
         (fcitx5-rime.override {
-          rimeDataPkgs = with pkgs;[
-        # rime-wanxiang
-            rime-shuangpin-fuzhuma
+          rimeDataPkgs = [
+            pkgs.my-rime-data
+            # pkgs.rime-ice
+            # pkgs.rime-wanxiang
           ];
         })
+        fcitx5-mozc
       ];
 
       settings = {

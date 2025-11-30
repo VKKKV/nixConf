@@ -97,6 +97,7 @@
       systemctl-tui
       tcpdump # network sniffer
       tealdeer # a very fast version of tldr
+      trashy # a cli system trash manager, alternative to rm and trash-cli
       tree
       udiskie # USB device management
       unzip # Archive extraction

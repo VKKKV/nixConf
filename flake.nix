@@ -12,16 +12,14 @@
 
     pkgs-stable = import nixpkgs-stable {
       system = "x86_64-linux";
-      config = { allowUnfree = true; };
+      config = {allowUnfree = true;};
     };
 
     overlays = [
-      (final: prev:
-          (import ./pkgs {
-          inherit inputs;
-          inherit nixpkgs;
-        })
-      )
+      (final: prev: {
+        inherit inputs;
+        my-rime-data = prev.callPackage ./pkgs/rime-shuangpin-fuzhuma {};
+      })
     ];
   in {
     nixosConfigurations = {
@@ -36,7 +34,7 @@
         ];
       };
 
-        # redmibook pro 15
+      # redmibook pro 15
       laptop = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {

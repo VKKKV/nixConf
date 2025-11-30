@@ -1,5 +1,4 @@
 {
-  config,
   username,
   inputs,
   pkgs,
@@ -29,41 +28,41 @@
         }
       );
     in {
-        # 隐私与遥测
-        DisableAppUpdate = true;
-        DisableTelemetry = true;
-        DisablePocket = true;
-        DisableFirefoxStudies = true;
-        DontCheckDefaultBrowser = true;
-        NoDefaultBookmarks = true;
-        OfferToSaveLogins = false;
-        # 功能设置
-        AutofillAddressEnabled = true;
-        AutofillCreditCardEnabled = false;
-        Homepage.StartPage = "previous-session";
-        UserMessaging.SkipOnboarding = true;
-        # 搜索建议
-        FirefoxSuggest = {
-          SponsoredSuggestions = false;
-          ImproveSuggest = false;
-        };
-        # 新标签页
-        FirefoxHome = {
-          Search = true;
-          TopSites = false;
-          SponsoredTopSites = false;
-          Highlights = false;
-          Pocket = false;
-          SponsoredPocket = false;
-          Snippets = false;
-        };
-        # 跟踪保护
-        EnableTrackingProtection = {
-          Value = true;
-          Locked = true;
-          Cryptomining = true;
-          Fingerprinting = true;
-        };
+      # 隐私与遥测
+      DisableAppUpdate = true;
+      DisableTelemetry = true;
+      DisablePocket = true;
+      DisableFirefoxStudies = true;
+      DontCheckDefaultBrowser = true;
+      NoDefaultBookmarks = true;
+      OfferToSaveLogins = false;
+      # 功能设置
+      AutofillAddressEnabled = true;
+      AutofillCreditCardEnabled = false;
+      Homepage.StartPage = "previous-session";
+      UserMessaging.SkipOnboarding = true;
+      # 搜索建议
+      FirefoxSuggest = {
+        SponsoredSuggestions = false;
+        ImproveSuggest = false;
+      };
+      # 新标签页
+      FirefoxHome = {
+        Search = true;
+        TopSites = false;
+        SponsoredTopSites = false;
+        Highlights = false;
+        Pocket = false;
+        SponsoredPocket = false;
+        Snippets = false;
+      };
+      # 跟踪保护
+      EnableTrackingProtection = {
+        Value = true;
+        Locked = true;
+        Cryptomining = true;
+        Fingerprinting = true;
+      };
 
       ExtensionSettings = mkExtensionSettings {
         "{c3c10168-4186-445c-9c5b-63f12b8e2c87}" = "cookie-editor";
@@ -74,7 +73,7 @@
       };
     };
 
-    profiles."${username}}" = {
+    profiles."${username}" = {
       id = 0;
       isDefault = true;
       name = "${username}";
@@ -85,7 +84,7 @@
         order = [
           "google"
           "bing"
-          "DuckDuckGo"
+          "ddg"
           "Baidu"
         ];
       };

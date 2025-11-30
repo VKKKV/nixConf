@@ -4,6 +4,7 @@
 }:
 stdenvNoCC.mkDerivation {
   pname = "rime-shuangpin-fuzhuma";
+  version = "1.0.0";
 
   src = inputs.rime;
 
@@ -31,4 +32,5 @@ stdenvNoCC.mkDerivation {
         __include: moqi_suggested_default:/
       ```
     '';
+  };
 }
