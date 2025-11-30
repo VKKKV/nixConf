@@ -1,6 +1,6 @@
 {
-  username,
   pkgs,
+  pkgs-stable,
   host,
   ...
 }: {
@@ -50,14 +50,14 @@
     clash-nyanpasu
   ];
 
-  # programs.clash-verge = {
-  #   enable = true;
-  #   autoStart = true;
-  #   package = pkgs.clash-nyanpasu;
-  #   # package = pkgs.clash-verge-rev;
-  #   tunMode = true;
-  #   serviceMode = true;
-  # };
+  programs.clash-verge = {
+    enable = true;
+    autoStart = true;
+    package = pkgs-stable.clash-nyanpasu;
+    # package = inputs.nixpkgs-stable.clash-verge-rev;
+    tunMode = true;
+    serviceMode = true;
+  };
 
   services = {
     # mihomo = {

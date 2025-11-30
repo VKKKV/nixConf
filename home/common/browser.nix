@@ -9,11 +9,12 @@
 
   stylix.targets.zen-browser = {
     enable = true;
-    profileNames = ["${username}"];
+    profileNames = [username];
   };
 
   programs.zen-browser = {
     enable = true;
+
     languagePacks = [
       "zh-CN"
       "zh-TW"
@@ -28,54 +29,41 @@
         }
       );
     in {
-      AutofillAddressEnabled = true;
-      AutofillCreditCardEnabled = false;
-      DisableAppUpdate = true;
-      DisableFeedbackCommands = true;
-      DisableFirefoxStudies = true;
-      DisablePocket = true;
-      DisableTelemetry = true;
-      DontCheckDefaultBrowser = true;
-      NoDefaultBookmarks = true;
-      OfferToSaveLogins = false;
-
-      Homepage.StartPage = "previous-session";
-
-      UserMessaging = {
-        SkipOnboarding = true;
-      };
-
-      FirefoxSuggest = {
-        SponsoredSuggestions = false; # 禁用广告赞助建议
-        ImproveSuggest = false; # 禁止收集数据以改进建议服务
-      };
-
-      FirefoxHome = {
-        Search = true; # 显示搜索框
-        TopSites = false; # 隐藏常用网站
-        SponsoredTopSites = false; # 隐藏赞助的常用网站
-        Highlights = false; # 隐藏收藏集锦
-        Pocket = false; # 隐藏 Pocket 推荐
-        SponsoredPocket = false; # 隐藏 Pocket 赞助内容
-        Snippets = false; # 隐藏 Mozilla 动态消息
-      };
-
-      Handlers.schemes.vscode = {
-        action = "useSystemDefault"; # 自动使用系统默认应用（VS Code）
-        ask = false; # 不再询问
-      };
-
-      Handlers.schemes.element = {
-        action = "useSystemDefault"; # 自动使用系统默认应用（Element 矩阵客户端）
-        ask = false;
-      };
-
-      EnableTrackingProtection = {
-        Value = true;
-        Locked = true;
-        Cryptomining = true;
-        Fingerprinting = true;
-      };
+        # 隐私与遥测
+        DisableAppUpdate = true;
+        DisableTelemetry = true;
+        DisablePocket = true;
+        DisableFirefoxStudies = true;
+        DontCheckDefaultBrowser = true;
+        NoDefaultBookmarks = true;
+        OfferToSaveLogins = false;
+        # 功能设置
+        AutofillAddressEnabled = true;
+        AutofillCreditCardEnabled = false;
+        Homepage.StartPage = "previous-session";
+        UserMessaging.SkipOnboarding = true;
+        # 搜索建议
+        FirefoxSuggest = {
+          SponsoredSuggestions = false;
+          ImproveSuggest = false;
+        };
+        # 新标签页
+        FirefoxHome = {
+          Search = true;
+          TopSites = false;
+          SponsoredTopSites = false;
+          Highlights = false;
+          Pocket = false;
+          SponsoredPocket = false;
+          Snippets = false;
+        };
+        # 跟踪保护
+        EnableTrackingProtection = {
+          Value = true;
+          Locked = true;
+          Cryptomining = true;
+          Fingerprinting = true;
+        };
 
       ExtensionSettings = mkExtensionSettings {
         "{c3c10168-4186-445c-9c5b-63f12b8e2c87}" = "cookie-editor";
@@ -97,7 +85,7 @@
         order = [
           "google"
           "bing"
-          "ddg"
+          "DuckDuckGo"
           "Baidu"
         ];
       };

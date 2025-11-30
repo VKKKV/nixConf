@@ -4,10 +4,16 @@
   outputs = {
     self,
     nixpkgs,
+    nixpkgs-stable,
     ...
   } @ inputs: let
     username = "kita";
     system = "x86_64-linux";
+
+    pkgs-stable = import nixpkgs-stable {
+      system = "x86_64-linux";
+      config = { allowUnfree = true; };
+    };
 
     overlays = [
       # (final: prev: {
@@ -31,7 +37,7 @@
         inherit system;
         specialArgs = {
           host = "laptop";
-          inherit self inputs username;
+          inherit self inputs username pkgs-stable;
         };
         modules = [
           ./hosts/laptop
