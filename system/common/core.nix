@@ -14,6 +14,7 @@
 
     systemPackages = with pkgs; [
       alejandra
+      binsider # Analyzer of executables using a terminal user interface
 
       (ripgrep.override {withPCRE2 = true;})
       aria2 # A lightweight multi-protocol & multi-source command-line download utility
