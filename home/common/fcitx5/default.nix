@@ -12,11 +12,11 @@
         qt6Packages.fcitx5-configtool
 
         fcitx5-mozc
-        # rime-wanxiang
 
         (fcitx5-rime.override {
-          rimeDataPkgs = [
-            pkgs.rime-shuangpin-fuzhuma
+          rimeDataPkgs = with pkgs;[
+        # rime-wanxiang
+            rime-shuangpin-fuzhuma
           ];
         })
       ];
