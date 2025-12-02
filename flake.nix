@@ -36,6 +36,7 @@
         ];
       };
 
+        # redmibook pro 15
       laptop = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = {
@@ -45,11 +46,9 @@
         modules = [
           ./hosts/laptop
           {
-            nixpkgs.config = {
-              allowUnfree = true;
-              allowBroken = true;
-            };
             nixpkgs.overlays = overlays;
+            nixpkgs.config.allowUnfree = true;
+            nixpkgs.config.allowBroken = true;
           }
         ];
       };
