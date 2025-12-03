@@ -2,36 +2,3 @@ patch:
   __include: moqi_suggested_default:/
   # __include: wanxiang_suggested_default:/
 
-  schema_list:
-    - schema: moqi_wan_flypymo # 墨奇万象·小鹤+墨奇形
-  # - schema: moqi_wan_flypy # 墨奇万象·小鹤+鹤形 鹤形+鹤拼, 小鹤官方就只有8000字左右
-  # - schema: moqi_single_xh # 墨奇码·顶屏版·小鹤双拼，为了4码自动上屏 只收录了8000字
-  # - schema: moqi_xh # 墨奇辅助码 鹤拼版 大词库版本 非自动上屏，支持4万字
-
-  key_binder:
-    bindings:
-      - { when: has_menu, accept: semicolon, send: 2 }
-      - { when: has_menu, accept: slash, send: 3 }
-      # for colemak layout
-      # - { when: has_menu, accept: o, send: 2 }
-      # - { when: has_menu, accept: slash, send: 3 }
-      # - { when: always, accept: f, send: e }
-      # - { when: always, accept: p, send: r }
-      # - { when: always, accept: b, send: t }
-      # - { when: always, accept: j, send: y }
-      # - { when: always, accept: l, send: u }
-      # - { when: always, accept: u, send: i }
-      # - { when: always, accept: y, send: o }
-      # - { when: always, accept: semicolon, send: p }
-      # - { when: always, accept: r, send: s }
-      # - { when: always, accept: s, send: d }
-      # - { when: always, accept: t, send: f }
-      # - { when: always, accept: m, send: h }
-      # - { when: always, accept: n, send: j }
-      # - { when: always, accept: e, send: k }
-      # - { when: always, accept: i, send: l }
-      # - { when: always, accept: o, send: semicolon }
-      # - { when: always, accept: d, send: v }
-      # - { when: always, accept: v, send: b }
-      # - { when: always, accept: k, send: n }
-      # - { when: always, accept: h, send: m }
