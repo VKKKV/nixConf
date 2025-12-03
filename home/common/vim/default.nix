@@ -99,7 +99,7 @@
       nnoremap <Leader>fr :Rg!<CR>
       nnoremap <Leader>fh :History!<CR>
       nnoremap <Leader>fb :Buffers!<CR>
-      nnoremap <Leader>/ :Lines!<CR>
+      nnoremap <Leader>ft :Lines!<CR>
       nnoremap <Leader>fh :History!<CR>
 
       let g:typst_pdf_viewer = 'zathura'
