@@ -48,6 +48,22 @@ Environment="https_proxy=socks5h://192.168.0.106:7897"
 EOF
 sudo systemctl daemon-reload
 sudo systemctl restart nix-daemon
+
+# default.nix
+let
+  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-24.05";
+  pkgs = import nixpkgs { config = {}; overlays = []; };
+in
+{
+  hello = pkgs.callPackage ./hello.nix { };
+}
+
+nix-build -A hello
+
+nix-prefetch-url --unpack https://github.com/atextor/icat/archive/refs/tags/v0.5.tar.gz --type sha256
+
+rg -i "libx11 =" pkgs
+
 ```
 
 ```nix
@@ -76,5 +92,6 @@ xdg.dataFile."test" = {
     recursive = true;
     executable = true;
 };
+
 ```
 
