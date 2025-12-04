@@ -14,5 +14,5 @@ jobs:
       with:
         name: vkkkv
         authToken: '${{ secrets.CACHIX_AUTH_TOKEN }}'
-    - run: nix build -L .#laptop
+    - run: nixos-rebuild build --flake .#laptop
     - run: nix-shell --run "echo OK"
