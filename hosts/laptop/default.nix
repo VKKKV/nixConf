@@ -63,10 +63,26 @@
         CPU_BOOST_ON_BAT = 0;
 
         PLATFORM_PROFILE_ON_AC = "performance";
-        PLATFORM_PROFILE_ON_BAT = "powersave";
+        PLATFORM_PROFILE_ON_BAT = "low-power";
+
+        INTEL_GPU_MIN_FREQ_ON_AC = 500;
+        INTEL_GPU_MIN_FREQ_ON_BAT = 100;
+        INTEL_GPU_MAX_FREQ_ON_AC = 1300;
+        INTEL_GPU_MAX_FREQ_ON_BAT = 500;
 
         PCIE_ASPM_ON_AC = "default";
         PCIE_ASPM_ON_BAT = "powersupersave";
+
+        USB_AUTOSUSPEND = 1;
+        SOUND_POWER_SAVE_ON_AC = 0;
+        SOUND_POWER_SAVE_ON_BAT = 1;
+        WIFI_POWERSAVE_ON_AC = 0;
+        WIFI_POWERSAVE_ON_BAT = 1;
+
+        # NVIDIA独显电源管理
+        # RUNTIME_PM_ON_AC = "on";
+        # RUNTIME_PM_ON_BAT = "auto";
+        # NVIDIA_PM_ENABLED = 1; # 如果使用闭源驱动
       };
     };
 
