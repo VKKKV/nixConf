@@ -12,7 +12,7 @@
       # "plymouth.use-simpledrm"
     ];
 
-    plymouth.enable = true;
+    # plymouth.enable = true;
 
     tmp = {
       useTmpfs = true;

@@ -4,12 +4,18 @@
   ...
 }: {
   services = {
-    greetd = {
+    greetd = let
+      session = {
+        # command = "${pkgs.niri}/bin/niri-session";
+        command = "${pkgs.hyprland}/bin/hyprland";
+        user = username;
+      };
+    in {
       enable = true;
       settings = {
-        default_session = {
-          user = username;
-        };
+        terminal.vt = 1;
+        default_session = session;
+        initial_session = session;
       };
     };
 

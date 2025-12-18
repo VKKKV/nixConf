@@ -140,6 +140,7 @@
     bash.enable = true;
     fish.enable = true;
     bcc.enable = true;
+    hyprland.enable = true;
 
     nh = {
       enable = true;
