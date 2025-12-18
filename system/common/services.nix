@@ -4,16 +4,11 @@
   ...
 }: {
   services = {
-    # touchpad support
-
     greetd = {
       enable = true;
       settings = {
-        terminal.vt = 1;
         default_session = {
           user = username;
-          # command = "${pkgs.niri}/bin/niri-session";
-          # command = "${pkgs.hyprland}/bin/hyprland-session";
         };
       };
     };

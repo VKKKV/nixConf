@@ -4,21 +4,20 @@
     package = pkgs.xdg-terminal-exec-mkhl;
     settings = let
       my_terminal_desktop = [
-        # NOTE: We have add these packages at user level
         "com.mitchellh.ghostty.desktop"
         "kitty.desktop"
         "Alacritty.desktop"
         "foot.desktop"
       ];
     in {
+      Hyprland = my_terminal_desktop;
+      default = my_terminal_desktop;
       GNOME =
         my_terminal_desktop
         ++ [
           "com.raggesilver.BlackBox.desktop"
           "org.gnome.Terminal.desktop"
         ];
-      niri = my_terminal_desktop;
-      default = my_terminal_desktop;
     };
   };
 
@@ -27,19 +26,18 @@
     xdgOpenUsePortal = true;
     config = {
       common = {
-        default = [
-          "gnome"
-          "gtk"
-        ];
-        "org.freedesktop.impl.portal.ScreenCast" = "gnome";
-        "org.freedesktop.impl.portal.Screenshot" = "gnome";
-        "org.freedesktop.impl.portal.RemoteDesktop" = "gnome";
+        default = ["gtk"];
+      };
+      hyprland = {
+        default = ["hyprland" "gtk"];
+        # "org.freedesktop.impl.portal.Screenshots" = [ "hyprland" ];
+        # "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
       };
     };
 
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-gtk # for provides file picker / OpenURI
-      xdg-desktop-portal-gnome # for screensharing
+    extraPortals = [
+      pkgs.xdg-desktop-portal-gtk
+      pkgs.xdg-desktop-portal-hyprland
     ];
   };
 }
