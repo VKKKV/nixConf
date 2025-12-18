@@ -108,5 +108,9 @@
       url = "github:subframe7536/maple-font/variable";
       flake = false;
     };
+    xmcl = {
+      url = "github:x45iq/xmcl-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 }
