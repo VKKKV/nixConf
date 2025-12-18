@@ -3,6 +3,12 @@
     "xdg-desktop-autostart.target"
   ];
 
+  services = {
+    swww = {
+      enable = true;
+    };
+  };
+
   wayland.windowManager.hyprland = {
     enable = true;
     package = null;
