@@ -11,6 +11,7 @@
   ];
 
   home.packages = with pkgs; [
+    satty
     tesseract
     blueberry # 蓝牙图形界面
     blueman # 蓝牙管理
