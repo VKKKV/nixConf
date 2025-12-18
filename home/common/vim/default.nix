@@ -83,7 +83,7 @@
       nnoremap <silent> <Leader>j :wincmd j<CR>
       nnoremap <silent> <Leader>k :wincmd k<CR>
       nnoremap <silent> <Leader>l :wincmd l<CR>
-      xnoremap <silent> cp :w !wl-copy<CR><CR>
+      xnoremap <silent> <Leader>y :w !wl-copy<CR><CR>
       nnoremap <C-L> :nohlsearch<CR><C-L>
 
       filetype plugin indent on
