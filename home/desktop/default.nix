@@ -1,17 +1,17 @@
 {pkgs, ...}: {
   imports = [
-    ./niri
+    # ./niri
+    ./hyprlandLaptop
     ./rofi
-    ./waybarGruvbox
+    ./waybar
     ./waypaper.nix
 
-    # ./hyprlandLaptop
     # ./swayidle.nix
     # ./swaylock.nix
-    # ./waybarShorin
   ];
 
   home.packages = with pkgs; [
+    tesseract
     blueberry # 蓝牙图形界面
     blueman # 蓝牙管理
     bluez # 蓝牙协议栈

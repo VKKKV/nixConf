@@ -5,7 +5,6 @@
 }: {
   services = {
     # touchpad support
-    libinput.enable = true;
 
     greetd = {
       enable = true;
@@ -13,7 +12,7 @@
         terminal.vt = 1;
         default_session = {
           user = username;
-          command = "${pkgs.niri}/bin/niri-session";
+          # command = "${pkgs.niri}/bin/niri-session";
           # command = "${pkgs.hyprland}/bin/hyprland-session";
         };
       };
@@ -25,6 +24,8 @@
         user = username;
       };
     };
+
+    libinput.enable = true;
 
     gvfs.enable = true; # Virtual filesystems
     tumbler.enable = true; # Thumbnail support for images
