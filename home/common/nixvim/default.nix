@@ -43,8 +43,6 @@
 
       # Undo
       undofile = true;
-      # Note: Hardcoding /home/user is usually discouraged in Nix.
-      # Consider using: undodir = { __raw = "vim.fn.expand('~/.vim/undodir')"; };
       undodir = "/home/user/.vim/undodir";
 
       foldopen = "mark,percent,quickfix,search,tag,undo";
@@ -67,6 +65,22 @@
       luasnip.enable = true;
       trouble.enable = true;
       markdown-preview.enable = true;
+      vim-visual-multi.enable = true;
+      typst-preview-nvim.enable = true;
+
+      tiny-inline-diagnostic-nvim = {
+        enable = true;
+        settings = {
+          options = {
+            multilines.enabled = false;
+            show_source.enabled = true;
+          };
+        };
+      };
+
+      extraConfigLua = ''
+        vim.diagnostic.config({ virtual_text = false })
+      '';
 
       # UI: Statusline
       lualine = {
@@ -185,23 +199,6 @@
         };
       };
     };
-
-    # --- Extra Plugins & Config ---
-    extraPlugins = with pkgs.vimPlugins; [
-      vim-visual-multi
-      typst-preview-nvim
-      tiny-inline-diagnostic-nvim
-    ];
-
-    extraConfigLua = ''
-      require("tiny-inline-diagnostic").setup({
-        options = {
-          multilines = { enabled = false },
-          show_source = { enabled = true }
-        }
-      })
-      vim.diagnostic.config({ virtual_text = false })
-    '';
 
     # --- Keymaps ---
     keymaps = [
