@@ -35,8 +35,12 @@
 
   # --- Environment & Shells ---
   environment = {
-    variables.EDITOR = "vim --clean";
-    shells = with pkgs; [bashInteractive fish zsh];
+    # added in nixvim
+    # variables.EDITOR = "vim --clean";
+    shells = with pkgs; [
+      bashInteractive
+      fish
+    ];
 
     systemPackages = with pkgs; [
       # Development & Editors
