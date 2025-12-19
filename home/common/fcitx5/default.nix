@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  stylix.enableReleaseChecks = false;
   stylix.targets.fcitx5.enable = false;
 
   i18n.inputMethod = {

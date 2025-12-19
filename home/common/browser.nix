@@ -6,6 +6,8 @@
 }: {
   imports = [inputs.zen-browser.homeModules.beta];
 
+  stylix.enableReleaseChecks = false;
+
   stylix.targets.zen-browser = {
     enable = true;
     profileNames = [username];

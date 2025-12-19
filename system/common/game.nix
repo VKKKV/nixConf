@@ -10,6 +10,8 @@ with inputs; {
     aagl.nixosModules.default
   ];
 
+  aagl.enableNixpkgsReleaseBranchCheck = false;
+
   programs = {
     steam = {
       enable = true;

@@ -37,6 +37,7 @@
   stylix = {
     enable = true;
     autoEnable = true;
+    enableReleaseChecks = false;
 
     targets = {
       limine.enable = false;
