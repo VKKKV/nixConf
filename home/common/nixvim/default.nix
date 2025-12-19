@@ -126,6 +126,7 @@
           vue
           java
           glsl
+          nix
         ];
       };
 
