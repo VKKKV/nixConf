@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./nixvim
     ./fcitx5
     ./mpv
     ./vim
