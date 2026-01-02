@@ -14,5 +14,6 @@
     ./thunar.nix
     ./virtualization.nix
     ./xdg.nix
+    ./remix.nix
   ];
 }
