@@ -1,7 +1,7 @@
 ; Reaper Virtual Keyboard Mapping
 ; For corner keyboard with colemak-dh layout
-Z -12    ;  C w
-X -11    ;  C#
+Z -12    ; C
+X -11    ; C#
 C -10    ; D
 D -9     ; D#
 V -8     ; E
