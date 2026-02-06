@@ -57,5 +57,15 @@
       on-click = "pwvucontrol";
       tooltip = false;
     };
+    power-profiles-daemon = {
+      format = "{icon}";
+      tooltip-format = "当前性能模式：{profile}\n---\n左键：切换性能模式";
+      tooltip = true;
+      format-icons = {
+        performance = "󱐋";
+        balanced = "";
+        power-saver = "";
+      };
+    };
   };
 }
