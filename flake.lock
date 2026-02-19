@@ -91,48 +91,6 @@
         "type": "github"
       }
     },
-    "dgop": {
-      "inputs": {
-        "nixpkgs": [
-          "dms",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1762435535,
-        "narHash": "sha256-QhzRn7pYN35IFpKjjxJAj3GPJECuC+VLhoGem3ezycc=",
-        "owner": "AvengeMedia",
-        "repo": "dgop",
-        "rev": "6cf638dde818f9f8a2e26d0243179c43cb3458d7",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AvengeMedia",
-        "repo": "dgop",
-        "type": "github"
-      }
-    },
-    "dms": {
-      "inputs": {
-        "dgop": "dgop",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1764303153,
-        "narHash": "sha256-9zi/sP7Z2+Sd5ClNSkrigtImFd+ykOStu173jCHozDY=",
-        "owner": "AvengeMedia",
-        "repo": "DankMaterialShell",
-        "rev": "022102107866ad658e88c3ce21491991c9dcd14d",
-        "type": "github"
-      },
-      "original": {
-        "owner": "AvengeMedia",
-        "repo": "DankMaterialShell",
-        "type": "github"
-      }
-    },
     "firefox-addons": {
       "inputs": {
         "nixpkgs": [
@@ -792,7 +750,6 @@
     "root": {
       "inputs": {
         "aagl": "aagl",
-        "dms": "dms",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "maple-mono": "maple-mono",

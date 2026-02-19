@@ -4,7 +4,7 @@
 }:
 stdenvNoCC.mkDerivation {
   pname = "rime-shuangpin-fuzhuma";
-  version = "1.0.0";
+  version = "1.0.7";
 
   src = inputs.rime;
 

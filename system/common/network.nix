@@ -46,17 +46,8 @@
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
     flclash
-    clashtui
     clash-nyanpasu
   ];
-
-  # programs.clash-verge = {
-  #   enable = true;
-  #   autoStart = true;
-  #   package = pkgs-stable.clash-verge-rev;
-  #   tunMode = true;
-  #   serviceMode = true;
-  # };
 
   services = {
     # mihomo = {

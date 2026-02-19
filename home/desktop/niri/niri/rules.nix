@@ -179,8 +179,6 @@ in {
     window-rules = windowRules;
     layer-rules = [
       {
-        matches = [{namespace = "dms:blurwallpaper";}];
-        place-within-backdrop = true;
       }
     ];
   };

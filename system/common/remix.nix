@@ -4,30 +4,29 @@
     systemPackages = with pkgs; [
       # the best unfree but free daw
       reaper
-
-      # plugins for reaper
+      #
+      # # plugins for reaper
       reaper-reapack-extension
       reaper-sws-extension
-
-      # session manager for musical programs
+      #
+      # # session manager for musical programs
       raysession
-
-      # vst plugins
-      # kontact ?
-      decent-sampler
+      #
+      # # vst plugins
+      # # kontact ?
+      # decent-sampler
       sfizz
-
-      # vcv rack ?
-      cardinal
+      #
+      # # vcv rack ?
+      # cardinal
       vital
-
-      # fabfilter ?
+      #
+      # # fabfilter ?
       lsp-plugins
       dragonfly-reverb
-      # calf
 
       # vocaloid ?
-      openutau
+      # openutau
     ];
   };
 }
