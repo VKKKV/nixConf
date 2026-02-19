@@ -30,6 +30,7 @@
     ];
 
     systemPackages = with pkgs; [
+      zulu17
       # Development & Editors
       (ripgrep.override {withPCRE2 = true;})
       alejandra
