@@ -3,8 +3,14 @@
   osConfig,
   ...
 }: {
+  /**
+   * home/common/core.nix
+   * Shared user-level configuration for all hosts.
+   * Includes high-level program settings and user-specific services.
+   */
+
   programs = {
-    # Live streaming and recording
+    # OBS Studio: A feature-rich software for video recording and live streaming.
     obs-studio = {
       enable = pkgs.stdenv.isx86_64;
       plugins = with pkgs.obs-studio-plugins; [
@@ -39,7 +45,8 @@
       ];
     };
 
-    # Game launcher and compatibility layers
+    # Lutris: Open-source gaming platform for GNU/Linux.
+    # Manages game launchers and compatibility layers like Wine/Proton.
     lutris = {
       enable = true;
       steamPackage = osConfig.programs.steam.package;
@@ -64,9 +71,15 @@
     };
   };
 
+  # --- User Services ---
   services = {
-    playerctld.enable = true; # Media player daemon
-    udiskie.enable = true; # Auto-mount USB drives
+    # Media player daemon for remote control via playerctl
+    playerctld.enable = true;
+
+    # Auto-mounting service for removable media (USB drives, etc.)
+    udiskie.enable = true;
+
+    # Syncthing: Continuous file synchronization service (currently disabled)
     # syncthing.enable = true;
   };
 }

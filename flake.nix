@@ -1,5 +1,10 @@
+/**
+ * flake.nix
+ * The main entry point for the NixOS configuration.
+ * Defines inputs (nixpkgs, home-manager, etc.) and outputs (nixosConfigurations).
+ */
 {
-  description = "Retard NixOS flake";
+  description = "NixOS Configuration Flake";
 
   outputs = {
     self,

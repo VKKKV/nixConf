@@ -57,20 +57,44 @@ sudo nixos-rebuild test --flake .#<hostname>
     ```bash
     alejandra .
     ```
+*   **Check Syntax:**
+    ```bash
+    nix flake check
+    ```
 
-## Development Conventions
+## Code Style & Development Conventions
 
-*   **Formatting:** All `.nix` files should be formatted with `alejandra`.
-*   **Mirrors:** The configuration is set up to use Chinese mirrors (NJU, SJTU, TUNA) for binary caches and flake inputs. Respect these settings in `flake.nix` and system configs.
-*   **Modularity:**
-    -   System-level settings go into `system/`.
-    -   User-level settings go into `home/`.
-    -   Keep host-specific overrides in `hosts/<hostname>/`.
-*   **Secrets:** Be careful not to commit actual secrets (API keys, passwords) directly if not using a secret management solution (like sops-nix).
-*   **Shells:** The user uses `fish` and `bash`.
-*   **WindowManager:** Hyprland is the primary window manager (configured in `home/desktop/hyprlandLaptop` and `system/common/core.nix`).
+### Formatting
+- All `.nix` files should be formatted with `alejandra`.
+- Use 2-space indentation and consistent bracket/comma style.
 
-## User Notes (from AGENTS.md)
-*   Two configurations exist: `desktop` (performance) and `laptop` (power-optimized).
-*   The `nh` tool is enabled for better Nix CLI experience and garbage collection.
-*   `stylix` is used for global theming.
+### Imports & Structure
+- Group imports in order: (1) inputs, (2) pkgs/config, (3) local modules.
+- Use `{pkgs, inputs, username, ...}:` destructuring.
+- Module structure: `{...}: { imports = [...]; }` pattern with logical separation per-feature.
+- Use `let ... in` for computed values, placed before the main attribute set.
+
+### Naming & Organization
+- Use kebab-case for files (`my-module.nix`).
+- Use camelCase for attributes.
+- Use descriptive names for let bindings.
+- Organization: System-level in `system/`, user-level in `home/`, host-specific in `hosts/`, custom packages in `pkgs/`.
+
+### Documentation & Strings
+- **Comments:** Chinese comments are acceptable, but prefer English for complex logic. Include source URLs for custom configs.
+- **Strings:** Multi-line with `''...''`, inline with quotes. Use `${...}` interpolation for variables.
+- **Lists:** Trailing items without commas in `with pkgs; [...]` blocks, use one item per line for readability.
+
+## Infrastructure & Mirrors
+- **Mirrors:** The configuration is set up to use Chinese mirrors (NJU, SJTU, TUNA) for binary caches and flake inputs. Respect these settings in `flake.nix` and system configs.
+- **Modularity:**
+    - System-level settings go into `system/`.
+    - User-level settings go into `home/`.
+    - Keep host-specific overrides in `hosts/<hostname>/`.
+- **Secrets:** Be careful not to commit actual secrets (API keys, passwords) directly if not using a secret management solution (like sops-nix).
+
+## Key Components
+- **Shells:** The user uses `fish` and `bash`.
+- **WindowManager:** Hyprland is the primary window manager (configured in `home/desktop/hyprlandLaptop` and `system/common/core.nix`).
+- **Tooling:** The `nh` tool is enabled for better Nix CLI experience and garbage collection.
+- **Theming:** `stylix` is used for global theming.

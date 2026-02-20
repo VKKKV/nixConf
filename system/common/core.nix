@@ -3,9 +3,14 @@
   inputs,
   ...
 }: {
+  /**
+   * system/common/core.nix
+   * Core system configuration shared across all hosts.
+   * Includes essential system settings, global packages, and basic program configurations.
+   */
   system.stateVersion = "25.11";
 
-  # --- System Settings ---
+  # --- Localization & Time ---
   time = {
     timeZone = "Asia/Shanghai";
     hardwareClockInLocalTime = true;
@@ -13,6 +18,8 @@
 
   i18n.defaultLocale = "en_US.UTF-8";
 
+  # --- Resource Management ---
+  # Enable zram swap for better performance on systems with limited RAM
   zramSwap = {
     enable = true;
     algorithm = "zstd";
@@ -22,16 +29,18 @@
 
   # --- Environment & Shells ---
   environment = {
-    # added in nixvim
-    # variables.EDITOR = "vim --clean";
+    # Define available shells
     shells = with pkgs; [
       bashInteractive
       fish
     ];
 
+    # Global system packages
     systemPackages = with pkgs; [
+      # Java Runtime
       zulu17
-      # Development & Editors
+
+      # Development Tools & Editors
       (ripgrep.override {withPCRE2 = true;})
       alejandra
       jetbrains.idea-community-bin
@@ -49,13 +58,13 @@
       dive
       lazydocker
 
-      # Databases
+      # Database Clients
       mycli
       pgcli
       mongosh
       sqlite
 
-      # Network & Analysis
+      # Network Diagnostics & Tools
       wireshark
       mitmproxy
       nmap
@@ -72,7 +81,7 @@
       curlie
       httpie
 
-      # System Monitoring & Hardware
+      # System Monitoring & Hardware Info
       btop
       nmon
       fastfetch
@@ -90,14 +99,14 @@
       hdparm
       parted
 
-      # BPF & Tracing
+      # Debugging & Tracing
       bpfmon
       bpftop
       bpftrace
       strace
       ltrace
 
-      # File Management & CLI Tools
+      # File Management & CLI Utilities
       fd
       fzf
       tree
@@ -131,7 +140,7 @@
       calc
       tealdeer
 
-      # Media (Images/Video/Audio)
+      # Multimedia & Graphics
       ffmpeg-full
       imagemagick
       graphviz
@@ -147,14 +156,14 @@
       vulkan-tools
       mesa-demos
 
-      # Gaming & Graphics
+      # Gaming & Compatibility
       heroic
       mangohud
       protonplus
       winetricks
       kicad
 
-      # Internet & Remote Desktop
+      # Web Browsers & Communication
       google-chrome
       firefox
       remmina
@@ -168,7 +177,7 @@
       git-trim
       gitleaks
 
-      # Specialized / Utils
+      # Miscellaneous Utilities
       binsider
       sysbench
       sysstat
@@ -177,7 +186,7 @@
       libargon2
       openssl
 
-      # FHS Environment Script
+      # FHS Environment Script for running non-Nix binaries
       (let
         base = pkgs.appimageTools.defaultFhsEnvArgs;
       in
@@ -192,7 +201,7 @@
     ];
   };
 
-  # --- Imports & Modules ---
+  # --- Module Imports ---
   imports = [
     inputs.nix-index-database.nixosModules.nix-index
   ];
@@ -205,6 +214,7 @@
     bcc.enable = true;
     hyprland.enable = true;
 
+    # Nix Helper (nh) for easier system management
     nh = {
       enable = true;
       clean = {
@@ -214,6 +224,7 @@
       flake = "/etc/nixos";
     };
 
+    # Command-not-found database integration
     nix-index = {
       enable = true;
       package = pkgs.nix-index;
@@ -221,12 +232,14 @@
 
     nix-index-database.comma.enable = true;
 
+    # GnuPG Agent with SSH support
     gnupg.agent = {
       enable = true;
       enableSSHSupport = true;
       pinentryPackage = pkgs.pinentry-gtk2;
     };
 
+    # Nix-ld for running unpatched dynamic binaries
     nix-ld = {
       enable = true;
       libraries = with pkgs; [stdenv.cc.cc];
