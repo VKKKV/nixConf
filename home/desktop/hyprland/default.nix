@@ -1,10 +1,6 @@
 /**
  * home/desktop/hyprland/default.nix
  * Hyprland window manager configuration and service setup.
- */
-/**
- * home/desktop/hyprland/default.nix
- * Hyprland window manager configuration and service setup.
  * Handles common settings and host-specific overrides (e.g., laptop monitor scaling).
  */
 {host, ...}: {
