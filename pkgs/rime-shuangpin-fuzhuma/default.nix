@@ -1,3 +1,7 @@
+/**
+ * pkgs/rime-shuangpin-fuzhuma/default.nix
+ * Custom package for Rime Shuangpin Fuzhuma data.
+ */
 {
   stdenvNoCC,
   inputs,

@@ -1,97 +1,54 @@
-Under construction
+# NixOS Configuration
 
-copy start 👅👅👅
+My personal NixOS configuration using Flakes and Home Manager.
 
-orz omg
+## 🚀 Quick Start
 
-https://github.com/klchen0112/dotfiles
+### Installation
+```bash
+# Clone the repository
+git clone https://github.com/VKKKV/nixConf.git ~/nixConf
 
-https://github.com/linuxmobile/kaku
-
-https://github.com/Frost-Phoenix/nixos-config
-
-stylix! awesome!
-
-# memo
-
-``` shell
-sudo systemctl reboot --firmware-setup
-
-# change --root when root partition mount point is not /mnt
-
-nix-collect-garbage -d
-
-nixos-generate-config --root /mnt
-
-git clone git@github.com:VKKKV/nixConf.git --config "http.proxy=192.168.0.106:7897"
-
-sudo mv /etc/nixos /etc/nixos.bak
-
+# Symbol link to /etc/nixos
 sudo ln -s ~/nixConf /etc/nixos
 
-cp hardware-configuration.nix hosts/laptop/hardware-configuration.nix
+# Build and switch for laptop
+sudo nixos-rebuild switch --flake .#laptop
 
-sudo nixos-rebuild switch --flake .#laptop --option substituters "https://mirror.nju.edu.cn/nix-channels/store https://cache.nixos.org"
-
-nixos-rebuild switch --option substituters "https://mirror.sjtu.edu.cn/nix-channels/store"
-nixos-rebuild switch --option substituters "https://mirrors.ustc.edu.cn/nix-channels/store"
-nixos-rebuild switch --option substituters "https://mirrors.tuna.tsinghua.edu.cn/nix-channels/store"
-
-sudo nixos-install --root /mnt
-
-sudo nixos-install --root /mnt --flake .#laptop --option substituters "https://mirror.nju.edu.cn/nix-channels/store https://cache.nixos.org"
-
-sudo mkdir -p /run/systemd/system/nix-daemon.service.d/
-sudo tee /run/systemd/system/nix-daemon.service.d/override.conf << EOF
-[Service]
-Environment="https_proxy=socks5h://192.168.0.106:7897"
-EOF
-sudo systemctl daemon-reload
-sudo systemctl restart nix-daemon
-
-# default.nix
-let
-  nixpkgs = fetchTarball "https://github.com/NixOS/nixpkgs/tarball/nixos-24.05";
-  pkgs = import nixpkgs { config = {}; overlays = []; };
-in
-{
-  hello = pkgs.callPackage ./hello.nix { };
-}
-
-nix-build -A hello
-
-nix-prefetch-url --unpack https://github.com/atextor/icat/archive/refs/tags/v0.5.tar.gz --type sha256
-
-rg -i "libx11 =" pkgs
-
+# Build and switch for desktop
+sudo nixos-rebuild switch --flake .#desktop
 ```
 
-```nix
-nix.settings.substituters = [ "https://mirror.nju.edu.cn/nix-channels/store" ];
+### Maintenance
+```bash
+# Update flake inputs
+nix flake update
 
-home.file.".config/i3/wallpaper.jpg".source = ./wallpaper.jpg;
+# Garbage collection (using nh)
+sudo nh clean
 
-home.file.".config/i3/scripts" = {
-  source = ./scripts;
-  recursive = true;   # 递归整个文件夹
-  executable = true;  # 将其中所有文件添加「执行」权限
-};
-
-home.file.".xxx".text = ''
-    xxx
-'';
-
-xdg.configFile."test" = {
-    source = ./config;
-    recursive = true;
-    executable = true;
-};
-
-xdg.dataFile."test" = {
-    source = ./config;
-    recursive = true;
-    executable = true;
-};
-
+# Format code
+alejandra .
 ```
 
+## 💻 Hardware
+- **Laptop**: RedmiBook Pro 15 (Power-optimized with TLP)
+- **Desktop**: Performance-oriented configuration
+
+## 🛠 Tech Stack
+- **OS**: NixOS (Unstable)
+- **WM**: Hyprland
+- **Shell**: Fish / Bash
+- **Terminal**: Ghostty / Kitty
+- **Editor**: VS Codium / NixVim / Vim
+- **Theme**: Stylix (Gruvbox Dark)
+- **File Manager**: Yazi / Thunar
+- **Browser**: Zen Browser
+
+## 📚 Documentation
+Detailed information for AI agents and developers can be found in [GEMINI.md](./GEMINI.md).
+
+## 🙏 Credits
+- [klchen0112/dotfiles](https://github.com/klchen0112/dotfiles)
+- [linuxmobile/kaku](https://github.com/linuxmobile/kaku)
+- [Frost-Phoenix/nixos-config](https://github.com/Frost-Phoenix/nixos-config)

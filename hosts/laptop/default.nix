@@ -1,3 +1,8 @@
+/**
+ * hosts/laptop/default.nix
+ * Host-specific configuration for the RedmiBook Pro 15 laptop.
+ * Focused on power optimization, thermal management, and portability.
+ */
 {
   pkgs,
   config,
@@ -9,6 +14,7 @@
     ../../home.nix
   ];
 
+  # Disable default power profiles daemon in favor of TLP
   services.power-profiles-daemon.enable = false;
 
   environment.systemPackages = with pkgs; [
@@ -19,18 +25,20 @@
   ];
 
   services = {
+    # Keyd: Advanced keyboard remapping
     keyd = {
       enable = true;
       keyboards = {
         default = {
           ids = ["*"];
           settings = {
-            main.capslock = "overload(control,esc)";
+            main.capslock = "overload(control,esc)"; # CapsLock as Ctrl (hold) and Esc (tap)
           };
         };
       };
     };
 
+    # UPower: Power management service
     upower = {
       enable = true;
       percentageLow = 20;
@@ -39,23 +47,27 @@
       criticalPowerAction = "PowerOff";
     };
 
+    # TLP: Advanced power management for Linux laptops
     tlp = {
       enable = true;
       settings = {
         TLP_DEFAULT_MODE = "BAT";
         TLP_PERSISTENT_DEFAULT = 1;
 
+        # CPU Performance scaling
         CPU_SCALING_GOVERNOR_ON_AC = "performance";
         CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
 
         CPU_ENERGY_PERF_POLICY_ON_AC = "performance";
         CPU_ENERGY_PERF_POLICY_ON_BAT = "power";
 
+        # Performance limits
         CPU_MIN_PERF_ON_AC = 0;
         CPU_MAX_PERF_ON_AC = 100;
         CPU_MIN_PERF_ON_BAT = 0;
         CPU_MAX_PERF_ON_BAT = 50;
 
+        # Battery charging thresholds
         START_CHARGE_THRESH_BAT0 = 40;
         STOP_CHARGE_THRESH_BAT0 = 80;
 
@@ -65,11 +77,13 @@
         PLATFORM_PROFILE_ON_AC = "performance";
         PLATFORM_PROFILE_ON_BAT = "low-power";
 
+        # Intel GPU frequency limits
         INTEL_GPU_MIN_FREQ_ON_AC = 500;
         INTEL_GPU_MIN_FREQ_ON_BAT = 100;
         INTEL_GPU_MAX_FREQ_ON_AC = 1300;
         INTEL_GPU_MAX_FREQ_ON_BAT = 500;
 
+        # Hardware power saving
         PCIE_ASPM_ON_AC = "default";
         PCIE_ASPM_ON_BAT = "powersupersave";
 
@@ -78,11 +92,6 @@
         SOUND_POWER_SAVE_ON_BAT = 1;
         WIFI_POWERSAVE_ON_AC = 0;
         WIFI_POWERSAVE_ON_BAT = 1;
-
-        # NVIDIA独显电源管理
-        # RUNTIME_PM_ON_AC = "on";
-        # RUNTIME_PM_ON_BAT = "auto";
-        # NVIDIA_PM_ENABLED = 1; # 如果使用闭源驱动
       };
     };
 
@@ -101,12 +110,14 @@
     };
   };
 
+  # Power management tweaks
   powerManagement = {
     enable = true;
-    cpuFreqGovernor = "performance"; # Overridden by TLP when switching modes
-    powertop.enable = true; # Apply power saving tweaks at boot
+    cpuFreqGovernor = "performance"; # Managed by TLP
+    powertop.enable = true;
   };
 
+  # Handle lid behavior
   services.logind.settings.Login = {
     HandleLidSwitch = "ignore";
     HandleLidSwitchExternalPower = "ignore";

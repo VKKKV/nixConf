@@ -1,11 +1,17 @@
+/**
+ * home/desktop/waypaper.nix
+ * Waypaper: A GUI wallpaper setter for Wayland.
+ * Uses swww as the backend for animated wallpaper transitions.
+ */
 {pkgs, ...}: {
-  # backend
+  # Enable swww as the wallpaper display backend
   services.swww.enable = true;
 
   home.packages = with pkgs; [
     waypaper
   ];
 
+  # Initial configuration for Waypaper
   xdg.configFile."waypaper/config.ini".text = ''
     [Settings]
     language = en

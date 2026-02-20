@@ -15,14 +15,15 @@ This is a NixOS configuration project using **Nix Flakes**. It manages the syste
 ## Directory Structure
 
 *   **`flake.nix`**: The entry point. Defines inputs (nixpkgs, home-manager, etc.) and outputs (nixosConfigurations).
+*   **`home.nix`**: Entry point for Home Manager and user account settings.
 *   **`hosts/`**: Host-specific configurations.
     -   `hosts/<hostname>/default.nix`: Main host configuration file. Imports hardware configuration and system modules.
     -   `hosts/<hostname>/hardware-configuration.nix`: Hardware-specific scan results.
 *   **`system/`**: System-wide NixOS modules (root/OS level).
     -   `system/common/`: Shared system configurations (core packages, boot, network, security, fonts, etc.).
-    -   `system/stylix/`: System theming using `stylix`.
+    -   `system/common/stylix/`: System theming using `stylix`.
 *   **`home/`**: Home Manager configurations (user level).
-    -   `home/default.nix`: Entry point for home-manager modules.
+    -   `home/default.nix`: Entry point for user-level modules.
     -   `home/common/`: User programs and dotfiles (shell, terminal, tools).
     -   `home/desktop/`: GUI-related user configuration (Wayland/Hyprland settings).
 *   **`pkgs/`**: Custom packages not found in nixpkgs (e.g., `rime-shuangpin-fuzhuma`).
@@ -82,6 +83,7 @@ sudo nixos-rebuild test --flake .#<hostname>
 
 ### Documentation & Strings
 - **Comments:** Chinese comments are acceptable, but prefer English for complex logic. Include source URLs for custom configs.
+- **Headers:** Every `.nix` module should have a descriptive comment header at the top.
 - **Strings:** Multi-line with `''...''`, inline with quotes. Use `${...}` interpolation for variables.
 - **Lists:** Trailing items without commas in `with pkgs; [...]` blocks, use one item per line for readability.
 
@@ -97,4 +99,5 @@ sudo nixos-rebuild test --flake .#<hostname>
 - **Shells:** The user uses `fish` and `bash`.
 - **WindowManager:** Hyprland is the primary window manager (configured in `home/desktop/hyprlandLaptop` and `system/common/core.nix`).
 - **Tooling:** The `nh` tool is enabled for better Nix CLI experience and garbage collection.
-- **Theming:** `stylix` is used for global theming.
+- **Theming:** `stylix` is used for global theming (configured in `system/common/stylix`).
+- **Virtualization:** Podman is preferred over Docker; Libvirt/QEMU for VMs.

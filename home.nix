@@ -1,3 +1,8 @@
+/**
+ * home.nix
+ * Entry point for Home Manager and user-specific configurations.
+ * Manages user accounts, groups, and shell settings.
+ */
 {
   pkgs,
   inputs,

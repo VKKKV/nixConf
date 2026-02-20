@@ -1,3 +1,8 @@
+/**
+ * home/desktop/default.nix
+ * Entry point for desktop environment configuration (Hyprland).
+ * Includes common desktop packages and imports specialized UI modules.
+ */
 {pkgs, ...}: {
   imports = [
     # ./niri
