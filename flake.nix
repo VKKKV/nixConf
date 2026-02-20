@@ -120,5 +120,9 @@
       url = "github:x45iq/xmcl-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    mpv-config = {
+      url = "github:vkkkv/mpv-config";
+      flake = false;
+    };
   };
 }

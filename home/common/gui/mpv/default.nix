@@ -1,9 +1,9 @@
-{...}: {
+{inputs, ...}: {
   programs.mpv = {
     enable = true;
   };
   xdg.configFile."mpv" = {
-    source = ./config;
+    source = inputs.mpv-config;
     recursive = true;
     executable = true;
   };
