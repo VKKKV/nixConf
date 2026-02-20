@@ -6,7 +6,7 @@
 {pkgs, ...}: {
   imports = [
     # ./niri
-    ./hyprlandLaptop
+    ./hyprland
     ./rofi
     ./waybar
   ];

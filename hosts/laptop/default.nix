@@ -11,7 +11,6 @@
   imports = [
     ./hardware-configuration.nix
     ../../system/common
-    ../../home.nix
   ];
 
   # Disable default power profiles daemon in favor of TLP

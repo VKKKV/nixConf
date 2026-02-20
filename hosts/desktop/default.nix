@@ -5,6 +5,7 @@
 {...}: {
   imports = [
     ./hardware-configuration.nix
+    ../../system/common
   ];
 
   powerManagement.cpuFreqGovernor = "performance";

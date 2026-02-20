@@ -1,19 +1,12 @@
+/**
+ * system/common/default.nix
+ * Unified entry point for all common system-wide configurations.
+ */
 {...}: {
   imports = [
+    ./core
+    ./hardware
+    ./apps
     ./stylix
-    ./boot.nix
-    ./core.nix
-    ./fonts.nix
-    ./game.nix
-    ./hardware.nix
-    ./network.nix
-    ./nix.nix
-    ./qmk.nix
-    ./security.nix
-    ./services.nix
-    ./thunar.nix
-    ./virtualization.nix
-    ./xdg.nix
-    ./remix.nix
   ];
 }

@@ -1,3 +1,7 @@
+/**
+ * home/desktop/hyprland/default.nix
+ * Hyprland window manager configuration and service setup.
+ */
 {...}: {
   systemd.user.targets.hyprland-session.Unit.Wants = [
     "xdg-desktop-autostart.target"

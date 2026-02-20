@@ -15,18 +15,23 @@ This is a NixOS configuration project using **Nix Flakes**. It manages the syste
 ## Directory Structure
 
 *   **`flake.nix`**: The entry point. Defines inputs (nixpkgs, home-manager, etc.) and outputs (nixosConfigurations).
-*   **`home.nix`**: Entry point for Home Manager and user account settings.
 *   **`hosts/`**: Host-specific configurations.
-    -   `hosts/<hostname>/default.nix`: Main host configuration file. Imports hardware configuration and system modules.
+    -   `hosts/<hostname>/default.nix`: Main host configuration file.
     -   `hosts/<hostname>/hardware-configuration.nix`: Hardware-specific scan results.
 *   **`system/`**: System-wide NixOS modules (root/OS level).
-    -   `system/common/`: Shared system configurations (core packages, boot, network, security, fonts, etc.).
-    -   `system/common/stylix/`: System theming using `stylix`.
+    -   **`system/common/core/`**: Essential system settings (boot, nix, network, security, services, xdg) and user/Home-Manager setup.
+    -   **`system/common/hardware/`**: Hardware-specific configurations (bluetooth, graphics, QMK).
+    -   **`system/common/apps/`**: System-level applications (flatpak, virtualization, gaming tools, fonts).
+    -   **`system/common/stylix/`**: Global system theming using `stylix`.
 *   **`home/`**: Home Manager configurations (user level).
-    -   `home/default.nix`: Entry point for user-level modules.
-    -   `home/common/`: User programs and dotfiles (shell, terminal, tools).
-    -   `home/desktop/`: GUI-related user configuration (Wayland/Hyprland settings).
+    -   **`home/common/core/`**: Core user utilities (btop, bat, tealdeer, xdg-mimes).
+    -   **`home/common/shells/`**: Shell configurations (bash, fish, starship, atuin, fzf, zoxide).
+    -   **`home/common/gui/`**: Graphical applications (browser, discord, mpv, vscodium, yazi, zathura, fcitx5).
+    -   **`home/common/terminals/`**: Terminal emulators (ghostty, kitty, tmux).
+    -   **`home/common/dev/`**: Development environment (git, ssh, nixvim, vim).
+    -   **`home/desktop/`**: GUI-related user configuration (Hyprland, waybar, rofi, etc.).
 *   **`pkgs/`**: Custom packages not found in nixpkgs (e.g., `rime-shuangpin-fuzhuma`).
+*   **`wallpapers/`**: System wallpapers.
 
 ## Key Commands
 
@@ -34,70 +39,25 @@ This is a NixOS configuration project using **Nix Flakes**. It manages the syste
 Apply the configuration for a specific host:
 ```bash
 sudo nixos-rebuild switch --flake .#<hostname>
-# Example: sudo nixos-rebuild switch --flake .#laptop
-```
-
-### Testing Changes
-Build and activate the configuration without adding a boot entry (good for testing):
-```bash
-sudo nixos-rebuild test --flake .#<hostname>
 ```
 
 ### Maintenance
-*   **Garbage Collection:**
-    ```bash
-    sudo nh clean
-    # or
-    nix-collect-garbage -d
-    ```
-*   **Update Inputs:**
-    ```bash
-    nix flake update
-    ```
-*   **Format Code:**
-    ```bash
-    alejandra .
-    ```
-*   **Check Syntax:**
-    ```bash
-    nix flake check
-    ```
+*   **Garbage Collection:** `sudo nh clean` or `nix-collect-garbage -d`
+*   **Update Inputs:** `nix flake update`
+*   **Format Code:** `alejandra .`
 
 ## Code Style & Development Conventions
 
-### Formatting
+### Formatting & Structure
 - All `.nix` files should be formatted with `alejandra`.
-- Use 2-space indentation and consistent bracket/comma style.
+- **Modularity:** Configurations are grouped by category into subdirectories with `default.nix` as the entry point for each group.
+- **Headers:** Every `.nix` module should have a descriptive comment header.
 
-### Imports & Structure
-- Group imports in order: (1) inputs, (2) pkgs/config, (3) local modules.
-- Use `{pkgs, inputs, username, ...}:` destructuring.
-- Module structure: `{...}: { imports = [...]; }` pattern with logical separation per-feature.
-- Use `let ... in` for computed values, placed before the main attribute set.
-
-### Naming & Organization
-- Use kebab-case for files (`my-module.nix`).
-- Use camelCase for attributes.
-- Use descriptive names for let bindings.
-- Organization: System-level in `system/`, user-level in `home/`, host-specific in `hosts/`, custom packages in `pkgs/`.
-
-### Documentation & Strings
-- **Comments:** Chinese comments are acceptable, but prefer English for complex logic. Include source URLs for custom configs.
-- **Headers:** Every `.nix` module should have a descriptive comment header at the top.
-- **Strings:** Multi-line with `''...''`, inline with quotes. Use `${...}` interpolation for variables.
-- **Lists:** Trailing items without commas in `with pkgs; [...]` blocks, use one item per line for readability.
-
-## Infrastructure & Mirrors
-- **Mirrors:** The configuration is set up to use Chinese mirrors (NJU, SJTU, TUNA) for binary caches and flake inputs. Respect these settings in `flake.nix` and system configs.
-- **Modularity:**
-    - System-level settings go into `system/`.
-    - User-level settings go into `home/`.
-    - Keep host-specific overrides in `hosts/<hostname>/`.
-- **Secrets:** Be careful not to commit actual secrets (API keys, passwords) directly if not using a secret management solution (like sops-nix).
+### Infrastructure & Mirrors
+- **Mirrors:** Uses Chinese mirrors (NJU, SJTU, TUNA) for binary caches and flake inputs. Respect these in `flake.nix` and `system/common/core/nix.nix`.
 
 ## Key Components
-- **Shells:** The user uses `fish` and `bash`.
-- **WindowManager:** Hyprland is the primary window manager (configured in `home/desktop/hyprlandLaptop` and `system/common/core.nix`).
-- **Tooling:** The `nh` tool is enabled for better Nix CLI experience and garbage collection.
-- **Theming:** `stylix` is used for global theming (configured in `system/common/stylix`).
-- **Virtualization:** Podman is preferred over Docker; Libvirt/QEMU for VMs.
+- **Shells:** Primary shells are `fish` and `bash`.
+- **WindowManager:** Hyprland is the primary window manager (configured in `home/desktop/hyprland`).
+- **Tooling:** `nh` for Nix CLI experience; `stylix` for global theming.
+- **Virtualization:** Podman (containers) and Libvirt/QEMU (VMs).
