@@ -5,6 +5,7 @@
 {...}: {
   imports = [
     ./core.nix
+    ./packages.nix
     ./bat.nix
     ./btop.nix
     ./tealdeer.nix

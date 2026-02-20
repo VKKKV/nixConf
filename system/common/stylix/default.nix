@@ -15,7 +15,7 @@
   programs.dconf.enable = true;
 
   environment.systemPackages = with pkgs; [
-    dconf # 存储应用程序的设置
+    dconf # Storage for application settings
     glib # for gsettings to work
 
     # Qt
@@ -24,13 +24,13 @@
     kdePackages.qt6ct
     kdePackages.qtstyleplugin-kvantum # kvantum
     kdePackages.qtwayland
-    gsettings-qt # 访问和修改应用程序设置的工具
+    gsettings-qt # Tool to access and modify application settings
 
     # GTK
-    nwg-look # GTK主题管理工具
+    nwg-look # GTK theme management tool
     gsettings-desktop-schemas
-    xsettingsd # gtk 守护进程
-    gtk-engine-murrine # GTK+ 2.x 的一个 主题引擎
+    xsettingsd # gtk daemon
+    gtk-engine-murrine # A theme engine for GTK+ 2.x
 
     # theme
     adwaita-icon-theme
@@ -65,11 +65,11 @@
 
     fonts = with pkgs; {
       serif = {
-        name = "Source Han Serif SC"; # 思源宋体
+        name = "Source Han Serif SC";
         package = source-han-serif;
       };
       sansSerif = {
-        name = "Source Han Sans SC"; # 思源黑体
+        name = "Source Han Sans SC";
         package = source-han-sans;
       };
       monospace = {

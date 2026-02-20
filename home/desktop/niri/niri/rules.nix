@@ -122,34 +122,34 @@ _: let
         {app-id = "be.alexandervanhee.gradia";}
         {app-id = "waypaper";}
         {app-id = "clipse-gui";}
-        {title = "图片查看器";}
-        {title = "群聊的聊天记录";}
-        {title = "画中画";}
-        {title = "重命名";}
+        {title = "Image Viewer";}
+        {title = "Chat History";}
+        {title = "Picture-in-Picture";}
+        {title = "Rename";}
         {
           app-id = "steam";
           title = "Friends List";
         }
         {
           app-id = "blueberry.py";
-          title = "蓝牙";
+          title = "Bluetooth";
         }
         {
           app-id = "org.pulseaudio.pavucontrol";
-          title = "音量控制";
+          title = "Volume Control";
         }
         {
           app-id = "org.gnome.clocks";
-          title = "时钟";
+          title = "Clocks";
         }
         {
           app-id = "fcitx";
-          title = "Fcitx5 输入窗口";
+          title = "Fcitx5 Input Window";
         }
         {app-id = "org.gnome.FileRoller";}
         {
           app-id = "thunar";
-          title = "文件操作进度";
+          title = "File Operation Progress";
         }
       ];
       open-floating = true;

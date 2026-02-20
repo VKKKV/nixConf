@@ -1,3 +1,7 @@
+/**
+ * home/common/dev/vim/default.nix
+ * Standard Vim configuration with curated plugins and settings.
+ */
 {pkgs, ...}: {
   programs.vim = {
     enable = true;

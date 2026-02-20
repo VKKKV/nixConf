@@ -27,7 +27,7 @@
         color: @on_surface;
     }
 
-    /*中间第一级*/
+    /* Center First Level */
     #custom-applauncher {
         font-size: 25px;
         padding: 0px 7px;
@@ -93,7 +93,7 @@
         color: @secondary;
     }
 
-    /* 中间左边第二级 */
+    /* Center Left Second Level */
     #power-profiles-daemon,
     #custom-colorpicker,
     #idle_inhibitor {
@@ -139,7 +139,7 @@
         font-size: 25px;
     }
 
-    /*中间右边第二级*/
+    /* Center Right Second Level */
 
     #clock {
         padding: 0px 7px;
@@ -159,7 +159,7 @@
     }
 
 
-    /* 中间右边第三级 */
+    /* Center Right Third Level */
 
     #clock.date {
         padding: 0px 7px;
@@ -178,7 +178,7 @@
         font-size: 25px;
     }
 
-    /* 中间右侧第四级 */
+    /* Center Right Fourth Level */
     #battery {
         background-color: @on_secondary;
         color: @on_surface;
@@ -203,7 +203,7 @@
         font-size: 25px;
     }
 
-    /* 中间左侧第三级别 */
+    /* Center Left Third Level */
 
     #bluetooth {
         padding: 0px 7px;
@@ -242,7 +242,7 @@
     }
 
 
-    /* 中间左边第四级 */
+    /* Center Left Fourth Level */
 
 
     #tray {
@@ -258,7 +258,7 @@
         font-size: 25px;
     }
 
-    /* 最右边powermenu */
+    /* Rightmost Powermenu */
     #custom-wlogout {
         padding: 0px 15px 0px 10px;
         font-size: 25px;
@@ -281,7 +281,7 @@
         font-size: 25px;
     }
 
-    /* 最右边第二级 */
+    /* Rightmost Second Level */
 
     #custom-swaync {
         background-color: @surface_container_high;
@@ -302,7 +302,7 @@
         font-size: 25px;
     }
 
-    /* 最右边第三级 */
+    /* Rightmost Third Level */
     #custom-cava {
         background-color: @surface;
         color: @primary;
@@ -430,7 +430,7 @@
     }
 
 
-    /* 工作区 */
+    /* Workspaces */
     #workspaces button {
         padding: 0px 10px;
         background: @surface_container;
@@ -476,7 +476,7 @@
         background: @surface_container_high;
     }
 
-    /* 窗口名 */
+    /* Window Name */
     #window {
         padding: 0px 10px;
         background-color: @surface_bright;
@@ -497,7 +497,7 @@
         padding: 0px;
     }
 
-    /* 鼠标悬浮信息提示 */
+    /* Tooltip */
     tooltip {
         background: @secondary_container;
         border: 3px solid @outline;

@@ -35,92 +35,32 @@
       fish
     ];
 
-    # Global system packages
+    # Core system packages
     systemPackages = with pkgs; [
-      # Java Runtime
-      zulu17
-
-      # Development Tools & Editors
-      (ripgrep.override {withPCRE2 = true;})
-      alejandra
-      jetbrains.idea-community-bin
-      nil
-      nixd
-      nixfmt
-      gcc
-      gnumake
-      nodejs_24
-      tokei
-      cloc
-
-      # Container & Virtualization
-      podman-compose
-      dive
-      lazydocker
-
-      # Database Clients
-      mycli
-      pgcli
-      mongosh
-      sqlite
-
-      # Network Diagnostics & Tools
-      wireshark
-      mitmproxy
-      nmap
-      tcpdump
-      mtr
-      iperf3
-      doggo
-      dnsutils
-      ldns
-      socat
-      aria2
+      # Essential tools
       wget
       curl
-      curlie
-      httpie
+      git # Required for flakes
 
-      # System Monitoring & Hardware Info
-      btop
-      nmon
-      fastfetch
-      nvitop
-      procs
-      duf
-      dust
-      gdu
-      ncdu
+      # Hardware utilities
+      pciutils
+      usbutils
       dmidecode
       ethtool
       lm_sensors
-      pciutils
-      usbutils
       hdparm
       parted
 
-      # Debugging & Tracing
-      bpfmon
-      bpftop
-      bpftrace
-      strace
-      ltrace
-
-      # File Management & CLI Utilities
-      fd
-      fzf
-      tree
-      rsync
-      croc
-      trashy
-      udiskie
-      wl-clipboard
-      xdg-utils
+      # Basic CLI utilities
       which
       killall
       psmisc
       libnotify
-      poweralertd
+      udiskie
+      wl-clipboard
+      xdg-utils
+
+      # Compression utilities
       gnutar
       unzip
       zip
@@ -128,62 +68,7 @@
       xz
       zstd
 
-      # Text Processing
-      jq
-      yq-go
-      jc
-      gnused
-      gawk
-      gnugrep
-      sad
-      hyperfine
-      calc
-      tealdeer
-
-      # Multimedia & Graphics
-      ffmpeg-full
-      imagemagick
-      graphviz
-      imv
-      viu
-      foliate
-      pavucontrol
-      pwvucontrol
-      playerctl
-      pulsemixer
-      libva-utils
-      vdpauinfo
-      vulkan-tools
-      mesa-demos
-
-      # Gaming & Compatibility
-      heroic
-      mangohud
-      protonplus
-      winetricks
-      kicad
-
-      # Web Browsers & Communication
-      google-chrome
-      firefox
-      remmina
-      freerdp
-      moonlight-qt
-      localsend
-
-      # Version Control
-      git
-      git-lfs
-      git-trim
-      gitleaks
-
-      # Miscellaneous Utilities
-      binsider
-      sysbench
-      sysstat
-      systemctl-tui
-      gping
-      libargon2
+      # Security & Crypto
       openssl
 
       # FHS Environment Script for running non-Nix binaries

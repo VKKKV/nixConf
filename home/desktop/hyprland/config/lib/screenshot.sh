@@ -86,7 +86,7 @@ sf) # frozen screen, drag to manually snip an area / click on a window to print 
 m) # print focused monitor
 	take_screenshot "output"
 	;;
-sc) #? 󱉶 Use 'tesseract' to scan image then add to clipboard
+sc) # Use 'tesseract' to scan image then add to clipboard
 	pacman -Qe tesseract-data-eng tesseract imagemagick || {
         notify-send -a "OCR preview: Missing dependencies" -e -i "dialog-error" "Please install 'tesseract' and 'imagemagick'"
         exit 1

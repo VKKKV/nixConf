@@ -14,38 +14,38 @@
   home.packages = with pkgs; [
     satty
     tesseract
-    blueberry # 蓝牙图形界面
-    blueman # 蓝牙管理
-    bluez # 蓝牙协议栈
+    blueberry # Bluetooth GUI
+    blueman # Bluetooth management
+    bluez # Bluetooth protocol stack
     bluez-tools
-    cava # 音频可视化器
+    cava # Audio visualizer
     cliphist
-    ddcutil # 显示器亮度控制
+    ddcutil # Monitor brightness control
     direnv
-    fuzzel # 应用程序启动器
+    fuzzel # Application launcher
     glib
     gnome-calendar
     gnome-clocks
-    grim # 截图捕获
+    grim # Screenshot capture
     grimblast
-    hyprpicker # 颜色选择器
-    libnotify # 通知工具
+    hyprpicker # Color picker
+    libnotify # Notification utilities
     localsend
-    networkmanager # 用于 nmtui
-    pavucontrol # PulseAudio 控制面板
-    playerctl # MPRIS 媒体控制
+    networkmanager # For nmtui
+    pavucontrol # PulseAudio control panel
+    playerctl # MPRIS media control
     power-profiles-daemon
     pwvucontrol
-    slurp # 区域选择
-    swaynotificationcenter # 通知中心
+    slurp # Region selection
+    swaynotificationcenter # Notification center
     swww
-    udisks2 # 磁盘管理用于托盘图标
-    upower # 电池状态
+    udisks2 # Disk management for tray icons
+    upower # Battery status
     wayland
-    waypaper # 背景图片选择器
-    wireplumber # wpctl 音频控制
+    waypaper # Wallpaper selector
+    wireplumber # wpctl audio control
     wl-clip-persist
-    wl-clipboard # Wayland 剪贴板 (wl-copy)
-    wlogout # 电源菜单界面
+    wl-clipboard # Wayland clipboard (wl-copy)
+    wlogout # Power menu interface
   ];
 }
