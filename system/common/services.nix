@@ -1,12 +1,17 @@
+/**
+ * system/common/services.nix
+ * General system services configuration.
+ * Includes greetd, display manager, audio (Pipewire), and hardware services.
+ */
 {
   pkgs,
   username,
   ...
 }: {
   services = {
+    # Greetd: A minimalist login manager
     greetd = let
       session = {
-        # command = "${pkgs.niri}/bin/niri-session";
         command = "${pkgs.hyprland}/bin/hyprland";
         user = username;
       };
@@ -19,6 +24,7 @@
       };
     };
 
+    # Display Manager with auto-login support
     displayManager = {
       autoLogin = {
         enable = true;
@@ -26,13 +32,13 @@
       };
     };
 
-    libinput.enable = true;
+    libinput.enable = true; # Touchpad/Mouse support
+    gvfs.enable = true; # Virtual filesystem support
+    tumbler.enable = true; # Thumbnail generation
+    udisks2.enable = true; # Disk mounting and management
+    fstrim.enable = true; # Periodic SSD TRIM
 
-    gvfs.enable = true; # Virtual filesystems
-    tumbler.enable = true; # Thumbnail support for images
-    udisks2.enable = true; # Disk management
-    fstrim.enable = true; # SSD trimming
-
+    # OpenSSH daemon configuration
     openssh = {
       enable = true;
       settings = {
@@ -41,22 +47,24 @@
       };
     };
 
+    # Modern DBus implementation
     dbus.implementation = "broker";
 
+    # Profile-sync-daemon for browser performance
     psd = {
       enable = true;
       resyncTimer = "21m";
     };
 
-    # improve preformance
+    # Performance & Responsiveness tweaks
     irqbalance.enable = true;
     ananicy = {
       enable = true;
       package = pkgs.ananicy-cpp;
     };
 
-    # audio
-    pulseaudio.enable = false;
+    # Audio configuration using Pipewire
+    pulseaudio.enable = false; # Use Pipewire instead of legacy PulseAudio
     pipewire = {
       enable = true;
       alsa = {
@@ -66,11 +74,12 @@
       pulse.enable = true;
       jack.enable = true;
       wireplumber.enable = true;
-      # lowLatency setting move to game.nix
     };
 
+    # Bluetooth manager
     blueman.enable = true;
 
+    # Printing services (CUPS)
     printing = {
       enable = true;
       drivers = with pkgs; [
@@ -80,24 +89,20 @@
       ];
     };
 
-    geoclue2.enable = true; # Enable geolocation services.
-
-    udev.packages = with pkgs; [
-      gnome-settings-daemon
-      # platformio # udev rules for platformio
-      # openocd # required by paltformio, see https://github.com/NixOS/nixpkgs/issues/224895
-      # openfpgaloader
-    ];
+    geoclue2.enable = true; # Geolocation services
   };
 
+  # Real-time kit for audio performance
   security.rtkit.enable = true;
 
+  # Additional system-wide audio utilities
   environment.systemPackages = with pkgs; [
-    pulseaudio # provides `pactl`, which is required by some apps(e.g. sonic-pi)
+    pulseaudio # Provides `pactl` for compatibility
   ];
 
-  # unlock GPG keyring on login
+  # Unlock GPG/Keyring on login
   security.pam.services.greetd.enableGnomeKeyring = true;
 
+  # Hardware state persistence
   hardware.alsa.enablePersistence = true;
 }

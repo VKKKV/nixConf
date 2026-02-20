@@ -1,30 +1,37 @@
+/**
+ * system/common/fonts.nix
+ * Font installation and rendering configuration.
+ * Includes a wide range of international fonts and high-quality rendering settings.
+ */
 {pkgs, ...}: {
   fonts = {
+    # Installed font packages
     packages = with pkgs; [
       material-design-icons
       font-awesome
 
-      nerd-fonts.symbols-only # symbols icon only
+      nerd-fonts.symbols-only
       nerd-fonts.fira-code
       nerd-fonts.jetbrains-mono
       nerd-fonts.iosevka
 
-      noto-fonts # 大部分文字的常见样式，不包含汉字
-      noto-fonts-color-emoji # 彩色的表情符号字体
-      noto-fonts-cjk-sans # 思源黑体
-      noto-fonts-cjk-serif # 思源宋体
+      # International & CJK Fonts
+      noto-fonts
+      noto-fonts-color-emoji
+      noto-fonts-cjk-sans
+      noto-fonts-cjk-serif
 
-      source-sans # 无衬线字体，不含汉字。字族名叫 Source Sans 3，以及带字重的变体（VF）
-      source-serif # 衬线字体，不含汉字。字族名叫 Source Serif 4，以及带字重的变体
-      source-han-sans # 思源黑体
-      source-han-serif # 思源宋体
-      source-han-mono # 思源等宽
+      source-sans
+      source-serif
+      source-han-sans
+      source-han-serif
+      source-han-mono
 
       lxgw-wenkai-screen
-
       maple-mono.NF-CN-unhinted
     ];
 
+    # Fontconfig configuration for high-quality rendering
     fontconfig = {
       enable = true;
       antialias = true;
@@ -37,40 +44,42 @@
         lcdfilter = "default";
         rgba = "rgb";
       };
+
+      # Default font assignments for generic aliases
       defaultFonts = {
         serif = [
-          "Source Han Serif SC" # 思源宋体
+          "Source Han Serif SC"
           "Source Serif 4"
           "Source Han Serif TC"
         ];
         sansSerif = [
-          "LXGW WenKai Screen" # 霞鹜文楷 屏幕阅读版
+          "LXGW WenKai Screen"
           "Source Sans 3"
-          "Source Han Sans SC" # 思源黑体
+          "Source Han Sans SC"
           "Source Han Sans TC"
         ];
         monospace = [
-          "Maple Mono NF CN" # 中英文宽度完美 2:1 的字体
+          "Maple Mono NF CN"
           "JetBrainsMono Nerd Font"
-          "Source Han Mono SC" # 思源等宽
+          "Source Han Mono SC"
           "Source Han Mono TC"
         ];
         emoji = ["Noto Color Emoji"];
       };
     };
 
-    # causes more issues than it solves
+    # Custom font directory management
     enableDefaultPackages = false;
-
     fontDir = {
       enable = true;
       decompressFonts = true;
     };
 
-    # Improve font rendering performance
+    # Rendering performance optimization
     fontconfig.cache32Bit = true;
   };
 
+  # KMS Console configuration with high-quality fonts
   services.kmscon = {
     enable = true;
     fonts = with pkgs; [

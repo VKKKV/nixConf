@@ -1,27 +1,41 @@
+/**
+ * system/common/nix.nix
+ * Nix daemon configuration, binary caches, and mirrors.
+ * Includes performance tweaks for the Nix daemon and prioritized Chinese mirrors.
+ */
 {...}: {
   nix = {
-    channel.enable = false; # remove nix-channel related tools & configs, we use flakes instead.
+    # Disable legacy channels in favor of Flakes
+    channel.enable = false;
 
+    # Low-priority I/O for the Nix daemon to prevent system lag during builds
     daemonIOSchedClass = "idle";
     daemonIOSchedPriority = 7;
 
     settings = {
+      # Automatic store optimization to save disk space
       auto-optimise-store = true;
       builders-use-substitutes = true;
+
+      # Trusted users who can communicate with the Nix daemon
       trusted-users = [
         "root"
         "@wheel"
       ];
 
+      # Enable modern Nix features
       experimental-features = [
         "nix-command"
         "flakes"
       ];
 
+      # Prioritized binary caches (Mirrors in China for better speed)
       substituters = [
         "https://mirrors.cernet.edu.cn/nix-channels/store?priority=0"
         "https://cache.nixos.org/"
       ];
+
+      # Additional specialized and community binary caches
       extra-substituters = [
         "https://mirror.sjtu.edu.cn/nix-channels/store"
         "https://mirrors.cernet.edu.cn/nix-channels/store"
@@ -37,9 +51,7 @@
         "https://vicinae.cachix.org"
       ];
 
-      trusted-substituters = [
-      ];
-
+      # Public keys for verifying binary cache signatures
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="

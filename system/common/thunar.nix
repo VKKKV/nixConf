@@ -1,3 +1,7 @@
+/**
+ * system/common/thunar.nix
+ * Thunar file manager and related components.
+ */
 {pkgs, ...}: {
   programs.thunar = {
     enable = true;
@@ -7,7 +11,8 @@
     ];
   };
 
+  # Required services for Thunar functionality
   programs.xfconf.enable = true;
-  services.gvfs.enable = true; # Mount, trash, and other functionalities
-  services.tumbler.enable = true; # Thumbnail support for images
+  services.gvfs.enable = true; # Mount, trash, and remote filesystem support
+  services.tumbler.enable = true; # Thumbnail generation
 }

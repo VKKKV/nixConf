@@ -1,5 +1,11 @@
+/**
+ * system/common/hardware.nix
+ * Common hardware-related configurations.
+ * Includes graphics drivers, Bluetooth settings, and firmware management.
+ */
 {pkgs, ...}: {
   hardware = {
+    # Graphics configuration for both 64-bit and 32-bit applications
     graphics = {
       enable = true;
       enable32Bit = true;
@@ -15,6 +21,7 @@
       ];
     };
 
+    # Bluetooth configuration with experimental features enabled
     bluetooth = {
       enable = true;
       package = pkgs.bluez5-experimental;
@@ -30,5 +37,6 @@
     };
   };
 
+  # Enable fwupd for firmware updates
   services.fwupd.enable = true;
 }

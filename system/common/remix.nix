@@ -1,32 +1,25 @@
+/**
+ * system/common/remix.nix
+ * Audio production and music creation tools.
+ * Includes REAPER DAW, various VST/LV2 plugins, and session managers.
+ */
 {pkgs, ...}: {
   environment = {
-    # 怎么有人会用 nix 做音乐？？？？？？？？？？？
+    # System-wide packages for audio production
     systemPackages = with pkgs; [
-      # the best unfree but free daw
+      # REAPER: A powerful digital audio workstation (DAW)
       reaper
-      #
-      # # plugins for reaper
       reaper-reapack-extension
       reaper-sws-extension
-      #
-      # # session manager for musical programs
+
+      # Session manager for Linux audio applications
       raysession
-      #
-      # # vst plugins
-      # # kontact ?
-      # decent-sampler
+
+      # VST/LV2 Plugins & Instruments
       sfizz
-      #
-      # # vcv rack ?
-      # cardinal
       vital
-      #
-      # # fabfilter ?
       lsp-plugins
       dragonfly-reverb
-
-      # vocaloid ?
-      # openutau
     ];
   };
 }

@@ -1,8 +1,14 @@
+/**
+ * system/common/xdg.nix
+ * XDG desktop integration and portals.
+ * Manages default terminals and portal integrations for cross-desktop compatibility.
+ */
 {pkgs, ...}: {
   xdg.terminal-exec = {
     enable = true;
     package = pkgs.xdg-terminal-exec-mkhl;
     settings = let
+      # Prioritized list of preferred terminal emulators
       my_terminal_desktop = [
         "com.mitchellh.ghostty.desktop"
         "kitty.desktop"
@@ -21,6 +27,7 @@
     };
   };
 
+  # XDG Portals for Wayland and Flatpak integration
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
@@ -30,8 +37,6 @@
       };
       hyprland = {
         default = ["hyprland" "gtk"];
-        # "org.freedesktop.impl.portal.Screenshots" = [ "hyprland" ];
-        # "org.freedesktop.impl.portal.ScreenCast" = [ "hyprland" ];
       };
     };
 

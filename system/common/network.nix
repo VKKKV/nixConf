@@ -1,39 +1,47 @@
+/**
+ * system/common/network.nix
+ * Networking configuration shared across all hosts.
+ * Includes host identification, NTP servers, firewall settings, and network-related services.
+ */
 {
   pkgs,
-  pkgs-stable,
   host,
   ...
 }: {
   networking = {
     hostName = "${host}";
 
+    # Use NetworkManager for network connection management
     networkmanager.enable = true;
 
+    # Optimized NTP servers for China and global connectivity
     timeServers = [
-      "ntp.aliyun.com" # Aliyun NTP Server
-      "ntp.tencent.com" # Tencent NTP Server
-      "cn.ntp.org.cn" # China NTP Pool
-      "ntp.tuna.tsinghua.edu.cn" # Tsinghua University
-      "time.apple.com" # Apple Global
+      "ntp.aliyun.com"
+      "ntp.tencent.com"
+      "cn.ntp.org.cn"
+      "ntp.tuna.tsinghua.edu.cn"
+      "time.apple.com"
       "time.windows.com"
       "time.cloudflare.com"
-      "pool.ntp.org" # Worldwide Pool
-      "ntp.nict.jp" # Japan (NICT)
+      "pool.ntp.org"
+      "ntp.nict.jp"
     ];
 
+    # Primary DNS nameservers
     nameservers = [
       "114.114.114.114"
       "119.29.29.29"
     ];
 
+    # Firewall configuration with specific port allowances
     firewall = {
       allowedTCPPorts = [
-        25565
+        25565 # Minecraft
 
         # localsend
         53317
 
-        # tcp ports for testing & sharing
+        # Testing & Sharing ports
         63080
         63081
         63082
@@ -43,6 +51,7 @@
     };
   };
 
+  # Network-related system packages
   environment.systemPackages = with pkgs; [
     networkmanagerapplet
     flclash
@@ -50,13 +59,7 @@
   ];
 
   services = {
-    # mihomo = {
-    #   enable = true;
-    #   tunMode = true;
-    #   webui = pkgs.metacubexd;
-    #   configFile = "/home/${username}/.local/share/io.github.clash-verge-rev.clash-verge-rev/clash-verge.yaml";
-    # };
-
+    # Avahi/mDNS for local network discovery
     avahi = {
       enable = true;
       nssmdns4 = true;
@@ -67,16 +70,14 @@
       };
     };
 
+    # Sunshine: Game streaming host for Moonlight (disabled by default)
     sunshine = {
-      enable = false; # default to false, for security reasons.
+      enable = false;
       autoStart = true;
-      capSysAdmin = true; # only needed for Wayland -- omit this when using with Xorg
+      capSysAdmin = true;
       openFirewall = true;
       settings = {
-        # pc  - Only localhost may access the web ui
-        # lan - Only LAN devices may access the web ui
         origin_web_ui_allowed = "pc";
-        # 2   -	encryption is mandatory and unencrypted connections are rejected
         lan_encryption_mode = 2;
         wan_encryption_mode = 2;
       };
