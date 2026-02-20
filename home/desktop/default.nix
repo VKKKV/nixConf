@@ -9,10 +9,6 @@
     ./hyprlandLaptop
     ./rofi
     ./waybar
-    ./waypaper.nix
-
-    # ./swayidle.nix
-    # ./swaylock.nix
   ];
 
   home.packages = with pkgs; [
