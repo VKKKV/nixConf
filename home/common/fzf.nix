@@ -1,3 +1,7 @@
+/**
+ * home/common/fzf.nix
+ * Fzf: A command-line fuzzy finder.
+ */
 {...}: {
   programs.fzf = {
     enable = true;
@@ -5,6 +9,7 @@
     enableZshIntegration = true;
     enableFishIntegration = true;
 
+    # Custom search commands using 'fd'
     defaultCommand = "fd --hidden --strip-cwd-prefix --exclude .git";
     fileWidgetOptions = [
       "--preview '[[ (file --mime {}) =~ binary ]] && echo {} is a binary file || (ccat --color=always {} || highlight -O ansi -l {} || cat {}) 2> /dev/null | head -500'"
@@ -14,7 +19,7 @@
       "--preview 'tree {} | head -200'"
     ];
 
-    ## Theme
+    # Gruvbox-inspired theme for fzf
     defaultOptions = [
       "--color=fg:-1,fg+:#FBF1C7,bg:-1,bg+:#282828"
       "--color=hl:#98971A,hl+:#B8BB26,info:#928374,marker:#D65D0E"

@@ -1,3 +1,8 @@
+/**
+ * home/common/git.nix
+ * Git version control configuration.
+ * Includes settings for Git, Lazygit, GitHub CLI (gh), and Delta (diff viewer).
+ */
 {...}: {
   programs.git = {
     enable = true;
@@ -9,19 +14,18 @@
       init.defaultBranch = "main";
       diff.colorMoved = "default";
       color.ui = true;
-      # merge.conflictstyle = "diff3";
-      # pull.ff = "only";
     };
   };
 
+  # Lazygit: Simple terminal UI for git commands
   programs.lazygit = {
     enable = true;
-
     settings = {
       gui.border = "single";
     };
   };
 
+  # GitHub CLI (gh) configuration
   programs.gh = {
     enable = true;
     settings = {
@@ -38,6 +42,7 @@
     };
   };
 
+  # Delta: Syntax-highlighting pager for git, diff, and grep output
   programs.delta = {
     enable = true;
     enableGitIntegration = true;
@@ -49,6 +54,7 @@
     };
   };
 
+  # Global git ignore configuration
   xdg.configFile."git/.gitignore".text = ''
     .vscode
     .idea

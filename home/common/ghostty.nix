@@ -1,3 +1,7 @@
+/**
+ * home/common/ghostty.nix
+ * Ghostty: A fast, feature-rich terminal emulator.
+ */
 {...}: {
   programs.ghostty = {
     enable = true;

@@ -1,15 +1,16 @@
+/**
+ * home/common/yazi.nix
+ * Yazi: Blazing fast terminal file manager written in Rust, based on async I/O.
+ */
 {...}: {
   programs.yazi = {
     enable = true;
     enableBashIntegration = true;
 
     settings = {
+      # File Manager Layout and Sorting
       mgr = {
-        ratio = [
-          1
-          3
-          4
-        ];
+        ratio = [1 3 4];
         sort_by = "alphabetical";
         sort_sensitive = false;
         sort_reverse = false;
@@ -23,6 +24,7 @@
         title_format = "Yazi: {cwd}";
       };
 
+      # Preview Settings
       preview = {
         tab_size = 2;
         max_width = 600;
@@ -32,14 +34,10 @@
         image_quality = 75;
         sixel_fraction = 15;
         ueberzug_scale = 1;
-        ueberzug_offset = [
-          0
-          0
-          0
-          0
-        ];
+        ueberzug_offset = [0 0 0 0];
       };
 
+      # Opener Definitions
       opener = {
         play = [
           {
@@ -57,20 +55,16 @@
         ];
       };
 
+      # Open Rules based on MIME types
       open = {
         rules = [
-          {
-            mime = "text/*";
-            use = "edit";
-          }
-          {
-            mime = "*";
-            use = "edit";
-          }
+          { mime = "text/*"; use = "edit"; }
+          { mime = "*"; use = "edit"; }
         ];
       };
     };
 
+    # Custom Keybindings for Plugins
     keymap = {
       mgr.prepend_keymap = [
         {

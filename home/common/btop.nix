@@ -1,3 +1,7 @@
+/**
+ * home/common/btop.nix
+ * Btop: Resource monitor that shows usage and stats for processor, memory, disks, network and processes.
+ */
 {pkgs, ...}: {
   programs.btop = {
     enable = true;
@@ -9,5 +13,6 @@
     };
   };
 
+  # Additional hardware monitoring tools
   home.packages = with pkgs; [nvtopPackages.intel];
 }

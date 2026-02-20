@@ -1,9 +1,15 @@
+/**
+ * home/common/xdg-mimes.nix
+ * XDG MIME associations and default applications.
+ * Defines which applications open specific file types.
+ */
 {
   pkgs,
   lib,
   ...
 }:
 with lib; let
+  # Default application mappings for different categories
   defaultApps = {
     text = ["org.gnome.TextEditor.desktop"];
     image = ["imv-dir.desktop"];
@@ -17,6 +23,7 @@ with lib; let
     discord = ["webcord.desktop"];
   };
 
+  # MIME types grouped by category
   mimeMap = {
     text = ["text/plain"];
     image = [
@@ -73,6 +80,7 @@ with lib; let
     discord = ["x-scheme-handler/discord"];
   };
 
+  # Generate associations from the maps above
   associations = with lists;
     listToAttrs (
       flatten (mapAttrsToList (key: map (type: attrsets.nameValuePair type defaultApps."${key}")) mimeMap)
@@ -84,12 +92,12 @@ in {
   xdg.mimeApps.defaultApplications = associations;
 
   home.packages = with pkgs; [
-    xdg-utils # provides cli tools such as `xdg-mime` `xdg-open`
+    xdg-utils # CLI tools like xdg-open
     xdg-user-dirs
   ];
 
   home.sessionVariables = {
-    # prevent wine from creating file associations
+    # Prevent Wine from polluting the system with Windows-style file associations
     WINEDLLOVERRIDES = "winemenubuilder.exe=d";
   };
 }

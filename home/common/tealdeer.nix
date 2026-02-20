@@ -1,3 +1,7 @@
+/**
+ * home/common/tealdeer.nix
+ * Tealdeer: A fast tldr client written in Rust.
+ */
 {...}: {
   programs.tealdeer = {
     enable = true;
@@ -9,7 +13,7 @@
       };
       updates = {
         auto_update = false;
-        auto_update_interval_hours = 720;
+        auto_update_interval_hours = 720; # Update tldr pages every 30 days
       };
     };
   };
