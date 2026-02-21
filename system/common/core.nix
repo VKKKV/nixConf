@@ -7,15 +7,51 @@
 }: {
   /**
    * system/common/core/default.nix
-   * Consolidated core system-wide configurations.
+   * Consolidated core system-wide and home-manager configurations.
    */
 
   imports = [
     inputs.nix-index-database.nixosModules.nix-index
-    ./home-manager.nix
+    inputs.home-manager.nixosModules.home-manager
   ];
 
   system.stateVersion = "25.11";
+
+  # --- Home Manager ---
+  home-manager = {
+    useUserPackages = true;
+    useGlobalPkgs = true;
+    extraSpecialArgs = {inherit inputs username host;};
+    users.${username} = {
+      imports = [../../../home];
+      home.username = "${username}";
+      home.homeDirectory = "/home/${username}";
+      home.stateVersion = "25.11";
+      programs.home-manager.enable = true;
+    };
+    backupFileExtension = "hm-backup";
+  };
+
+  # --- User Accounts ---
+  users.users.${username} = {
+    isNormalUser = true;
+    description = "${username}";
+    extraGroups = [
+      "users"
+      "adbusers"
+      "input"
+      "kvm"
+      "libvirt"
+      "networkmanager"
+      "plugdev"
+      "podman"
+      "vboxusers"
+      "video"
+      "wheel"
+      "wireshark"
+    ];
+    shell = pkgs.fish;
+  };
 
   # --- Nix Configuration ---
   nix = {
@@ -55,7 +91,7 @@
         "chaotic-nyx.cachix.org-1:HknUhsg5I773MWCjN+GO+mpFMVrJuFvvhd7L8F1vlI8="
         "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
       ];
-      allowed-users = ["${username}"];
+      allowed-users = ["root" "@wheel" "${username}"];
     };
   };
 

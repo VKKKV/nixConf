@@ -4,10 +4,10 @@
  */
 {...}: {
   imports = [
-    ./core
+    ./core.nix
     ./dev
     ./gui
-    ./shells
-    ./terminals
+    ./shells.nix
+    ./terminals.nix
   ];
 }

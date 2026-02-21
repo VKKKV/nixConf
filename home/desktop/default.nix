@@ -22,10 +22,10 @@ in {
   };
 
   imports = [
-    ./niri
+    ./niri.nix
     ./hyprland
     ./rofi
-    ./waybar
+    ./waybar.nix
     ./swaync
   ];
 

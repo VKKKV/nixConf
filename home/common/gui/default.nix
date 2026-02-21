@@ -13,7 +13,7 @@
   imports = [
     inputs.zen-browser.homeModules.beta
     ./fcitx5
-    ./vscodium
+    ./vscodium.nix
   ];
 
   # --- Zen Browser ---

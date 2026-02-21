@@ -4,9 +4,9 @@
  */
 {...}: {
   imports = [
-    ./core
-    ./hardware
-    ./apps
+    ./core.nix
+    ./hardware.nix
+    ./apps.nix
     ./stylix
   ];
 }
