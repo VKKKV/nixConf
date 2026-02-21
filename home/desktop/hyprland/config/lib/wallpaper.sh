@@ -4,9 +4,9 @@
 WALLPAPER_DIR="$HOME/Pictures/Wallpapers"
 RESIZE_TYPE="crop"
 
-export AWWW_TRANSITION_FPS="${AWWW_TRANSITION_FPS:-144}"    # Transition FPS
-export AWWW_TRANSITION_STEP="${AWWW_TRANSITION_STEP:-64}"     # Transition Step
-export AWWW_TRANSITION="${AWWW_TRANSITION:-any}"           # Transition Effect
+export AWWW_TRANSITION_FPS="${AWWW_TRANSITION_FPS:-144}"    # 过渡帧率
+export AWWW_TRANSITION_STEP="${AWWW_TRANSITION_STEP:-64}"     # 过渡步长
+export AWWW_TRANSITION="${AWWW_TRANSITION:-any}"           # 过渡效果
 
 CACHE_FILE="${XDG_CACHE_HOME:-$HOME/.cache}/wallpaper-list.cache"
 CACHE_TTL=3600
@@ -56,4 +56,3 @@ main() {
 }
 
 main
-

@@ -1,14 +1,199 @@
-/**
- * home/common/core/default.nix
- * Core user-level configuration and utilities.
- */
-{...}: {
+{
+  pkgs,
+  osConfig,
+  lib,
+  ...
+}: {
+  /**
+   * home/common/core/default.nix
+   * Core user-level configuration and package management.
+   */
+
   imports = [
     ./core.nix
-    ./packages.nix
-    ./bat.nix
-    ./btop.nix
-    ./tealdeer.nix
-    ./xdg-mimes.nix
+  ];
+
+  # --- CLI Programs ---
+  programs = {
+    # Bat: A cat(1) clone with wings
+    bat = {
+      enable = true;
+      config.pager = "less -FR";
+      extraPackages = with pkgs.bat-extras; [
+        batman
+        batpipe
+      ];
+    };
+
+    # Btop: Resource monitor
+    btop = {
+      enable = true;
+      settings = {
+        theme_background = false;
+        update_ms = 500;
+        rounded_corners = false;
+      };
+    };
+
+    # Tealdeer: A fast tldr client
+    tealdeer = {
+      enable = true;
+      enableAutoUpdates = true;
+      settings = {
+        display = {
+          compact = false;
+          use_pager = true;
+        };
+        updates = {
+          auto_update = false;
+          auto_update_interval_hours = 720;
+        };
+      };
+    };
+  };
+
+  # --- XDG Configuration ---
+  xdg.mimeApps = {
+    enable = true;
+    defaultApplications = {
+      "text/html" = "zen.desktop";
+      "x-scheme-handler/http" = "zen.desktop";
+      "x-scheme-handler/https" = "zen.desktop";
+      "x-scheme-handler/about" = "zen.desktop";
+      "x-scheme-handler/unknown" = "zen.desktop";
+      "image/png" = ["imv.desktop" "gimp.desktop"];
+      "image/jpeg" = ["imv.desktop" "gimp.desktop"];
+      "video/mp4" = "mpv.desktop";
+      "video/x-matroska" = "mpv.desktop";
+      "application/pdf" = "org.pwmt.zathura.desktop";
+    };
+  };
+
+  # --- User Packages ---
+  home.packages = with pkgs; [
+    # Hardware monitoring
+    nvtopPackages.intel
+
+    # Java Runtime
+    zulu17
+
+    # Development Tools
+    (ripgrep.override {withPCRE2 = true;})
+    alejandra
+    jetbrains.idea-community-bin
+    nil
+    nixd
+    nixfmt
+    gcc
+    gnumake
+    nodejs_24
+    tokei
+    cloc
+
+    # Container & Virtualization
+    podman-compose
+    dive
+    lazydocker
+
+    # Database Clients
+    mycli
+    pgcli
+    mongosh
+    sqlite
+
+    # Network Diagnostics
+    wireshark
+    mitmproxy
+    nmap
+    tcpdump
+    mtr
+    iperf3
+    doggo
+    dnsutils
+    ldns
+    socat
+    aria2
+    curlie
+    httpie
+
+    # System Monitoring
+    nmon
+    fastfetch
+    nvitop
+    procs
+    duf
+    dust
+    gdu
+    ncdu
+
+    # Debugging
+    bpfmon
+    bpftop
+    bpftrace
+    strace
+    ltrace
+
+    # File Management
+    fd
+    fzf
+    tree
+    rsync
+    croc
+    trashy
+
+    # Text Processing
+    jq
+    yq-go
+    jc
+    gnused
+    gawk
+    gnugrep
+    sad
+    hyperfine
+    calc
+
+    # Multimedia & Graphics
+    ffmpeg-full
+    imagemagick
+    graphviz
+    imv
+    viu
+    foliate
+    pavucontrol
+    pwvucontrol
+    playerctl
+    pulsemixer
+    libva-utils
+    vdpauinfo
+    vulkan-tools
+    mesa-demos
+
+    # Gaming & Compatibility
+    heroic
+    mangohud
+    protonplus
+    winetricks
+    kicad
+
+    # Web Browsers & Communication
+    google-chrome
+    firefox
+    remmina
+    freerdp
+    moonlight-qt
+    localsend
+
+    # Version Control
+    git-lfs
+    git-trim
+    gitleaks
+
+    # Miscellaneous
+    binsider
+    sysbench
+    sysstat
+    systemctl-tui
+    gping
+    libargon2
   ];
 }
