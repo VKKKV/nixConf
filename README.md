@@ -2,6 +2,9 @@
 
 A modular, performant, and aesthetic NixOS configuration using **Flakes** and **Home Manager**. Designed for a seamless workflow across high-performance desktop and power-optimized laptop environments.
 
+> [!CAUTION]
+> **Important Notice:** This repository is highly customized for my specific hardware (AMD/NVIDIA Desktop & Intel Laptop). It is **not** intended to be used directly on other machines without significant modification. Use it as a reference, not a plug-and-play solution.
+
 ## ✨ Key Features
 
 - **Window Managers:** Dual-setup with **Hyprland** (performance) and **Niri** (scroll-based).
@@ -21,8 +24,8 @@ Ensure you have Nix installed with experimental features (`nix-command` and `fla
 # Clone the repository
 git clone https://github.com/VKKKV/nixConf.git ~/code/nixConf
 
-# Build and switch (Choose your host: desktop or laptop)
-sudo nixos-rebuild switch --flake .#desktop
+# Build and switch (Default profile is 'laptop')
+sudo nixos-rebuild switch --flake .#laptop
 ```
 
 ## 📂 Repository Structure
