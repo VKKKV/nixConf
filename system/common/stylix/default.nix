@@ -55,7 +55,7 @@
       terminal = 1.0;
     };
 
-    base16Scheme = ./color/gruvbox-dark.yml;
+    base16Scheme = ./gruvbox-dark.yml;
 
     cursor = {
       name = "Bibata-Modern-Ice";

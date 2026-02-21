@@ -1,17 +1,12 @@
 {
   pkgs,
   osConfig,
-  lib,
   ...
 }: {
   /**
    * home/common/core/default.nix
    * Core user-level configuration and package management.
    */
-
-  imports = [
-    ./core.nix
-  ];
 
   # --- CLI Programs ---
   programs = {
@@ -50,6 +45,57 @@
         };
       };
     };
+
+    # OBS Studio
+    obs-studio = {
+      enable = pkgs.stdenv.isx86_64;
+      plugins = with pkgs.obs-studio-plugins; [
+        wlrobs
+        obs-vkcapture
+        obs-vaapi
+        looking-glass-obs
+        droidcam-obs
+        obs-gstreamer
+        obs-pipewire-audio-capture
+        obs-teleport
+        obs-multi-rtmp
+        obs-shaderfilter
+        obs-vintage-filter
+        obs-backgroundremoval
+        obs-3d-effect
+        obs-source-clone
+        obs-source-record
+        obs-move-transition
+        obs-command-source
+        input-overlay
+        obs-livesplit-one
+      ];
+    };
+
+    # Lutris
+    lutris = {
+      enable = true;
+      steamPackage = osConfig.programs.steam.package;
+      defaultWinePackage = pkgs.proton-ge-bin;
+      protonPackages = [pkgs.proton-ge-bin];
+      winePackages = with pkgs; [
+        wineWow64Packages.full
+        wineWowPackages.stagingFull
+      ];
+      extraPackages = with pkgs; [
+        winetricks
+        gamescope
+        gamemode
+        mangohud
+        umu-launcher
+      ];
+    };
+  };
+
+  # --- User Services ---
+  services = {
+    playerctld.enable = true;
+    udiskie.enable = true;
   };
 
   # --- XDG Configuration ---

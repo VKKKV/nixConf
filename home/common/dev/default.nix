@@ -1,4 +1,4 @@
-{...}: {
+{pkgs, ...}: {
   /**
    * home/common/dev/default.nix
    * Consolidated development tools and environment.
@@ -6,7 +6,6 @@
 
   imports = [
     ./nixvim
-    ./vim
   ];
 
   # --- Git Configuration ---
@@ -63,6 +62,36 @@
     enable = true;
     enableDefaultConfig = false;
   };
-
   services.ssh-agent.enable = true;
+
+  # --- Vim Configuration ---
+  programs.vim = {
+    enable = true;
+    plugins = with pkgs.vimPlugins; [
+      vim-indent-guides
+      vim-visual-multi
+      fzf-vim
+      fzfWrapper
+      typst-vim
+      nerdtree
+      tcomment_vim
+      vim-surround
+      vim-snippets
+      coc-nvim
+      copilot-vim
+      gruvbox
+      vim-airline
+      vim-airline-themes
+    ];
+    settings = {
+      background = "dark";
+      expandtab = true;
+      hidden = true;
+      ignorecase = true;
+      number = true;
+      relativenumber = true;
+      shiftwidth = 4;
+      tabstop = 4;
+    };
+  };
 }

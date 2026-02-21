@@ -26,6 +26,7 @@ in {
     ./hyprland
     ./rofi
     ./waybar
+    ./swaync
   ];
 
   config = mkIf cfg.enable {

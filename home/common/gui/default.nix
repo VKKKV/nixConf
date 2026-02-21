@@ -13,7 +13,6 @@
   imports = [
     inputs.zen-browser.homeModules.beta
     ./fcitx5
-    ./mpv
     ./vscodium
   ];
 
@@ -93,6 +92,22 @@
         ruffle_rs
       ];
     };
+  };
+
+  # --- MPV Configuration ---
+  programs.mpv = {
+    enable = true;
+    scripts = with pkgs.mpvScripts; [
+      mpris
+      uosc
+      thumbfast
+      autoload
+      quality-menu
+    ];
+  };
+  xdg.configFile."mpv" = {
+    source = inputs.mpv-config;
+    recursive = true;
   };
 
   # --- Discord ---

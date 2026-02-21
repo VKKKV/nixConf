@@ -17,14 +17,10 @@ This is a NixOS configuration project using **Nix Flakes**. It manages the syste
 *   **`flake.nix`**: The entry point. Defines inputs and outputs.
 *   **`hosts/`**: Host-specific entry points and hardware scan results.
 *   **`system/`**: System-wide NixOS modules.
-    -   **`system/common/`**: Shared system logic (core, networking, services, stylix).
-    -   **`system/hardware/`**: Decoupled hardware modules.
-        -   **`cpu/`**: CPU-specific tweaks (Intel/AMD).
-        -   **`gpu/`**: Graphics drivers and optimizations (NVIDIA/Intel/AMD).
-        -   **`device/`**: Form-factor specific settings (Laptop/Desktop).
+    -   **`system/common/`**: Shared system logic (core, hardware, apps, stylix). Optimized for modularity with consolidated `default.nix` entry points.
 *   **`home/`**: Home Manager configurations.
-    -   **`home/common/`**: Shared user applications and dotfiles (categorized).
-    -   **`home/desktop/`**: GUI-related user configuration (Hyprland, waybar).
+    -   **`home/common/`**: Shared user applications and dotfiles (core, dev, gui, shells, terminals).
+    -   **`home/desktop/`**: GUI-related user configuration (Hyprland, Niri, waybar, rofi).
 *   **`pkgs/`**: Custom packages.
 *   **`wallpapers/`**: System wallpapers.
 
@@ -45,10 +41,11 @@ sudo nixos-rebuild switch --flake .#<hostname>
 ### Modularity & Hardware Decoupling
 - **Hardware:** CPU, GPU, and Device type (Laptop/Desktop) are decoupled into `system/hardware/`.
 - **Imports:** Host configurations should import from `system/hardware/` to match their physical components.
-- **Modularity:** Configurations are grouped by category into subdirectories with `default.nix` as the entry point.
+- **Modularity:** Configurations are grouped by category into subdirectories with `default.nix` as the entry point. Small related files are consolidated into `default.nix` to minimize directory clutter.
 
 ## Key Components
-- **WindowManager:** Hyprland (configured in `home/desktop/hyprland`).
-- **Theming:** `stylix` for global theming.
+- **WindowManagers:** Hyprland and Niri (configured in `home/desktop/`).
+- **Theming:** `stylix` for global theming (Gruvbox dark).
+- **Development:** Nixvim (fully synced local config), VSCodium.
 - **Power Management:** `tlp` and `powertop` for laptops.
 - **Virtualization:** Podman and Libvirt/QEMU.
