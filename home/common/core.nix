@@ -1,8 +1,12 @@
 {
   pkgs,
+  lib,
   osConfig,
+  host,
   ...
-}: {
+}: let
+  inherit (lib) optionals;
+in {
   /**
    * home/common/core/default.nix
    * Core user-level configuration and package management.
@@ -116,130 +120,131 @@
   };
 
   # --- User Packages ---
-  home.packages = with pkgs; [
-    # Hardware monitoring
-    nvtopPackages.intel
+  home.packages = with pkgs;
+    [
+      # Java Runtime
+      zulu17
 
-    # Java Runtime
-    zulu17
+      # Development Tools
+      (ripgrep.override {withPCRE2 = true;})
+      alejandra
+      jetbrains.idea-community-bin
+      nil
+      nixd
+      nixfmt
+      gcc
+      gnumake
+      nodejs_24
+      tokei
+      cloc
 
-    # Development Tools
-    (ripgrep.override {withPCRE2 = true;})
-    alejandra
-    jetbrains.idea-community-bin
-    nil
-    nixd
-    nixfmt
-    gcc
-    gnumake
-    nodejs_24
-    tokei
-    cloc
+      # Container & Virtualization
+      podman-compose
+      dive
+      lazydocker
 
-    # Container & Virtualization
-    podman-compose
-    dive
-    lazydocker
+      # Database Clients
+      mycli
+      pgcli
+      mongosh
+      sqlite
 
-    # Database Clients
-    mycli
-    pgcli
-    mongosh
-    sqlite
+      # Network Diagnostics
+      wireshark
+      mitmproxy
+      nmap
+      tcpdump
+      mtr
+      iperf3
+      doggo
+      dnsutils
+      ldns
+      socat
+      aria2
+      curlie
+      httpie
 
-    # Network Diagnostics
-    wireshark
-    mitmproxy
-    nmap
-    tcpdump
-    mtr
-    iperf3
-    doggo
-    dnsutils
-    ldns
-    socat
-    aria2
-    curlie
-    httpie
+      # System Monitoring
+      nmon
+      fastfetch
+      nvitop
+      procs
+      duf
+      dust
+      gdu
+      ncdu
 
-    # System Monitoring
-    nmon
-    fastfetch
-    nvitop
-    procs
-    duf
-    dust
-    gdu
-    ncdu
+      # Debugging
+      bpfmon
+      bpftop
+      bpftrace
+      strace
+      ltrace
 
-    # Debugging
-    bpfmon
-    bpftop
-    bpftrace
-    strace
-    ltrace
+      # File Management
+      fd
+      fzf
+      tree
+      rsync
+      croc
+      trashy
 
-    # File Management
-    fd
-    fzf
-    tree
-    rsync
-    croc
-    trashy
+      # Text Processing
+      jq
+      yq-go
+      jc
+      gnused
+      gawk
+      gnugrep
+      sad
+      hyperfine
+      calc
 
-    # Text Processing
-    jq
-    yq-go
-    jc
-    gnused
-    gawk
-    gnugrep
-    sad
-    hyperfine
-    calc
+      # Multimedia & Graphics
+      ffmpeg-full
+      imagemagick
+      graphviz
+      imv
+      viu
+      foliate
+      pavucontrol
+      pwvucontrol
+      playerctl
+      pulsemixer
+      libva-utils
+      vdpauinfo
+      vulkan-tools
+      mesa-demos
 
-    # Multimedia & Graphics
-    ffmpeg-full
-    imagemagick
-    graphviz
-    imv
-    viu
-    foliate
-    pavucontrol
-    pwvucontrol
-    playerctl
-    pulsemixer
-    libva-utils
-    vdpauinfo
-    vulkan-tools
-    mesa-demos
+      # Gaming & Compatibility
+      heroic
+      mangohud
+      protonplus
+      winetricks
+      kicad
 
-    # Gaming & Compatibility
-    heroic
-    mangohud
-    protonplus
-    winetricks
-    kicad
+      # Web Browsers & Communication
+      google-chrome
+      firefox
+      remmina
+      freerdp
+      moonlight-qt
+      localsend
 
-    # Web Browsers & Communication
-    google-chrome
-    firefox
-    remmina
-    freerdp
-    moonlight-qt
-    localsend
+      # Version Control
+      git-lfs
+      git-trim
+      gitleaks
 
-    # Version Control
-    git-lfs
-    git-trim
-    gitleaks
-
-    # Miscellaneous
-    binsider
-    sysbench
-    sysstat
-    systemctl-tui
-    gping
-    libargon2
-  ];
+      # Miscellaneous
+      binsider
+      sysbench
+      sysstat
+      systemctl-tui
+      gping
+      libargon2
+    ]
+    # Hardware monitoring — 按 host 条件判断 GPU 类型
+    ++ optionals (host == "laptop") [pkgs.nvtopPackages.intel]
+    ++ optionals (host == "desktop") [pkgs.nvtopPackages.nvidia pkgs.nvtopPackages.amd];
 }

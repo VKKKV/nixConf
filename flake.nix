@@ -12,48 +12,20 @@
     nixpkgs-stable,
     ...
   } @ inputs: let
-    username = "kita";
-    system = "x86_64-linux";
+    vars = import ./vars;
 
-    pkgs-stable = import nixpkgs-stable {
-      system = "x86_64-linux";
-      config = {allowUnfree = true;};
+    mkHost = import ./lib/mkHost.nix {
+      inherit nixpkgs nixpkgs-stable inputs self vars;
     };
-
-    overlays = [
-      (final: prev: {
-        inherit inputs;
-        my-rime-data = prev.callPackage ./pkgs/rime-shuangpin-fuzhuma {};
-      })
-    ];
   in {
     nixosConfigurations = {
-      desktop = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          host = "desktop";
-          inherit self inputs username;
-        };
-        modules = [
-          ./hosts/desktop
-        ];
+      desktop = mkHost "desktop" {
+        modules = [./hosts/desktop];
       };
 
       # redmibook pro 15
-      laptop = nixpkgs.lib.nixosSystem {
-        inherit system;
-        specialArgs = {
-          host = "laptop";
-          inherit self inputs username pkgs-stable;
-        };
-        modules = [
-          ./hosts/laptop
-          {
-            nixpkgs.overlays = overlays;
-            nixpkgs.config.allowUnfree = true;
-            nixpkgs.config.allowBroken = true;
-          }
-        ];
+      laptop = mkHost "laptop" {
+        modules = [./hosts/laptop];
       };
     };
   };

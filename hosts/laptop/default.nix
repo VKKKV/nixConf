@@ -15,6 +15,9 @@
     ../../system/hardware/device/laptop.nix
   ];
 
+  # Laptop 专用的 nixpkgs 配置
+  nixpkgs.config.allowBroken = true;
+
   services.keyd = {
     enable = true;
     keyboards = {

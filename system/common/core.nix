@@ -95,6 +95,13 @@
     };
   };
 
+  # --- Garbage Collection ---
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 14d";
+  };
+
   # --- Boot & Kernel ---
   boot = {
     kernelPackages = pkgs.linuxPackages_zen;
