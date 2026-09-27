@@ -1,7 +1,7 @@
 /**
- * home/desktop/xmcl.nix
- * X Minecraft Launcher (XMCL) configuration.
- */
+* home/desktop/xmcl.nix
+* X Minecraft Launcher (XMCL) configuration.
+*/
 {
   inputs,
   pkgs,

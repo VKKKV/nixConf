@@ -1,8 +1,8 @@
 {host, ...}: {
   /**
-   * home/common/terminals/default.nix
-   * Consolidated terminal emulators and multiplexers.
-   */
+  * home/common/terminals/default.nix
+  * Consolidated terminal emulators and multiplexers.
+  */
 
   # --- Ghostty Configuration ---
   programs.ghostty = {
@@ -25,7 +25,10 @@
       scrollback_lines = 10000;
       enable_audio_bell = false;
       mouse_hide_wait = 60;
-      window_padding_width = if (host == "laptop") then 5 else 10;
+      window_padding_width =
+        if (host == "laptop")
+        then 5
+        else 10;
       tab_title_template = "{index}";
       active_tab_font_style = "normal";
       inactive_tab_font_style = "normal";

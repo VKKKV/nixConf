@@ -6,15 +6,16 @@
   ...
 }: {
   /**
-   * system/common/core/default.nix
-   * Consolidated core system-wide and home-manager configurations.
-   */
+  * system/common/core/default.nix
+  * Consolidated core system-wide and home-manager configurations.
+  */
 
   imports = [
     inputs.nix-index-database.nixosModules.nix-index
     inputs.home-manager.nixosModules.home-manager
   ];
 
+  # Keep stateVersion stable unless intentionally migrating persisted state.
   system.stateVersion = "25.11";
 
   # --- Home Manager ---
@@ -23,7 +24,7 @@
     useGlobalPkgs = true;
     extraSpecialArgs = {inherit inputs username host;};
     users.${username} = {
-      imports = [../../../home];
+      imports = [../../home];
       home.username = "${username}";
       home.homeDirectory = "/home/${username}";
       home.stateVersion = "25.11";
@@ -76,30 +77,20 @@
         "https://ezkea.cachix.org"
         "https://ghostty.cachix.org"
         "https://hyprland.cachix.org"
-        "https://niri.cachix.org"
+
         "https://nix-community.cachix.org"
         "https://nix-gaming.cachix.org"
-        "https://vicinae.cachix.org"
       ];
       trusted-public-keys = [
         "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
         "nix-gaming.cachix.org-1:nbjlureqMbRAxR1gJ/f3hxemL9svXaZF/Ees8vCUUs4="
         "hyprland.cachix.org-1:a7pgxzMz7+chwVL3/pzj6jIBMioiJM7ypFP8PwtkuGc="
         "ghostty.cachix.org-1:QB389yTa6gTyneehvqG58y0WnHjQOqgnA+wBnpWWxns="
-        "vicinae.cachix.org-1:1kDrfienkGHPYbkpNj1mWTr7Fm1+zcenzgTizIcI3oc="
-        "niri.cachix.org-1:Wv0F12uQS1m7Y38h/UbW/ptFHe4dI7oD0O4kXwQK18U="
         "chaotic-nyx.cachix.org-1:HknUhsg5I773MWCjN+GO+mpFMVrJuFvvhd7L8F1vlI8="
         "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
       ];
       allowed-users = ["root" "@wheel" "${username}"];
     };
-  };
-
-  # --- Garbage Collection ---
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 14d";
   };
 
   # --- Boot & Kernel ---
@@ -114,7 +105,7 @@
       limine = {
         enable = true;
         efiSupport = true;
-        style.wallpapers = ["/etc/nixos/wallpapers/forest_pastel.png"];
+        style.wallpapers = [../../wallpapers/forest_pastel.png];
         maxGenerations = 10;
         enableEditor = true;
       };
@@ -191,11 +182,18 @@
     hostName = "${host}";
     networkmanager.enable = true;
     timeServers = [
-      "ntp.aliyun.com" "ntp.tencent.com" "cn.ntp.org.cn" "ntp.tuna.tsinghua.edu.cn"
-      "time.apple.com" "time.windows.com" "time.cloudflare.com" "pool.ntp.org" "ntp.nict.jp"
+      "ntp.aliyun.com"
+      "ntp.tencent.com"
+      "cn.ntp.org.cn"
+      "ntp.tuna.tsinghua.edu.cn"
+      "time.apple.com"
+      "time.windows.com"
+      "time.cloudflare.com"
+      "pool.ntp.org"
+      "ntp.nict.jp"
     ];
     nameservers = ["114.114.114.114" "119.29.29.29"];
-    firewall.allowedTCPPorts = [25565 53317 63080 63081 63082 63083];
+    firewall.allowedTCPPorts = [53317 63080 63081 63082 63083];
   };
 
   # --- Security ---
@@ -284,9 +282,34 @@
   environment = {
     shells = with pkgs; [bashInteractive fish];
     systemPackages = with pkgs; [
-      wget curl git pciutils usbutils dmidecode ethtool lm_sensors hdparm parted
-      which killall psmisc libnotify udiskie wl-clipboard xdg-utils
-      gnutar unzip zip p7zip xz zstd openssl pulseaudio networkmanagerapplet flclash clash-nyanpasu
+      wget
+      curl
+      git
+      pciutils
+      usbutils
+      dmidecode
+      ethtool
+      lm_sensors
+      hdparm
+      parted
+      which
+      killall
+      psmisc
+      libnotify
+      udiskie
+      wl-clipboard
+      xdg-utils
+      gnutar
+      unzip
+      zip
+      p7zip
+      xz
+      zstd
+      openssl
+      pulseaudio
+      networkmanagerapplet
+      flclash
+      clash-nyanpasu
       (let
         base = pkgs.appimageTools.defaultFhsEnvArgs;
       in
@@ -314,7 +337,7 @@
         enable = true;
         extraArgs = "--keep-since 7d --keep 5";
       };
-      flake = "/etc/nixos";
+      flake = "/home/${username}/code/nix-config";
     };
     nix-index = {
       enable = true;

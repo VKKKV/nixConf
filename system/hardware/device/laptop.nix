@@ -1,8 +1,8 @@
 /**
- * system/hardware/device/laptop.nix
- * Laptop specific hardware configurations.
- * Focused on power management, battery, and portability.
- */
+* system/hardware/device/laptop.nix
+* Laptop specific hardware configurations.
+* Focused on power management, battery, and portability.
+*/
 {
   pkgs,
   config,

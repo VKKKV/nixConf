@@ -6,9 +6,9 @@
   ...
 }: {
   /**
-   * home/common/gui/default.nix
-   * Consolidated GUI applications and desktop utilities.
-   */
+  * home/common/gui/default.nix
+  * Consolidated GUI applications and desktop utilities.
+  */
 
   imports = [
     inputs.zen-browser.homeModules.beta
@@ -146,17 +146,43 @@
         ueberzug_offset = [0 0 0 0];
       };
       opener = {
-        play = [{run = "mpv \"$@\""; orphan = true; for = "unix";}];
-        edit = [{run = "vim \"$@\""; block = true; for = "unix";}];
+        play = [
+          {
+            run = "mpv \"$@\"";
+            orphan = true;
+            for = "unix";
+          }
+        ];
+        edit = [
+          {
+            run = "vim \"$@\"";
+            block = true;
+            for = "unix";
+          }
+        ];
       };
       open.rules = [
-        {mime = "text/*"; use = "edit";}
-        {mime = "*"; use = "edit";}
+        {
+          mime = "text/*";
+          use = "edit";
+        }
+        {
+          mime = "*";
+          use = "edit";
+        }
       ];
     };
     keymap.mgr.prepend_keymap = [
-      {on = "z"; run = "plugin zoxide"; desc = "Jump to a directory via zoxide";}
-      {on = "Z"; run = "plugin fzf"; desc = "Jump to a file/directory via fzf";}
+      {
+        on = "z";
+        run = "plugin zoxide";
+        desc = "Jump to a directory via zoxide";
+      }
+      {
+        on = "Z";
+        run = "plugin fzf";
+        desc = "Jump to a file/directory via fzf";
+      }
     ];
   };
 
@@ -184,7 +210,10 @@
   xdg.mimeApps = let
     zenValue = (inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.beta).meta.desktopFileName;
     browserAssociations = builtins.listToAttrs (
-      map (name: {name = name; value = zenValue;}) [
+      map (name: {
+        name = name;
+        value = zenValue;
+      }) [
         "application/x-extension-shtml"
         "application/x-extension-xhtml"
         "application/x-extension-html"

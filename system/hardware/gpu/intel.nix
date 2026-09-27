@@ -1,7 +1,7 @@
 /**
- * system/hardware/gpu/intel.nix
- * Intel GPU specific configurations (Integrated Graphics).
- */
+* system/hardware/gpu/intel.nix
+* Intel GPU specific configurations (Integrated Graphics).
+*/
 {pkgs, ...}: {
   hardware.graphics = {
     enable = true;

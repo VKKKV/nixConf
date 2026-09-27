@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   /**
-   * home/common/shells/default.nix
-   * Consolidated shell configurations and CLI enhancements.
-   */
+  * home/common/shells/default.nix
+  * Consolidated shell configurations and CLI enhancements.
+  */
 
   # --- Bash Configuration ---
   programs.bash = {

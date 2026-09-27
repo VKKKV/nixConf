@@ -27,11 +27,11 @@
         addons = {
           classicui = {
             globalSection = {
-              Theme = "macOS-light";
-              DarkTheme = "macOS-dark";
-              Font = "Maple Mono NF CN 16";
-              MenuFont = "Maple Mono NF CN 16";
-              TrayFont = "Maple Mono NF CN 16";
+              Theme = "macOS-Dark";
+              DarkTheme = "macOS-Dark";
+              Font = "Sarasa Gothic SC 18";
+              MenuFont = "Sarasa Gothic SC 17";
+              TrayFont = "Sarasa Gothic SC 17";
             };
           };
         };

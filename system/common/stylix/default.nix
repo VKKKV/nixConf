@@ -1,8 +1,8 @@
 /**
- * system/common/stylix/default.nix
- * Global system and user theming using Stylix.
- * Configures colors, fonts, and cursors consistently across all supported applications.
- */
+* system/common/stylix/default.nix
+* Global system and user theming using Stylix.
+* Configures colors, fonts, and cursors consistently across all supported applications.
+*/
 {
   inputs,
   pkgs,

@@ -1,7 +1,7 @@
 /**
- * system/hardware/cpu/amd.nix
- * AMD CPU specific configurations.
- */
+* system/hardware/cpu/amd.nix
+* AMD CPU specific configurations.
+*/
 {
   pkgs,
   config,

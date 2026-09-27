@@ -1,7 +1,7 @@
 /**
- * home/common/default.nix
- * Unified entry point for all common user-level configurations.
- */
+* home/common/default.nix
+* Unified entry point for all common user-level configurations.
+*/
 {...}: {
   imports = [
     ./core.nix

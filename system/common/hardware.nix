@@ -1,8 +1,8 @@
 {pkgs, ...}: {
   /**
-   * system/common/hardware/default.nix
-   * Consolidated common hardware-related configurations.
-   */
+  * system/common/hardware/default.nix
+  * Consolidated common hardware-related configurations.
+  */
 
   # --- Bluetooth Configuration ---
   hardware.bluetooth = {

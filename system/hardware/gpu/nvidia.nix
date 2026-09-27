@@ -1,7 +1,7 @@
 /**
- * system/hardware/gpu/nvidia.nix
- * NVIDIA GPU specific configurations.
- */
+* system/hardware/gpu/nvidia.nix
+* NVIDIA GPU specific configurations.
+*/
 {
   pkgs,
   config,

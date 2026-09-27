@@ -8,9 +8,9 @@
   inherit (lib) optionals;
 in {
   /**
-   * home/common/core/default.nix
-   * Core user-level configuration and package management.
-   */
+  * home/common/core/default.nix
+  * Core user-level configuration and package management.
+  */
 
   # --- CLI Programs ---
   programs = {
@@ -163,6 +163,9 @@ in {
       aria2
       curlie
       httpie
+      gobuster
+      ffuf
+      sqlmap
 
       # System Monitoring
       nmon
@@ -175,6 +178,20 @@ in {
       ncdu
 
       # Debugging
+      gdb
+      pwntools
+      radare2
+      rizin
+      ropgadget
+      checksec
+      binwalk
+      foremost
+      exiftool
+      steghide
+      zsteg
+      yara
+      volatility3
+      tshark
       bpfmon
       bpftop
       bpftrace
@@ -199,6 +216,12 @@ in {
       sad
       hyperfine
       calc
+
+      # CTF / Forensics utilities
+      ghidra
+      hashcat
+      john
+      qemu
 
       # Multimedia & Graphics
       ffmpeg-full

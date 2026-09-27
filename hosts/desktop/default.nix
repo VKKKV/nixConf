@@ -1,8 +1,8 @@
 /**
- * hosts/desktop/default.nix
- * Host-specific configuration for the performance-oriented desktop.
- * Profile: AMD CPU + NVIDIA GPU.
- */
+* hosts/desktop/default.nix
+* Host-specific configuration for the performance-oriented desktop.
+* Profile: AMD CPU + NVIDIA GPU.
+*/
 {...}: {
   imports = [
     ./hardware-configuration.nix

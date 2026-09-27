@@ -1,7 +1,7 @@
 /**
- * hosts/laptop/default.nix
- * Host-specific configuration for the RedmiBook Pro 15 laptop.
- */
+* hosts/laptop/default.nix
+* Host-specific configuration for the RedmiBook Pro 15 laptop.
+*/
 {
   pkgs,
   config,

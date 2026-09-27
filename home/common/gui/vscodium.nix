@@ -101,21 +101,66 @@ in {
         "vim.hlsearch" = true;
         "vim.ignorecase" = true;
         "vim.normalModeKeyBindings" = [
-          {before = ["<Leader>" "q"]; commands = [":q!"];}
-          {before = ["<Leader>" "p"]; commands = [":bprevious"];}
-          {before = ["<Leader>" "n"]; commands = [":bnext"];}
-          {before = ["<Leader>" "x"]; commands = [":bd"];}
-          {before = ["<Leader>" "f"]; commands = ["editor.action.formatDocument"];}
-          {before = ["<Leader>" "t" "n"]; commands = ["workbench.action.nextEditor"];}
-          {before = ["<Leader>" "t" "p"]; commands = ["workbench.action.previousEditor"];}
-          {before = ["<Leader>" "t" "c"]; commands = ["workbench.action.newEditor"];}
-          {before = ["<Leader>" "v"]; commands = ["workbench.action.splitEditorRight"];}
-          {before = ["<Leader>" "s"]; commands = ["workbench.action.splitEditorDown"];}
-          {before = ["<Leader>" "h"]; commands = ["workbench.action.navigateLeft"];}
-          {before = ["<Leader>" "j"]; commands = ["workbench.action.navigateDown"];}
-          {before = ["<Leader>" "k"]; commands = ["workbench.action.navigateUp"];}
-          {before = ["<Leader>" "l"]; commands = ["workbench.action.navigateRight"];}
-          {before = ["<Leader>" "e"]; commands = ["workbench.files.action.focusFilesExplorer"];}
+          {
+            before = ["<Leader>" "q"];
+            commands = [":q!"];
+          }
+          {
+            before = ["<Leader>" "p"];
+            commands = [":bprevious"];
+          }
+          {
+            before = ["<Leader>" "n"];
+            commands = [":bnext"];
+          }
+          {
+            before = ["<Leader>" "x"];
+            commands = [":bd"];
+          }
+          {
+            before = ["<Leader>" "f"];
+            commands = ["editor.action.formatDocument"];
+          }
+          {
+            before = ["<Leader>" "t" "n"];
+            commands = ["workbench.action.nextEditor"];
+          }
+          {
+            before = ["<Leader>" "t" "p"];
+            commands = ["workbench.action.previousEditor"];
+          }
+          {
+            before = ["<Leader>" "t" "c"];
+            commands = ["workbench.action.newEditor"];
+          }
+          {
+            before = ["<Leader>" "v"];
+            commands = ["workbench.action.splitEditorRight"];
+          }
+          {
+            before = ["<Leader>" "s"];
+            commands = ["workbench.action.splitEditorDown"];
+          }
+          {
+            before = ["<Leader>" "h"];
+            commands = ["workbench.action.navigateLeft"];
+          }
+          {
+            before = ["<Leader>" "j"];
+            commands = ["workbench.action.navigateDown"];
+          }
+          {
+            before = ["<Leader>" "k"];
+            commands = ["workbench.action.navigateUp"];
+          }
+          {
+            before = ["<Leader>" "l"];
+            commands = ["workbench.action.navigateRight"];
+          }
+          {
+            before = ["<Leader>" "e"];
+            commands = ["workbench.files.action.focusFilesExplorer"];
+          }
         ];
 
         "vim.handleKeys" = {

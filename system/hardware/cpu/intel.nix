@@ -1,7 +1,7 @@
 /**
- * system/hardware/cpu/intel.nix
- * Intel CPU specific configurations.
- */
+* system/hardware/cpu/intel.nix
+* Intel CPU specific configurations.
+*/
 {
   pkgs,
   config,
